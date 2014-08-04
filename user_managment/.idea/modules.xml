@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/lib/resources_producer/resources_producer.iml" filepath="$PROJECT_DIR$/lib/resources_producer/resources_producer.iml" />
+      <module fileurl="file://$PROJECT_DIR$/sones.iml" filepath="$PROJECT_DIR$/sones.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ejb/user_manager/user_mamanger.iml" filepath="$PROJECT_DIR$/ejb/user_manager/user_mamanger.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ejb/user_manager/user_manager.iml" filepath="$PROJECT_DIR$/ejb/user_manager/user_manager.iml" />
+      <module fileurl="file://$PROJECT_DIR$/persistence/user_modele/user_modele.iml" filepath="$PROJECT_DIR$/persistence/user_modele/user_modele.iml" />
+      <module fileurl="file://$PROJECT_DIR$/war/users/users.iml" filepath="$PROJECT_DIR$/war/users/users.iml" />
+    </modules>
+  </component>
+</project>
+

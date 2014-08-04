@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+        >
+<h:head>
+    <title>SONES</title>
+    <h:outputStylesheet library="css" name="default.css"  />
+</h:head>
+<h:body style="background-color: crimson">
+    <p:layout fullPage="true" >
+        <p:layoutUnit style="background-color: white; border-color: crimson; border: 2"   position="north" size="42"  resizable="false" closable="false" collapsible="false" collapseSize="0" >
+            <ui:include src="northPanel.xhtml" >
+                <ui:param name="pageDroiteNom" value=" Une page située au Nord" />
+            </ui:include>
+        </p:layoutUnit>
+
+        <p:layoutUnit style="background-color: white; border-color: white" position="south" size="40" resizable="false" closable="false" collapsible="false" >
+            <ui:include src="southPanel.xhtml" >
+                <ui:param name="pageDroiteNom" value=" Une page située au Nord" />
+            </ui:include>
+        </p:layoutUnit>
+
+        <p:layoutUnit  position="west" size="160" header="Menu" resizable="false" closable="false" collapsible="true" style="font-family: Bell MT;background-color: white; border-color: white" >
+            <ui:include src="menuPanel.xhtml" >
+                <ui:param name="pageGaucheNom" value=" Une page située à l'ouest" />
+            </ui:include>
+        </p:layoutUnit>
+
+        <p:layoutUnit style="background-color: white; border-color: white"  position="east" size="600"  resizable="true"  closable="true" collapsible="true" effect="drop" visible="true" collapseSize="0">
+            <ui:insert name="detail">layout ::  insert name=details</ui:insert>
+        </p:layoutUnit>
+
+        <p:layoutUnit style="background-color: white; border-color: white"  position="center" id="layoutCenter">
+            <ui:insert name="content">layout ::  insert name=content</ui:insert>
+        </p:layoutUnit>
+    </p:layout>
+</h:body>
+</html>

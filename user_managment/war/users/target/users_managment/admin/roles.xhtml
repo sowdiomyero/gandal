@@ -1,0 +1,119 @@
+<ui:composition template="/templates/layout.xhtml"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:c="http://java.sun.com/jsp/jstl/core">
+        <ui:define name="content">
+        <h:form id="usersForm" >
+            <center> <h4><h:outputText value="Liste des Rôles" style="font-family: Bell MT;color:#BF3F5E;"/></h4></center>
+            <h:panelGrid style="height: 15px">
+                <h:column>
+                    <p:commandButton value="Nouveau" id="newUserButton" update=":newUserForm:displayNewUser"  icon="ui-icon-plus" title="Nouveau utilisateur" style="font-family: Bell MT;" oncomplete="newUserDialog.show();" />
+                    <p:commandButton value="Supprimer" actionListener="#{roleController.deleteRole}" update=":usersForm:userDataTable, :growl, :userDetailForm:displayUser" icon="ui-icon-trash" style="font-family: Bell MT;"/>
+                </h:column>
+            </h:panelGrid>
+            <p:dataTable id="userDataTable" var="role" value="#{roleController.roles}" styleClass="roleDataTableStyle" style="font-family: Bell MT;"
+                         paginator="true" rows="9" rowKey="#{role.rolename}" selection="#{roleController.role}" widgetVar="roles"
+                         paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                         lazy="true" rowsPerPageTemplate="10,15,50" selectionMode="single">
+                <p:ajax event="rowSelect" update=":userDetailForm:displayUser, :actionMenu1" listener="#{roleController.handleAjaxRequest}"/>
+
+
+                <p:column filterBy="#{role.rolename}" sortFunction="PF('users').filter()" filterMatchMode=""  sortBy="#{role.rolename}">
+                    <f:facet name="header">
+                        <h:outputText value="Role Name" style="font-family: Bell MT;" onkeyup="alert('On Key UP')" placeholder="Search..." />
+                    </f:facet>
+                    <p:commandLink value="#{role.rolename}" style="font-family: Bell MT;"   title="View">
+
+                    </p:commandLink>
+                </p:column>
+
+                <p:column sortBy="#{role.roledesc}">
+                    <f:facet name="header">
+                        <h:outputText value="Description" style="font-family: Bell MT;" />
+                    </f:facet>
+                    <h:outputText value="#{role.roledesc}" style="font-family: Bell MT;" />
+                </p:column>
+
+                <f:facet name="footer">
+
+                </f:facet>
+            </p:dataTable>
+        </h:form>
+    </ui:define>
+
+
+
+    <ui:define name="detail">
+        <center> <h4><h:outputText value="Details du Rôle" style="font-family: Bell MT;color:#BF3F5E;"/></h4></center>
+        <h:panelGrid id="actionMenu1">
+            <h:column>
+               <p:commandButton value="Utilisateurs Associés" actionListener="#{roleController.debugButton}" update=":growl, :actionMenu1" icon="ui-icon-tag" title="surveiller cet utilisateur" style="font-family: Bell MT;"/>
+               <p:commandButton value="Ajouter à un Groupe" actionListener="#{roleController.debugButton}" icon="ui-icon-pin-s" style="font-family: Bell MT;"/>
+
+            </h:column>
+        </h:panelGrid>
+        <h:form id="userDetailForm" style="margin-top: 2px; ">
+            <p:panelGrid id="displayUser" columns="2" cellpadding="4" style="margin:0 auto;width:100%" >
+
+                <h:outputText value="Nom" style="font-family: Bell MT;"></h:outputText>
+                <h:outputText value="#{roleController.role.rolename}" style="width:100%;font-family: Bell MT;"/>
+
+                <h:outputText value="Description" style="font-family: Bell MT;"></h:outputText>
+                <p:inputTextarea rows="2" cols="25" value="#{roleController.role.roledesc}" style="width:100%;font-family: Bell MT;" required="false"/>
+
+                <h:outputText value="Actions" style="font-family: Bell MT;"></h:outputText>
+                <h:selectManyMenu style="width:250px;height:70px;font-family: Bell MT;" id="newUserRole" required="false" value="#{roleController.role.actions}" var="_actions" itemValue="#{_actions}" >
+                    <f:selectItems  value="#{roleController.actionList}"  var="_action" itemValue="#{_action}" itemLabel="#{_action.display}"></f:selectItems>
+                    <f:converter converterId="sn.idyal.framework.utils.ActionConverter" />
+                </h:selectManyMenu>
+
+                <h:outputText value="Groupes" style="font-family: Bell MT;"></h:outputText>
+                <p:pickList id="pickList" value="#{roleController.groupes}" var="groupe"  itemLabel="#{groupe.display}" converter="sn.idyal.framework.utils.GroupeConverter" itemValue="#{groupe}" style="font-size: 8px;width:100%; padding: 0 0 0 0; margin: 0 0 0 0" />
+
+                <f:facet name="footer">
+                    <p:commandButton style="font-family: Bell MT;" value="Mise à jour" update=":usersForm:userDataTable, :growl" actionListener="#{roleController.updateRole}"/>
+                </f:facet>
+            </p:panelGrid>
+        </h:form>
+
+            <p:dialog header="Création nouvel Role" draggable="true" widgetVar="newUserDialog" resizable="false" id="newUserDlg" style="position: absolute; float: right; width: 350px" >
+                <h:form id="newUserForm">
+                    <p:panelGrid id="displayNewUser" columns="2" cellpadding="4" style="margin:0 auto;width: 513px">
+                        <h:outputText value="Nom :" style="font-family: Bell MT;"></h:outputText>
+                        <p:inputText style="font-family: Bell MT;" value="#{roleController.newRole.rolename}" required="true" requiredMessage="Veuillez saisir un nom pour ce rôle SVP!" />
+
+                        <h:outputText value="Description :" style="font-family: Bell MT;"></h:outputText>
+                        <p:inputText style="font-family: Bell MT;" value="#{roleController.newRole.roledesc}" required="true" requiredMessage="Veuillez saisir une description SVP!" />
+
+                        <f:facet name="footer">
+                            <p:commandButton style="font-family: Bell MT;" value="Valider" update=":newUserForm:displayNewUser,:usersForm:userDataTable,:userDetailForm:displayUser,:growl"  oncomplete="handleSubmitRequest(xhr, status, args, 'newUserDlg','newUserForm');" actionListener="#{roleController.createRole}"/>
+                            <p:commandButton style="font-family: Bell MT;" type="reset" value="Effacer"></p:commandButton>
+                        </f:facet>
+                    </p:panelGrid>
+                </h:form>
+            </p:dialog>
+
+        <p:growl id="growl" showDetail="true" life="3000"  />
+        <script type="text/javascript">
+            function handleSubmitRequest(xhr, status, args, dialogName, formName) {
+                dialog = jQuery('#'+dialogName);
+                if(args.validationFailed) {
+                    dialog.effect("shake", { times:3 }, 100);
+                } else {
+                    clearForm(formName);
+                    dialog.hide();
+                    newUserDialog.hide();
+                }
+            }
+
+            function clearForm(formName){
+                jQuery('#'+formName).each(function(){
+                    this.reset();
+                });
+            }
+        </script>
+    </ui:define>
+</ui:composition>

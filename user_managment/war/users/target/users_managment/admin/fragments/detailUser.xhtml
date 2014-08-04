@@ -1,0 +1,43 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui">
+
+    <center> <h4><h:outputText value="Details Utilisateur" style="font-family: Bell MT;color:#BF3F5E;"/></h4></center>
+    <h:panelGrid>
+        <h:column>
+            <p:commandButton value="Favoris" oncomplete="newUserDialog.show()" icon="ui-icon-star" title="creer nouveau utilisateur" style="font-family: Bell MT;"/>
+            <p:commandButton value="Ajouter à un Groupe" actionListener="#{homeController.mock}" icon="ui-icon-pin-s" style="font-family: Bell MT;"/>
+        </h:column>
+    </h:panelGrid>
+    <h:form id="userDetailForm" style="margin-top: 2px ">
+        <p:panelGrid id="display" columns="2" cellpadding="4" style="margin:0 auto;width:100%" >
+            <h:outputText value="Login :" style="font-family: Bell MT;"></h:outputText>
+            <h:outputText value="#{user.login}" style="width:100%;font-family: Bell MT;"/>
+
+            <h:outputText value="Nom :" style="font-family: Bell MT;"></h:outputText>
+            <h:inputText value="#{user.nom}" style="width:100%;font-family: Bell MT;" required="true" requiredMessage="Veuillez saisir le nom SVP!"/>
+
+            <h:outputText value="Prenom :" style="font-family: Bell MT;"></h:outputText>
+            <h:inputText value="#{user.prenom}" style="width:100%;font-family: Bell MT;" required="true" requiredMessage="Veuillez saisir le prenom SVP!"/>
+
+            <h:outputText value="Email :" style="font-family: Bell MT;"></h:outputText>
+            <h:inputText value="#{user.email}" style="width:100%;font-family: Bell MT;"/>
+
+            <h:outputText value="Role :" style="font-family: Bell MT;"></h:outputText>
+            <h:selectManyMenu style="width:100%;font-family: Bell MT;" id="newUserRole" required="true" value="#{user.roles}" var="_roles" itemValue="#{_roles}"  requiredMessage="Vous devez indiquer le role!">
+                <f:selectItems  value="#{homeController.roleList}"  var="_role" itemValue="#{_role}" itemLabel="#{_role.rolename}"></f:selectItems>
+                <f:converter converterId="sn.idyal.framework.utils.ObjectConverter" />
+            </h:selectManyMenu>
+
+            <h:outputText value="Téléphone :" style="font-family: Bell MT;"></h:outputText>
+            <h:inputText value="#{user.telephone}" style="width:100%;font-family: Bell MT;"/>
+
+
+            <f:facet name="footer">
+                <p:commandButton style="font-family: Bell MT;" value="Mise à jour" actionListener="#{user.mock}"/>
+            </f:facet>
+        </p:panelGrid>
+    </h:form>
+</ui:composition>

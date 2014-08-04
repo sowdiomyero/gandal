@@ -1,0 +1,170 @@
+<ui:composition template="/templates/layout.xhtml"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:c="http://java.sun.com/jsp/jstl/core">
+        <ui:define name="content">
+        <h:form id="usersForm" >
+            <center> <h4><h:outputText value="Liste des Utilisateurs" style="font-family: Bell MT;color:#BF3F5E;"/></h4></center>
+            <h:panelGrid style="height: 15px">
+                <h:column>
+                    <p:commandButton value="Nouveau" id="newUserButton" update=":newUserForm:displayNewUser"  icon="ui-icon-plus" title="Nouveau utilisateur" style="font-family: Bell MT;" oncomplete="newUserDialog.show();" />
+                    <p:commandButton value="Supprimer" actionListener="#{homeController.deleteUser}" update=":usersForm:userDataTable, :growl, :userDetailForm:displayUser" icon="ui-icon-trash" style="font-family: Bell MT;"/>
+                </h:column>
+            </h:panelGrid>
+            <p:dataTable id="userDataTable" var="user" value="#{homeController.users}" styleClass="userDataTableStyle" style="font-family: Bell MT;"
+                         paginator="true" rows="9" rowKey="#{user.login}" selection="#{homeController.user}" widgetVar="users"
+                         paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                         lazy="true" rowsPerPageTemplate="10,15,50" selectionMode="single">
+                <p:ajax event="rowSelect" update=":userDetailForm:displayUser, :actionMenu1" listener="#{homeController.handleAjaxRequest}"/>
+
+
+                <p:column filterBy="#{user.login}" sortFunction="PF('users').filter()" filterMatchMode=""  sortBy="#{user.login}">
+                    <f:facet name="header">
+                        <h:outputText value="Login" style="font-family: Bell MT;" onkeyup="alert('On Key UP')" placeholder="Search..." />
+                    </f:facet>
+                    <p:commandLink value="#{user.login}" style="font-family: Bell MT;"   title="View">
+
+                    </p:commandLink>
+                </p:column>
+
+                <p:column sortBy="#{user.nom}">
+                    <f:facet name="header">
+                        <h:outputText value="Nom" style="font-family: Bell MT;" />
+                    </f:facet>
+                    <h:outputText value="#{user.nom}" style="font-family: Bell MT;" />
+                </p:column>
+
+                <p:column sortBy="#{user.prenom}">
+                    <f:facet name="header">
+                        <h:outputText value="Prenom" style="font-family: Bell MT;"/>
+                    </f:facet>
+                    <h:outputText value="#{user.prenom}" style="font-family: Bell MT;"/>
+                </p:column>
+
+                <p:column sortBy="#{user.email}">
+                    <f:facet name="header">
+                        <h:outputText value="Email" style="font-family: Bell MT;" />
+                    </f:facet>
+                    <h:outputText value="#{user.email}" style="font-family: Bell MT;" />
+                </p:column>
+                <f:facet name="footer">
+
+                </f:facet>
+            </p:dataTable>
+        </h:form>
+    </ui:define>
+
+
+
+    <ui:define name="detail">
+        <center> <h4><h:outputText value="Details Utilisateur" style="font-family: Bell MT;color:#BF3F5E;"/></h4></center>
+        <h:panelGrid id="actionMenu1">
+            <h:column>
+                <c:if test="#{homeController.user.actif}">
+                    <p:commandButton value="Bloquer" actionListener="#{homeController.bloquer}" update=":growl, :actionMenu1" icon="ui-icon-locked" style="font-family: Bell MT;"/>
+                </c:if>
+                <c:if test="#{!homeController.user.actif}">
+                    <p:commandButton value="Débloquer" actionListener="#{homeController.debloquer}" update=":growl, :actionMenu1" icon="ui-icon-unlocked" style="font-family: Bell MT;"/>
+                </c:if>
+                <c:if test="#{!homeController.user.logged}">
+                    <p:commandButton value="Surveiller" actionListener="#{homeController.surveiller}" update=":growl, :actionMenu1" icon="ui-icon-tag" title="surveiller cet utilisateur" style="font-family: Bell MT;"/>
+                </c:if>
+                <p:commandButton value="Ajouter à un Groupe" actionListener="#{homeController.debugButton}" icon="ui-icon-pin-s" style="font-family: Bell MT;"/>
+                <c:if test="#{homeController.user.logged}">
+                    <p:commandButton value="Historiques Actions" actionListener="#{homeController.debugButton}" icon="ui-icon-pin-s" style="font-family: Bell MT;"/>
+                </c:if>
+
+            </h:column>
+        </h:panelGrid>
+        <h:form id="userDetailForm" style="margin-top: 2px ">
+            <p:panelGrid id="displayUser" columns="2" cellpadding="4" style="margin:0 auto;width:100%" >
+                <h:outputText value="Login :" style="font-family: Bell MT;"></h:outputText>
+                <h:outputText value="#{homeController.user.login}" style="width:100%;font-family: Bell MT;"/>
+
+                <h:outputText value="Nom :" style="font-family: Bell MT;"></h:outputText>
+                <h:inputText value="#{homeController.user.nom}" style="width:100%;font-family: Bell MT;" required="true" requiredMessage="Veuillez saisir le nom SVP!"/>
+
+                <h:outputText value="Prenom :" style="font-family: Bell MT;"></h:outputText>
+                <h:inputText value="#{homeController.user.prenom}" style="width:100%;font-family: Bell MT;" required="true" requiredMessage="Veuillez saisir le prenom SVP!"/>
+
+                <h:outputText value="Email :" style="font-family: Bell MT;"></h:outputText>
+                <h:inputText value="#{homeController.user.email}" style="width:100%;font-family: Bell MT;"/>
+
+                <h:outputText value="Role :" style="font-family: Bell MT;"></h:outputText>
+                <h:selectManyMenu style="width:100%;height:70px;font-family: Bell MT;" id="newUserRole" required="true" value="#{homeController.user.roles}" var="_roles" itemValue="#{_roles}"  requiredMessage="Vous devez indiquer le role!">
+                    <f:selectItems  value="#{homeController.roleList}"  var="_role" itemValue="#{_role}" itemLabel="#{_role.rolename}"></f:selectItems>
+                    <f:converter converterId="sn.idyal.framework.utils.ObjectConverter" />
+                </h:selectManyMenu>
+
+                <h:outputText value="Téléphone :" style="font-family: Bell MT;"></h:outputText>
+                <h:inputText value="#{homeController.user.telephone}" style="width:100%;font-family: Bell MT;"/>
+
+
+                <f:facet name="footer">
+                    <p:commandButton style="font-family: Bell MT;" value="Mise à jour" update=":usersForm:userDataTable, :growl" actionListener="#{homeController.updateUser}"/>
+                </f:facet>
+            </p:panelGrid>
+        </h:form>
+
+            <p:dialog header="Création nouvel utilisateur" draggable="true" widgetVar="newUserDialog" resizable="false" id="newUserDlg" style="position: absolute; float: right; width: 350px" >
+                <h:form id="newUserForm">
+                    <p:panelGrid id="displayNewUser" columns="2" cellpadding="4" style="margin:0 auto;width: 513px">
+                        <h:outputText value="Login :" style="font-family: Bell MT;"></h:outputText>
+                        <p:inputText style="font-family: Bell MT;" value="#{homeController.newUser.login}" required="true" requiredMessage="Veuillez saisir un login SVP!" />
+
+                        <h:outputText value="Nom :" style="font-family: Bell MT;"></h:outputText>
+                        <p:inputText style="font-family: Bell MT;" value="#{homeController.newUser.nom}" required="true" requiredMessage="Veuillez saisir un nom SVP!" />
+
+                        <h:outputText value="Prenom :" style="font-family: Bell MT;"></h:outputText>
+                        <p:inputText style="font-family: Bell MT;" value="#{homeController.newUser.prenom}" required="true" requiredMessage="Veuillez saisir un prenom SVP!" />
+
+                        <h:outputText value="Password :" style="font-family: Bell MT;"></h:outputText>
+                        <p:password promptLabel="Saisir un mot de Passe..." weakLabel="Faible" goodLabel="Bon" strongLabel="Fort"
+                                    style="font-family: Bell MT;" value="#{homeController.newUser.motDePasse}" feedback="true" required="true" requiredMessage="Veuillez saisir un mot de passe SVP!" maxlength="16" >
+                            <f:converter converterId="sn.idyal.framework.utils.SHAConverter"></f:converter>
+                        </p:password>
+
+                        <h:outputText style="font-family: Bell MT;" value="Email :"></h:outputText>
+                        <p:inputText style="font-family: Bell MT;" value="#{homeController.newUser.email}"/>
+
+                        <h:outputText value="Role :" style="font-family: Bell MT;"></h:outputText>
+                        <h:selectManyMenu  value="#{homeController.newUser.roles}" style="font-family: Bell MT;width: 100%;height:70px;"  id="selectedUserRole" required="true"  var="_roles" itemValue="#{_roles}" requiredMessage="Choisissez un role!">
+
+                            <f:selectItems  value="#{homeController.roleList}" var="_role" itemValue="#{_role}" itemLabel="#{_role.rolename}"></f:selectItems>
+                            <f:converter converterId="sn.idyal.framework.utils.ObjectConverter" />
+                        </h:selectManyMenu>
+                        <h:outputText value="Telephone :"></h:outputText>
+                        <p:inputText value="#{homeController.newUser.telephone}" />
+
+                        <f:facet name="footer">
+                            <p:commandButton style="font-family: Bell MT;" value="Valider" update=":newUserForm:displayNewUser,:usersForm:userDataTable,:userDetailForm:displayUser,:growl"  oncomplete="handleSubmitRequest(xhr, status, args, 'newUserDlg','newUserForm');" actionListener="#{homeController.createUser}"/>
+                            <p:commandButton style="font-family: Bell MT;" type="reset" value="Effacer"></p:commandButton>
+                        </f:facet>
+                    </p:panelGrid>
+                </h:form>
+            </p:dialog>
+
+        <p:growl id="growl" showDetail="true" life="3000"  />
+        <script type="text/javascript">
+            function handleSubmitRequest(xhr, status, args, dialogName, formName) {
+                dialog = jQuery('#'+dialogName);
+                if(args.validationFailed) {
+                    dialog.effect("shake", { times:3 }, 100);
+                } else {
+                    clearForm(formName);
+                    dialog.hide();
+                    newUserDialog.hide();
+                }
+            }
+
+            function clearForm(formName){
+                jQuery('#'+formName).each(function(){
+                    this.reset();
+                });
+            }
+        </script>
+    </ui:define>
+</ui:composition>

@@ -1,0 +1,9 @@
+<component name="ArtifactManager">
+  <artifact type="exploded-ejb" name="user_manager:ejb exploded">
+    <output-path>$PROJECT_DIR$/ejb/user_manager/target/user_manager-1.0.0-SNAPSHOT</output-path>
+    <root id="root">
+      <element id="javaee-facet-resources" facet="user_manager/ejb/EJB" />
+      <element id="module-output" name="user_manager" />
+    </root>
+  </artifact>
+</component>

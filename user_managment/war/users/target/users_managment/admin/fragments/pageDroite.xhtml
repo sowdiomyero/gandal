@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+        >
+<h:head>
+    <title>SONES</title>
+    <h:outputStylesheet library="css" name="default.css"  />
+</h:head>
+<h:body >
+    <p:panel style="float: right; border-color: white ">
+
+                <h:panelGrid columns="3" id="menuGauche" width="100%" style="float: right">
+                    <h:form id="menuHaut">
+                        <h:commandLink style="color: crimson; font:bold" value="Mon Compte" action="#{loginController.logout}"></h:commandLink>
+                        <h:outputLabel style="color: darkolivegreen; font:bold" value=" | " ></h:outputLabel>
+                        <h:commandLink style="color: crimson; font:bold" value="Parametres" action="#{loginController.logout}"></h:commandLink>
+                        <h:outputLabel style="color: darkolivegreen; font:bold" value=" | " ></h:outputLabel>
+                        <h:commandLink style="color: crimson; font:bold" value="Logout" action="#{loginController.logout}"></h:commandLink>
+                    </h:form>
+                </h:panelGrid>
+
+    </p:panel>
+
+</h:body>
+</html>

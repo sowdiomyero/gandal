@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+        >
+<h:head>
+    <title>SONES</title>
+    <h:outputStylesheet library="css" name="default.css"  />
+</h:head>
+<h:body style="background-color: #ABD589">
+    <p:panel style="float: right; padding: 0 0 0 0; margin: 0 0 0 0; height: 25px;border-color: white;">
+
+        <h:panelGrid columns="3" id="menuGauche" width="100%" style="float: right ; height: 25px; padding-top: 0; margin-top: 0">
+            <h:form id="menuHaut" style="margin-top: 0; padding-top: 0">
+                <h:commandLink style="color: crimson; font:bold; margin-top: 0; padding-top: 0" value="Mon Compte" action="#{loginController.logout}"></h:commandLink>
+                <h:outputLabel style="color: darkolivegreen; font:bold ;margin-top: 0; padding-top: 0" value=" | " ></h:outputLabel>
+                <h:commandLink style="color: crimson; font:bold;margin-top: 0; padding-top: 0" value="Parametres" action="#{loginController.logout}"></h:commandLink>
+                <h:outputLabel style="color: darkolivegreen; font:bold ;margin-top: 0; padding-top: 0" value=" | " ></h:outputLabel>
+                <h:commandLink style="color: crimson; font:bold; margin-top: 0; padding-top: 0" value="Logout" action="#{loginController.logout}"></h:commandLink>
+            </h:form>
+        </h:panelGrid>
+
+    </p:panel>
+
+</h:body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:c="http://java.sun.com/jsp/jstl/core"
+        >
+<h:head>
+    <title>SONES</title>
+    <h:outputStylesheet library="css" name="default.css"  />
+</h:head>
+<h:body>
+    <h:form id="menuGeneral">
+        <p:menu>
+            <c:if test="#{request.isUserInRole('User')}">
+                <p:menuitem value="Acceuil" action="/admin/home.xhtml?faces-redirect=true" ajax="false" icon="ui-icon-home" style="font-family: Bell MT;"/>
+            </c:if>
+            <c:if test="#{request.isUserInRole('Manager')}">
+                <p:menuitem value="Acceuil" action="/admin/home.xhtml?faces-redirect=true" ajax="false" icon="ui-icon-home" style="font-family: Bell MT;"/>
+
+            </c:if>
+            <c:if test="#{request.isUserInRole('Admin')}">
+                <p:menuitem value="Acceuil" action="/admin/home.xhtml?faces-redirect=true" ajax="false" icon="ui-icon-home" style="font-family: Bell MT;"/>
+                <p:submenu label="Utilisateurs" icon="ui-icon ui-icon-refresh" style="font-family: Bell MT;" >
+                    <p:menuitem value="Utilisateurs"   action="/admin/users.xhtml?faces-redirect=true" ajax="false" style="font-family: Bell MT;" actionListner="#{leadController.loadProspects}"/>
+                    <p:menuitem value="Roles" action="/admin/roles.xhtml?faces-redirect=true"  ajax="false" style="font-family: Bell MT;"/>
+                    <p:menuitem value="Groupes" action="/admin/groupes.xhtml?faces-redirect=true"  ajax="false" style="font-family: Bell MT;"/>
+                </p:submenu>
+                <p:submenu label="Application" icon="ui-icon ui-icon-refresh" >
+                    <p:menuitem value="Parametres" action="/admin/home.xhtml?faces-redirect=true" ajax="false" icon="ui-icon-person" style="font-family: Bell MT;"/>
+                </p:submenu>
+            </c:if>
+
+
+        </p:menu>
+    </h:form>
+</h:body>
+</html>

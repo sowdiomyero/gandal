@@ -1,0 +1,24 @@
+
+            ************************************************
+            *  PREMIERE VERSION DE L'APPLICATION : 1.1     *
+            ************************************************
+
+            # Ajouter des panels sur la page d'accueil de l'administrateur :
+                - Panel listant les uilisateurs actifs, bloqués, inactifs
+                - Panel user guide : logique, utilisation, documentation
+                - Panel alertes assigned to me : les autres utilisateurs pour envoyer des alertes à l'administrateur sous forme de declaration d'ano
+                - Panel listant les prochaines dates des prochaines versions....et mises à jours de referentiels.
+
+            # Pouvoir suivre les actions d'un utilisateur
+                - Pour tracer toutes les actions d'un utilisateur sur une semaine.
+                - Pouvoir faire un monitoring sur les actions des utilisateurs surveillés.
+                - Pour supprimer le traking d'un utilisateur.
+                - Pouvoir surveiller un utilisateur sur une fonction specifique : ajouter du contenu par exemple, ou visualiser des données confidentielles d'un user.
+                - Amener le contrôle qui a vu quoi à un niveau plus poussé parmi ceux qui ont le droit de vue.
+                - Pouvoir activer un contrôle sur une fonction particulière de l'application à chaud (Properties file).
+
+            *********************************************
+            *  DEUXIEME VERSION DE L'APPLICATION  1.1   *
+            *********************************************
+
+

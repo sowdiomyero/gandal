@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+        >
+<h:head>
+    <title>SONES</title>
+    <h:outputStylesheet library="css" name="default.css"  />
+</h:head>
+<h:body>
+        <h:form styleClass="loginPanelStyle">
+            <p:growl id="msgs" showDetail="true" sticky="false" />
+            <p:panelGrid columns="2" style="width: 400px; height:150px ">
+                <f:facet name="header" >
+                    Page d'authentification
+                </f:facet>
+                <h:outputText value="Login  " style="font-family: Bell MT;"></h:outputText>
+                <p:inputText id="username" value="#{loginController.login}" style="font-family: Bell MT;" required="true" requiredMessage="Please Enter Username!" message="fc">
+                    <f:validateLength minimum="1" />
+                </p:inputText>
+                <h:outputText value="Password  " style="font-family: Bell MT;"></h:outputText>
+                <p:password id="password" value="#{loginController.password}" required="true" style="font-family: Bell MT;" requiredMessage="Please Enter password!">
+                    <f:validateLength minimum="1" />
+                </p:password>
+                <f:facet name="footer">
+                    <p:commandButton value="Connectez" update="msgs" actionListener="#{loginController.connect}" type="submit" icon="ui-icon-check" style="margin:0;font-family: Bell MT;float: right"></p:commandButton>
+                </f:facet>
+            </p:panelGrid>
+        </h:form>
+
+    </h:body>
+</html>

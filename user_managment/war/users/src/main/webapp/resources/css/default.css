@@ -1,0 +1,176 @@
+root {
+    display: block;
+}
+
+body{
+     font-family:Verdana, Bell MT, sans-serif;
+    background-color: slategray;
+}
+
+.generalFamilyFont{
+   font-family:Verdana, Bell MT, sans-serif;
+}
+
+.txt{
+    border:0px;
+    font-family: Bell MT;
+}
+
+.hidelink{
+}
+
+.img{
+    border:0px;
+}
+
+.coloHorizontal {
+    float:left;
+    margin:5px 5px 5px 5px;
+     font-family:Verdana, Bell MT, sans-serif;
+}
+
+.ui-widget, .ui-widget .ui-widget {
+    font-size: 90% !important;
+     font-family:Verdana, Bell MT, sans-serif;
+ }
+ 
+.ui-datatable .ui-button{
+    float: left;
+    font-family:Verdana, Bell MT, sans-serif;
+ }
+ 
+.admin-dashboard-button{
+    width: 150px;
+    height: 150px;
+    margin: 10px;
+   font-family:Verdana, Bell MT, sans-serif;
+ }
+ 
+ .userDataTableStyle{
+    margin-left:  5px;
+    margin-right: 5px;
+    margin-top: 0;
+    
+ }
+ 
+ .loginPanelStyle{
+    margin-left: auto;
+    margin-right: auto;
+    width: 450px;
+    margin-top: 15%;
+    font-family:Verdana, Bell MT, sans-serif;
+ }
+ .ui-orderlist{
+    margin-left: auto;
+    margin-right: auto;
+    width: 300px;
+    margin-top: 15%;
+    font-family:Verdana, Bell MT, sans-serif;  
+ }
+ 
+ .userFormStyle{
+    margin-left: auto;
+    margin-right: auto;
+    width: 300px;
+    font-family:Verdana, Arial, sans-serif;
+ }
+ 
+ .ui-selectmanymenu{
+    width: 100% !important; 
+    overflow: hidden !important;
+   
+ }
+ .cols{
+    /* cale les colonnes en haut du pannel */
+    vertical-align:top;
+   
+}
+ .clos15{
+    /*formulaire de saisie : label des champs;*/
+    vertical-align:middle;
+    text-align:right;
+    width:15%;
+     font-family:Verdana, Bell MT, sans-serif;
+    
+}
+ .clos20{
+    /*formulaire de saisie (2 colonnes) : label des champs;*/
+    vertical-align:middle;
+    text-align:right;
+    width:20%;
+    font-family:Verdana, Arial, sans-serif;
+}
+
+.clos35{
+    /*formulaire de saisie : 2 champs de saisie sur la ligne;*/
+    vertical-align:middle;
+    text-align:left;
+    width:35%;
+    font-family:Verdana, Arial, sans-serif;
+}
+.clos40{
+    /*formulaire de saisie : 2 champs de saisie sur la ligne;*/
+    vertical-align:top;
+    text-align:left;
+    width:40%;
+    
+}
+.clos50l{
+    /*formulaire de saisie (2colonnes) : 1 champ de saisie sur la ligne;*/
+  vertical-align:top;
+    text-align:left;
+    width:50%;
+    height: 500px;
+   
+   
+}
+.clos50r{
+    /*formulaire de saisie (2colonnes) : 1 champ de saisie sur la ligne;*/
+   vertical-align:top;
+   text-align:right;
+    width:50%;
+    height: 500px;
+   
+    
+}
+.clos60{
+    /*formulaire de saisie : 2 champs de saisie sur la ligne;*/
+    vertical-align:top;
+    text-align:right;
+    width:60%;
+}
+ .clos80{
+    /*formulaire de saisie (2colonnes) : 1 champ de saisie sur la ligne;*/
+    vertical-align:middle;
+    text-align:left;
+    width:80%;
+    font-family:Verdana, Arial, sans-serif;
+}
+.clos85{
+    /*formulaire de saisie : 1 champ de saisie sur la ligne;*/
+    vertical-align:middle;
+    text-align:left;
+    width:85%;
+     font-family:Verdana, Bell MT, sans-serif;
+}
+.colsRR{
+    /* définition menu gauche*/
+    vertical-align:top;
+    width:250px;
+    height:500px;
+    overflow:scroll;
+    background-color:#ABD589;
+    border:solid 1px green;
+}
+
+.colsVide{
+    /* emplacement vide du menu gauche*/
+    vertical-align:top;
+    width:250px;
+    height:500px;
+    background-color:white;
+    border:solid 0px;
+}
+.ajouter {
+    background-image: url(../primefaces-nz/images/ajouter.gif)
+}

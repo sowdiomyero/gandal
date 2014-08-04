@@ -1,0 +1,95 @@
+-- Configuration JACC ----
+
+1. Configurer un pool de connexion JDBC :
+    Nom du Pool : <idyalPool>
+    Type de ressource : javax.sql.DataSource
+    Fournisseur de Pilote : <MySQL>  >>>> Next et renseigner les proprietés suivantes :
+        User : idyalUser
+        Password : idyalPassword
+        ServerName : localhost
+        DatabaseName : <framework>
+        Port : 3306               <Vendor Port>
+    >>>> Enregistrer puis faire un Ping
+    Si le ping ne réussi pas, s'assurer que vous disposez de jar connector de votre vendor sous le repertoire lib/databases
+
+2. Configurer un ressource JDBC : onglet Resources -> JDBC -> JDBC Resources -> New
+
+    Nom JNDI : jdbc/idyalResource
+    Nom du Pool : <idyalPool>
+
+3. Ajouter un Realm :  Onglet Configuration-> Server-Config-> Security-> Realms -> New
+
+    Nom du realm : idyalRealm
+    Nom de la classe : com.sun.enterprise.security.auth.realm.jdbc.JDBCRealm
+    >>>>> Suivant
+    Contexte de JAAS : jdbcRealm
+    JNDI : jdbc/idyalResource
+    Table Utilisateur : user_role
+    Colonne de nom utilisateur : login
+    Colonne de mot de passe : password
+    Table de groupe : user_role
+    Colonne nom de groupe : rolename
+    Digest Algorithme : SHA-256
+    Encodage : Hex
+    Charset : UTF-8
+    >>>> Enregistrer
+
+4. Ajout du realm dans le descripteur de deploiement web.xml
+
+    <login-config>
+            <auth-method>FORM</auth-method>
+            <realm-name>idyalRealm</realm-name>
+            <form-login-config>
+                <form-login-page>/Login.xhtml</form-login-page>
+                <form-error-page>/Login.xhtml</form-error-page>
+            </form-login-config>
+    </login-config>
+
+
+
+5. Declarer tous les roles possibles dans le fichier web.xml : ces rôles sont déclaratives pour le controller de servlet.
+
+    <security-role>
+       <role-name>Admin</role-name>
+    </security-role>
+
+    <security-role>
+       <role-name>Manager</role-name>
+    </security-role>
+
+    <security-role>
+       <role-name>User</role-name>
+    </security-role>
+
+
+6. Definir le perimetre d'accès de chaque role par rapport à une arborescence
+
+    <security-constraint>
+            <display-name>Admin</display-name>
+            <web-resource-collection>
+                <web-resource-name>Admin Area</web-resource-name>
+                <description/>
+                <url-pattern>/admin/*</url-pattern>
+            </web-resource-collection>
+            <auth-constraint>
+                <description>Admin</description>
+                <role-name>Admin</role-name>
+            </auth-constraint>
+        </security-constraint>
+        <security-constraint>
+            <display-name>Manager</display-name>
+            <web-resource-collection>
+                <web-resource-name>Manager Area</web-resource-name>
+                <description/>
+                <url-pattern>/manager/*</url-pattern>
+            </web-resource-collection>
+            <auth-constraint>
+                <description>Manager</description>
+                <role-name>Manager</role-name>
+                <role-name>Admin</role-name>
+            </auth-constraint>
+        </security-constraint>
+
+7.
+
+
