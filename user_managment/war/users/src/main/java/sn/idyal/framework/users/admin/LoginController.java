@@ -18,6 +18,7 @@ import java.io.UnsupportedEncodingException;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.security.Principal;
+import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
@@ -66,17 +67,16 @@ public class LoginController implements Serializable {
 
         try {
             String navigateString = "";
-            System.out.println(login +"paaswd en calor "+password);
-
-
+            logger.log(Level.INFO, login +"paaswd en calor "+password);
+            
             MessageDigest messageDigest = MessageDigest.getInstance("SHA-256");
             byte[] hash = messageDigest.digest(password.getBytes("UTF-8"));
             StringBuilder stringBuilder=  new StringBuilder();
             for (int i = 0; i < hash.length; i++) {
                 stringBuilder.append(Integer.toString((hash[i] & 0xff) + 0x100, 16).substring(1));
             }
-            System.out.println("Libasse 1 password :  40214c47c949eda6d39eda8b26b8c4c2d253fc17fc2c39b1b6eeb72d79cfb18e");
-            System.out.println("Libasse 2 password :  "+stringBuilder.toString());
+            logger.log(Level.INFO, "Libasse 1 password :  40214c47c949eda6d39eda8b26b8c4c2d253fc17fc2c39b1b6eeb72d79cfb18e");
+            logger.log(Level.INFO, "Libasse 2 password :  "+stringBuilder.toString());
 
             request.login(login, password);
 
