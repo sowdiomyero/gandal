@@ -115,6 +115,7 @@ public class GroupeController implements Serializable{
 
     public void updateUser() {
         accountManager.update(user);
+        
         refreshTableAndStaySameRow();
         FacesMessage msg = new FacesMessage("Successful", "Mise à jour effectuée avec succès ");
         FacesContext.getCurrentInstance().addMessage(null, msg);
