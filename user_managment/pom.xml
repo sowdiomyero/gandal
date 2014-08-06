@@ -16,6 +16,7 @@
         <module>persistence/user_modele</module>
         <module>ejb/user_manager</module>
     </modules>
+
     <dependencyManagement>
         <dependencies>
             <dependency>
