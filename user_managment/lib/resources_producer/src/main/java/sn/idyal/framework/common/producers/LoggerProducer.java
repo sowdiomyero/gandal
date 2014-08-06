@@ -20,10 +20,11 @@ public class LoggerProducer {
      */
     @Produces
     public Logger produceLogger(InjectionPoint injectionPoint) {
+
+        return Logger.getLogger(injectionPoint.getMember().getDeclaringClass().getName());
         /**
          * Ici l'usager ne connait que l'inerface du logger. SI nous changions d'implementation, que nous choisissions log4J par exemple comme API,
          * alors notre code ne change que à ce seul endroit.
          */
-        return Logger.getLogger(injectionPoint.getMember().getDeclaringClass().getName());
     }
 }

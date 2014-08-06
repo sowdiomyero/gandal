@@ -17,13 +17,7 @@ import java.io.Serializable;
 import java.util.List;
 import java.util.logging.Logger;
 
-/**
- * Created with IntelliJ IDEA.
- * User: sowdiomyero
- * Date: 06/05/14
- * Time: 22:49
- * To change this template use File | Settings | File Templates.
- */
+
 @Named("groupeController")
 @SessionScoped
 public class GroupeController implements Serializable{
