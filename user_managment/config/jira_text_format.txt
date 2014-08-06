@@ -1,0 +1,40 @@
+
+#####################################################################
+#                                                                   #
+# Ajouter une SOLUTION dans le commentaire d'un bug corrigé :       #
+#                                                                   #
+#####################################################################
+
+      {panel:title=Solution |borderStyle=dashed|borderColor=#ccc|titleBGColor=#F7D6C1|bgColor=#FFFFCE}
+
+            L'exception se produit pendant l'envoie du message dans le fichier java MessageSender.java. Dans le contenu, le code utilisé est le suivant :
+
+            {code:title=MessageSender.java|borderStyle=solid}
+                  inserer extrait de code
+            {code}
+            *{color:green}
+            +Origine du problème+ : 
+
+                Décrire ici pourquoi ce problème est survenu.
+
+            +Solution+ : 
+
+                Décrire la solution qui a conduit à sa résolution.
+
+            +Lien de la page qui détaille la solution+
+            [Le texte que vous voulez faire apparaitre sur le lien |http://site-a-visiter/question-traitee/ ]
+
+            {color}*
+     {panel}
+
+#####################################################################
+#                                                                   #
+# Ajouter une EXCEPTION dans le commentaire d'un bug à déclarer :   #
+#                                                                   #
+#####################################################################
+
+            *{color:red} {code}
+
+                 Exception : inserrer ici la stacktrace
+                    
+            {code}{color}*
