@@ -42,11 +42,12 @@ public class GroupeController implements Serializable{
         initNewUser();
     }
 
+
     private void initNewUser() {
         newUser= new User();
         newUser.setRoles(accountManager.getDefaultRole());
     }
-
+    // BEL-45
     public List<User> getUsers() {
         return users;
     }

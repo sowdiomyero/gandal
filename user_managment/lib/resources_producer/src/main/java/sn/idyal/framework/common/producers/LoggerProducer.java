@@ -12,12 +12,16 @@ import java.util.logging.Logger;
  * Time: 10:21
  * To change this template use File | Settings | File Templates.
  */
+/**
+ * User Story Implemented here : BEL-46
+ */
 public class LoggerProducer {
     /**
      * La production de ressources avec CDI
      * @param injectionPoint
      * @return
      */
+
     @Produces
     public Logger produceLogger(InjectionPoint injectionPoint) {
 
