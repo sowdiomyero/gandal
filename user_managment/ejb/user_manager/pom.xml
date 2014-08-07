@@ -51,4 +51,9 @@
             <version>${ejb-api-version}</version>
         </dependency>
     </dependencies>
+    <contributors>
+        <contributor>
+            <name>Diom Yero SOW</name>
+        </contributor>
+    </contributors>
 </project>
