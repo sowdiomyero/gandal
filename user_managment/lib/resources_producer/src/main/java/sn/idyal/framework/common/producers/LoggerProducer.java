@@ -13,8 +13,18 @@ import java.util.logging.Logger;
  * To change this template use File | Settings | File Templates.
  */
 public class LoggerProducer {
+    /**
+     * La production de ressources avec CDI
+     * @param injectionPoint
+     * @return
+     */
     @Produces
     public Logger produceLogger(InjectionPoint injectionPoint) {
+
         return Logger.getLogger(injectionPoint.getMember().getDeclaringClass().getName());
+        /**
+         * Ici l'usager ne connait que l'inerface du logger. SI nous changions d'implementation, que nous choisissions log4J par exemple comme API,
+         * alors notre code ne change que à ce seul endroit.
+         */
     }
 }

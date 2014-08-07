@@ -14,7 +14,7 @@
     <groupId>sn.sones.planification</groupId>
     <artifactId>resources_producer</artifactId>
     <version>${project.parent.version}</version>
-    <name>Resources Producer</name>
+    <name>CDI : Resources Producer</name>
     <packaging>jar</packaging>
 
     <dependencies>
