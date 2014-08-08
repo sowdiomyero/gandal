@@ -17,7 +17,7 @@ import java.io.Serializable;
 import java.util.List;
 import java.util.logging.Logger;
 
-
+ // BEL-53
 @Named("groupeController")
 @SessionScoped
 public class GroupeController implements Serializable{
