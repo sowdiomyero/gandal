@@ -72,6 +72,10 @@ public class AccountManagerImpl implements IAccountManager,Serializable {
         return em.createQuery("SELECT a FROM "+clazz.getSimpleName()+" a").getResultList();
     }
 
+
+    public <T> List<T> getAllGeneric(Class<T> clazz) {
+        return em.createQuery("SELECT a FROM "+clazz.getSimpleName()+" a").getResultList();
+    }
     @Override
     public User getUserByLogin(String mLogin) {
         return (User) em.createNamedQuery(User.FIND_USER_BY_LOGIN).setParameter("login", mLogin).getSingleResult();

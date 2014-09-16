@@ -21,6 +21,7 @@ import java.util.logging.Logger;
 @Named("groupeController")
 @SessionScoped
 public class GroupeController implements Serializable{
+
     private static Logger logger = Logger.getLogger(GroupeController.class.getName());
     private boolean skip;
     private boolean showUnitDetailPanel;
@@ -88,16 +89,13 @@ public class GroupeController implements Serializable{
         this.user = user;
     }
 
-
     public User getNewUser() {
-        return newUser;
+         return newUser;
     }
 
     public void setNewUser(User newUser) {
-        this.newUser = newUser;
+         this.newUser = newUser;
     }
-
-
 
     public boolean isShowUnitDetailPanel() {
         return showUnitDetailPanel;
