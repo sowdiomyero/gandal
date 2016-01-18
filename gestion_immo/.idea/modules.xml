@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/gesimmo.iml" filepath="$PROJECT_DIR$/gesimmo.iml" />
+      <module fileurl="file://$PROJECT_DIR$/dao/gesimmo-dao/gesimmo-dao.iml" filepath="$PROJECT_DIR$/dao/gesimmo-dao/gesimmo-dao.iml" />
+      <module fileurl="file://$PROJECT_DIR$/service/gesimmo-metier/gesimmo-metier.iml" filepath="$PROJECT_DIR$/service/gesimmo-metier/gesimmo-metier.iml" />
+      <module fileurl="file://$PROJECT_DIR$/persistence/gesimmo-modele/gesimmo-modele.iml" filepath="$PROJECT_DIR$/persistence/gesimmo-modele/gesimmo-modele.iml" />
+      <module fileurl="file://$PROJECT_DIR$/web/gesimmo-web/gesimmo-web.iml" filepath="$PROJECT_DIR$/web/gesimmo-web/gesimmo-web.iml" />
+      <module fileurl="file://$PROJECT_DIR$/service/mail-sender/mail-sender.iml" filepath="$PROJECT_DIR$/service/mail-sender/mail-sender.iml" />
+    </modules>
+  </component>
+</project>
+

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans:beans xmlns="http://www.springframework.org/schema/security"
+    xmlns:beans="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+                        http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security.xsd">
+
+	<http auto-config="true">
+		<intercept-url pattern="/authenticate*" access="ROLE_USER" />
+		<form-login default-target-url="/"
+			authentication-failure-url="/loginfailed"  />
+		<logout logout-success-url="/" />
+	</http>
+
+	<beans:bean class="org.springframework.security.web.access.expression.DefaultWebSecurityExpressionHandler"/>
+    <beans:import resource="classpath*:spring-config.xml"/>
+
+    <authentication-manager>
+		<authentication-provider>
+<!--                    <Crypatage des password en SHA-256>-->
+			<password-encoder hash="sha-256" />  
+			   <jdbc-user-service data-source-ref="dataSource"
+ 
+		   users-by-username-query="
+		       SELECT login,password, etat
+		      FROM compte WHERE login=?"
+ 
+		   authorities-by-username-query="
+		      SELECT cp.login, ro.role_name 
+                            FROM
+                            user u,compte cp, role ro, user_role ur
+                            where 
+                            cp.id_compte=u.id_compte and 
+                            u.id_user=ur.id_user
+                            and ur.id_role=ro.id_role and cp.etat=1
+                            and cp.login=?"
+ 
+		/>
+		</authentication-provider>
+	</authentication-manager>
+
+</beans:beans>

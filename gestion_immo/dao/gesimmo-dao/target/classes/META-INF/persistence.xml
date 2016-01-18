@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="2.0" xmlns="http://java.sun.com/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd ">
+  <persistence-unit name="datasource" transaction-type="RESOURCE_LOCAL">
+    <provider>org.hibernate.ejb.HibernatePersistence</provider>
+    <class>sn.gandal.gesimmo.modele.client.entities.Activite</class>
+    <class>sn.gandal.gesimmo.modele.client.entities.ActiviteEtat</class>
+    <class>sn.gandal.gesimmo.modele.client.entities.Compte</class>
+    <class>sn.gandal.gesimmo.modele.client.entities.Etape</class>
+    <class>sn.gandal.gesimmo.modele.client.entities.Etat</class>
+    <class>sn.gandal.gesimmo.modele.client.entities.Indicateur</class>
+    <class>sn.gandal.gesimmo.modele.client.entities.JobExecutorHistory</class>
+    <class>sn.gandal.gesimmo.modele.client.entities.Journal</class>
+    <class>sn.gandal.gesimmo.modele.client.entities.Localisation</class>
+    <class>sn.gandal.gesimmo.modele.client.entities.LocalisationIndicateur</class>
+    <class>sn.gandal.gesimmo.modele.client.entities.MessagerieParam</class>
+    <class>sn.gandal.gesimmo.modele.client.entities.ObjetIncident</class>
+    <class>sn.gandal.gesimmo.modele.client.entities.ParametreMail</class>
+    <class>sn.gandal.gesimmo.modele.client.entities.Programme</class>
+    <class>sn.gandal.gesimmo.modele.client.entities.Projet</class>
+    <class>sn.gandal.gesimmo.modele.client.entities.RapportParam</class>
+    <class>sn.gandal.gesimmo.modele.client.entities.Role</class>
+    <class>sn.gandal.gesimmo.modele.client.entities.User</class>
+    <class>sn.gandal.gesimmo.modele.client.entities.UserActivite</class>
+    <class>sn.gandal.gesimmo.modele.client.entities.Zone</class>
+    <class>sn.gandal.gesimmo.modele.client.entities.SiteLocalite</class>
+    <class>sn.gandal.gesimmo.modele.client.entities.BatimentLocalite</class>
+    <class>sn.gandal.gesimmo.modele.client.entities.Demande</class>
+    <class>sn.gandal.gesimmo.modele.client.entities.Prestataire</class>
+    <properties>
+      <property name="hibernate.dialect" value="org.hibernate.dialect.MySQL5InnoDBDialect"/>
+      <property name="hibernate.hbm2ddl.auto" value="update"/>
+      <property name="hibernate.show_sql" value="true"/>
+      <property name="javax.persistence.schema-generation.scripts.action" value="create"/>
+      <property name="javax.persistence.schema-generation.create-source" value="metadata"/>
+      <property name="javax.persistence.schema-generation.scripts.create-target" value="sql/create-schema.sql"/>
+    </properties>
+  </persistence-unit>
+</persistence>
