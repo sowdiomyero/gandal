@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 2.0//EN"
+       "http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
+<tiles-definitions>
+
+     <definition name="user/list" extends="main">
+        <put-attribute name="home" value="/WEB-INF/jsp/v1/user/users.jsp"  />
+        <put-attribute name="login" value="/WEB-INF/jsp/v1/login.jsp" />
+    </definition>
+    
+    <definition name="user/view" extends="main">
+        <put-attribute name="home" value="/WEB-INF/jsp/v1/user/fiche_user.jsp"  />
+        <!-- if user is anonymous, invite him to log in application through  login page-->
+        <put-attribute name="login" value="/WEB-INF/jsp/v1/login.jsp" />
+    </definition>
+
+
+
+</tiles-definitions>

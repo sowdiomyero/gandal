@@ -8,7 +8,7 @@
 
 <!--Google map begin-->
 <script src="http://maps.googleapis.com/maps/api/js?sensor=false&extension=.js&output=embed"></script> 
-<script src="js/cartographie.js"></script> 
+<script src="${pageContext.request.contextPath}/js/cartographie.js"></script> 
 <!--Google map begin End-->
 
  

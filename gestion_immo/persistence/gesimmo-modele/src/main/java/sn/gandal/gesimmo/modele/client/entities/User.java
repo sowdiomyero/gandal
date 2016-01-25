@@ -34,7 +34,7 @@ public class User extends Personne {
         super(userMail,userLogged, userNom, userPrenom, userPhone);
     }
 
-    @ManyToMany(cascade = {CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH})
+    @ManyToMany(fetch = FetchType.EAGER, cascade = {CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH})
     @JoinTable(name = "user_role", joinColumns = @JoinColumn(name = "ID_USER"),
                 inverseJoinColumns = @JoinColumn(name = "ID_ROLE"))
     private List<Role> roles;
@@ -114,10 +114,11 @@ public class User extends Personne {
         return false;
     }
 
-    @Override
-    public String toString() {
-        return  this.getUserPrenom()+" "+this.getUserName().toUpperCase();
-    }
+//    @Override
+//    public String toString() {
+//        //return  this.getUserPrenom()+" "+this.getUserName().toUpperCase();
+//        return  getFullName();
+//    }
 
 
 

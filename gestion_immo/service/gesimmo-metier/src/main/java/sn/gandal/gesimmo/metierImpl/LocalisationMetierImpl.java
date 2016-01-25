@@ -191,5 +191,12 @@ public class LocalisationMetierImpl implements ILocalisationMetier {
     public List<ObjetIncident> findIncidentByCriteres(LocalisationFormFilter localisationFormFilter) {
        return localisation.findIncidentByCriteres(localisationFormFilter);
     }
+
+    @Override
+    public boolean isKeyExist(String key) {
+       return localisation.isKeyExist(key);
+    }
+    
+    
  
 }

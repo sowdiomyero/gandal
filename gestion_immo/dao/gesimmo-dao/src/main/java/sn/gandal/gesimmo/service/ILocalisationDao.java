@@ -45,4 +45,6 @@ public interface ILocalisationDao extends CrudRepository<Localisation, Long> {
     
     public List<ObjetIncident> findIncidentByCriteres(LocalisationFormFilter localisationFormFilter); 
 
+    public boolean isKeyExist(String key);
+
 }

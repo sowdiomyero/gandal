@@ -23,6 +23,7 @@ import java.util.List;
     @NamedQuery(name = Localisation.FIND_ALL_LOCALISABLES, query = "SELECT l FROM Localisation l"),
     @NamedQuery(name = Localisation.FIND_LOCALISABLES_BY_TYPE, query = "SELECT l FROM Localisation l where l.type = :type"),
     @NamedQuery(name = Localisation.FIND_LOCALISABLES_BY_ETAT, query = "SELECT l FROM Localisation l where l.etat = :etat"),
+    @NamedQuery(name = Localisation.FIND_LOCALISABLES_BY_CLEF, query = "SELECT l FROM Localisation l where l.clef = :clef"),
     @NamedQuery(name = Localisation.FIND_ALL_LOCALITE_BY_ETAT_AND_TYPE, query = "SELECT l FROM Localisation l where l.etat = :etat and l.typeLocalisation = :type"),
     @NamedQuery(name = Localisation.FIND_RESPONSABLE_FROM_LOCALISATION, query = "SELECT l.attribution FROM Localisation l where l.idLocalisation = :idLocalisation")
 
@@ -38,6 +39,7 @@ public abstract class Localisation extends AbstractDateEntity implements Seriali
     //public static final String FIND_ALL_LOCALITE_BY_TYPE_AND_ETAT = "findLocalisablesParTypeEtEtat";
     public static final String FIND_ALL_LOCALITE_BY_ETAT_AND_TYPE = "findLocalisablesParTypeEtEtat";
     public static final String FIND_LOCALISABLES_BY_ETAT = "findLocalisablesByEtat";
+    public static final String FIND_LOCALISABLES_BY_CLEF = "findLocalisablesByKey";
     public static final String FIND_RESPONSABLE_FROM_LOCALISATION = "getResponsableLocalisation";
 
   public enum ETAT{
@@ -94,6 +96,9 @@ public abstract class Localisation extends AbstractDateEntity implements Seriali
     @ManyToOne
     @JoinColumn(name = "id_responsable")
     private User attribution;
+    
+    @Column(name = "clef", length = 50)
+    protected String clef;
     
     // Constructeurs
     public Localisation(String nom) {
@@ -237,6 +242,14 @@ public abstract class Localisation extends AbstractDateEntity implements Seriali
     public void setAttribution(User attribution) {
         this.attribution = attribution;
     }
+
+    public String getClef() {
+        return clef;
+    }
+
+    public void setClef(String clef) {
+        this.clef = clef;
+    }
     
     
 
@@ -265,13 +278,10 @@ public abstract class Localisation extends AbstractDateEntity implements Seriali
 
     @Override
     public String toString() {
-
         if (this.parentLocalisation != null) {
             return this.nomLocalisable + " , " + this.parentLocalisation.getNomLocalisable();
-
         } else {
             return this.nomLocalisable  ;
-
         }
     }
     

@@ -15,7 +15,7 @@ import org.hibernate.validator.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import sn.gandal.gesimmo.dto.BasicResponse;
 import sn.gandal.gesimmo.modele.client.entities.Localisation;
-import sn.gandal.gesimmo.modele.client.entities.BatimentLocalite;
+import sn.gandal.gesimmo.modele.client.entities.User;
 
 /**
  *
@@ -29,7 +29,7 @@ public class EditLocalisationForm extends BasicResponse {
     private Long idLocalisation;
     @JsonProperty
     private String localisation;
-
+    private String cleLocalite;
     @NotNull
     @NotEmpty
     private String nom;
@@ -51,12 +51,18 @@ public class EditLocalisationForm extends BasicResponse {
 
     private List<Localisation> rattachements = new ArrayList<Localisation>();
     private String rattachement;
+    // Pour les formulaires de modification
     
     private List<String> dType = new ArrayList<String>();
 
     private List<String> typeIncidentOuLocalite = new ArrayList<String>();
+    private List<String> gravites = new ArrayList<String>();
+    
     private Map<Long,String> responsables = new HashMap<Long,String>();
+    private List<User> listResponsables = new ArrayList<User>();
     private String responsable;
+    
+    private User responsableAttribution;
 //    private List<String> typeIncidentOuLocalite = new ArrayList<String>();
     private String dT;
 
@@ -65,7 +71,8 @@ public class EditLocalisationForm extends BasicResponse {
     private String nbNiveaux;
     private String nbObjets;
       
-      
+    private String oldRattachement;
+    private String oldResponsable; 
       
       
 
@@ -273,4 +280,54 @@ public class EditLocalisationForm extends BasicResponse {
         this.responsable = responsable;
     }
 
+    public List<User> getListResponsables() {
+        return listResponsables;
+    }
+
+    public void setListResponsables(List<User> listResponsables) {
+        this.listResponsables = listResponsables;
+    }
+
+    public User getResponsableAttribution() {
+        return responsableAttribution;
+    }
+
+    public void setResponsableAttribution(User responsableAttribution) {
+        this.responsableAttribution = responsableAttribution;
+    }
+
+    public String getOldRattachement() {
+        return oldRattachement;
+    }
+
+    public void setOldRattachement(String oldRattachement) {
+        this.oldRattachement = oldRattachement;
+    }
+
+    public String getOldResponsable() {
+        return oldResponsable;
+    }
+
+    public void setOldResponsable(String oldResponsable) {
+        this.oldResponsable = oldResponsable;
+    }
+
+    public List<String> getGravites() {
+        return gravites;
+    }
+
+    public void setGravites(List<String> gavites) {
+        this.gravites = gavites;
+    }
+
+    public String getCleLocalite() {
+        return cleLocalite;
+    }
+
+    public void setCleLocalite(String cleLocalite) {
+        this.cleLocalite = cleLocalite;
+    }
+
+   
+    
 }

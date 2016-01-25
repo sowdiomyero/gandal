@@ -85,11 +85,15 @@ div.selected-div span {
     color: #2a6496;
 }
 
+.div-list{
+    min-height: 475px;
+}
+
 .div-item:hover{
     cursor: pointer;
 }
 
-#localisationModalForm .modal-dialog {
+#localisationMapModalForm .modal-dialog {
     //width: 50%;
 }
 #editlocalisationModalForm input[type="text"]{
@@ -97,8 +101,9 @@ div.selected-div span {
     box-shadow: 5px;  
     width: 75%;
 }
-/*input[type='text'] {
-        border-radius: 5px 5px 5px 5px;
-        box-shadow: 5px;     
-        
+
+/*.gm-style-iw {
+  width: 300px; 
+  min-height: 150px;
+  overflow-y: hidden;
 }*/

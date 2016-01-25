@@ -29,6 +29,7 @@ public class BasicResponse {
     
     private String msg;
     private int resultat;
+   
 
     public BasicResponse() {
     }
@@ -48,6 +49,8 @@ public class BasicResponse {
     public void setResultat(int resultat) {
         this.resultat = resultat;
     }
+
+    
     
     
 }

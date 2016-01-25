@@ -26,10 +26,14 @@ public class ObjetIncident extends Localisation {
         VOL,
         AGGRESSION
     }
+    
+     public static enum GRAVITE {
+        CRITIQUE,
+        MINEUR,
+        MAJEUR,
+        IMPACT_QOS
+    }
 
-//    @Column(name = "type")
-//    @Enumerated(EnumType.STRING)
-//    private ObjetIncident.TYPE type;
    @Column(name = "gravite")
    private String gravite;
    
@@ -70,6 +74,15 @@ public class ObjetIncident extends Localisation {
       List<TYPE> res= Arrays.asList(TYPE.values());
       List<String>  response = new ArrayList<String>();
         for(TYPE value : res){
+            response.add(value.name());
+        }
+        return response;
+    }
+    
+    public static List <String> getAllGraviteLevel(){
+      List<GRAVITE> res= Arrays.asList(GRAVITE.values());
+      List<String>  response = new ArrayList<String>();
+        for(GRAVITE value : res){
             response.add(value.name());
         }
         return response;

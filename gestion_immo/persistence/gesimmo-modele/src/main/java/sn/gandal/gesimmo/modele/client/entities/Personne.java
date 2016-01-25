@@ -130,7 +130,12 @@ public class Personne extends AbstractDateEntity implements Serializable{
         this.adresse = adresse;
     }
     
+    public String getFullName(){
+        return userPrenom +" "+userName.toUpperCase();
+    }
     
-    
-    
+     @Override
+    public String toString() {
+        return  getFullName();
+    }
 }

@@ -16,24 +16,24 @@
                 <title>Gestion Immo</title>
                 <meta name="generator" content="idyalgroupe"/>
                 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-                    <link href="css/idyal_ccs.css" type="text/css" rel="stylesheet">
-                        <link href="css/gandal.css" type="text/css" rel="stylesheet">
-                            <link href="css/bootstrap.min.css" rel="stylesheet">
-                                <link href="css/jquery.dataTables.css" type="text/css" rel="stylesheet">
-                                    <link href="css/dataTables.responsive.css" type="text/css" rel="stylesheet">
-                                        <link href="css/sb-admin-rtl.css" type="text/css" rel="stylesheet">
-                                            <link href="css/sb-admin.css" type="text/css" rel="stylesheet">
-                                                <link href="css/font-awesome.css" type="text/css" rel="stylesheet">
-                                                    <link href="css/selectize.css" type="text/css" rel="stylesheet">
-                                                        <script src="js/jquery-1.11.1.min.js"></script>
-                                                        <script src="js/jquery-dataTable.min.js"></script>
-                                                        <script src="js/bootstrap.min.js"></script>
-                                                        <script src="js/gandalFunctions.js"></script>
-                                                        <script src="js/notify.min.js"></script>
-                                                        <script src="js/esecure.js"></script>
-                                                        <script src="js/gesimmo.js"></script>                                             
-                                                        <script src="js/selectize.js"></script>
-                                                        <script src="js/dataTables.responsive.js"></script><script type='text/javascript'>
+                    <link href="${pageContext.request.contextPath}/css/idyal_ccs.css" type="text/css" rel="stylesheet">
+                        <link href="${pageContext.request.contextPath}/css/gandal.css" type="text/css" rel="stylesheet">
+                            <link href="${pageContext.request.contextPath}/css/bootstrap.min.css" rel="stylesheet">
+                                <link href="${pageContext.request.contextPath}/css/jquery.dataTables.css" type="text/css" rel="stylesheet">
+                                    <link href="${pageContext.request.contextPath}/css/dataTables.responsive.css" type="text/css" rel="stylesheet">
+                                        <link href="${pageContext.request.contextPath}/css/sb-admin-rtl.css" type="text/css" rel="stylesheet">
+                                            <link href="${pageContext.request.contextPath}/css/sb-admin.css" type="text/css" rel="stylesheet">
+                                                <link href="${pageContext.request.contextPath}/css/font-awesome.css" type="text/css" rel="stylesheet">
+                                                    <link href="${pageContext.request.contextPath}/css/selectize.css" type="text/css" rel="stylesheet">
+                                                        <script src="${pageContext.request.contextPath}/js/jquery-1.11.1.min.js"></script>
+                                                        <script src="${pageContext.request.contextPath}/js/jquery-dataTable.min.js"></script>
+                                                        <script src="${pageContext.request.contextPath}/js/bootstrap.min.js"></script>
+                                                        <script src="${pageContext.request.contextPath}/js/gandalFunctions.js"></script>
+                                                        <script src="${pageContext.request.contextPath}/js/notify.min.js"></script>
+                                                        <script src="${pageContext.request.contextPath}/js/esecure.js"></script>
+                                                        <script src="${pageContext.request.contextPath}/js/gesimmo.js"></script>                                             
+                                                        <script src="${pageContext.request.contextPath}/js/selectize.js"></script>
+                                                        <script src="${pageContext.request.contextPath}/js/dataTables.responsive.js"></script><script type='text/javascript'>
 
                                                             //                                                $(document).ready(function() {
                                                             //

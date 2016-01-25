@@ -14,22 +14,22 @@
             <title>Geo-Pil</title>
             <meta name="generator" content="idyalgroupe"/>
             <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-                <link href="css/idyal_ccs.css" type="text/css" rel="stylesheet">
-                    <link href="css/bootstrap.min.css" rel="stylesheet">
-                        <link href="css/jquery.dataTables.css" type="text/css" rel="stylesheet">
+                <link href="${pageContext.request.contextPath}/css/idyal_ccs.css" type="text/css" rel="stylesheet">
+                    <link href="${pageContext.request.contextPath}/css/bootstrap.min.css" rel="stylesheet">
+                        <link href="${pageContext.request.contextPath}/css/jquery.dataTables.css" type="text/css" rel="stylesheet">
                             <!-- Le styles -->
                             <!--<script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>-->
                             <!--[if lt IE 9]>
                             <script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
                             <![endif]-->
 
-                            <script src="js/jquery-1.11.1.min.js"></script>
-                            <script src="js/jquery-dataTable.min.js"></script>
+                            <script src="${pageContext.request.contextPath}/js/jquery-1.11.1.min.js"></script>
+                            <script src="${pageContext.request.contextPath}js/jquery-dataTable.min.js"></script>
                             <%--<script src="js/bootstrap.min.js"></script>--%>
-                            <script src="js/bootstrap.min.js"></script>
-                            <script src="js/notify.min.js"></script>
-                            <script src="js/esecure.js"></script>
-                            <script src="js/gesimmo.js"></script>
+                            <script src="${pageContext.request.contextPath}/js/bootstrap.min.js"></script>
+                            <script src="${pageContext.request.contextPath}/js/notify.min.js"></script>
+                            <script src="${pageContext.request.contextPath}/js/esecure.js"></script>
+                            <script src="${pageContext.request.contextPath}/js/gesimmo.js"></script>
                             <%--<script src="http://getbootstrap.com/dist/js/bootstrap.min.js"></script>--%>
 <!--                            <script type='text/javascript'>
 
@@ -53,7 +53,7 @@
 
                             </script>-->
 
-        <script type="text/javascript" src="https://gandal.atlassian.net/s/7445f1673c4f0ec4af08e92de75a1edf-T/fr_FRjns6pq/64014/25/1.4.24/_/download/batch/com.atlassian.jira.collector.plugin.jira-issue-collector-plugin:issuecollector/com.atlassian.jira.collector.plugin.jira-issue-collector-plugin:issuecollector.js?locale=fr-FR&collectorId=ad2ef015"></script>
+<!--        <script type="text/javascript" src="https://gandal.atlassian.net/s/7445f1673c4f0ec4af08e92de75a1edf-T/fr_FRjns6pq/64014/25/1.4.24/_/download/batch/com.atlassian.jira.collector.plugin.jira-issue-collector-plugin:issuecollector/com.atlassian.jira.collector.plugin.jira-issue-collector-plugin:issuecollector.js?locale=fr-FR&collectorId=ad2ef015"></script>-->
         <!-- AJAX LOADER-->
 
         <script type="text/javascript">

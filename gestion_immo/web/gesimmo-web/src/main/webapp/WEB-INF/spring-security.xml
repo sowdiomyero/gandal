@@ -7,7 +7,7 @@
 
 	<http auto-config="true">
 		<intercept-url pattern="/authenticate*" access="ROLE_USER" />
-		<form-login default-target-url="/"
+		<form-login default-target-url="/home/index"
 			authentication-failure-url="/loginfailed"  />
 		<logout logout-success-url="/" />
 	</http>

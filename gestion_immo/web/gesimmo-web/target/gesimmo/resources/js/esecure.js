@@ -241,49 +241,38 @@ $(document).ready(function() {
         routeController.user.deleteUserById(idUser);
     }
     
-    $('#table_utilisateurs').on('click', '.deleteUser', function(e) {
-        e.preventDefault();
-        var id = $(this).data('id');
-        //confirmDelete(id);
-        $('#deleteConfirmationModal').modal({backdrop: 'static', keyboard: false})
-                .one('click', '#okDeletionModalButton', function() {
-                    $('#deleteConfirmationModal').hide();
-                    deleteUserById(id);
-                    // recharger la page avec un time 1700 ms
-                    setTimeout(function() {
-                        location.reload();
-                    }, 1700);
-                });
-    });
+//    $('#table_utilisateurs').on('click', '.deleteUser', function(e) {
+//        e.preventDefault();
+//        var id = $(this).data('id');
+//        //confirmDelete(id);
+//        $('#deleteConfirmationModal').modal({backdrop: 'static', keyboard: false})
+//                .one('click', '#okDeletionModalButton', function() {
+//                    $('#deleteConfirmationModal').hide();
+//                    deleteUserById(id);
+//                    // recharger la page avec un time 1700 ms
+//                    setTimeout(function() {
+//                        location.reload();
+//                    }, 1700);
+//                });
+//    });
     //Code de chargement d'un utilisateur selectionné sur la liste des utilisateurs
-    $('#table_utilisateurs').on('click', '.showUser', function(e) {
-        e.preventDefault();
-        $('#userEditSuccess').css('display', 'none');
-        $('#userEditFailed').css('display', 'none');
-        var idUser = $(this).attr('data-id');
-        $('#viewUserModal').modal();
-        
-        routeController.user.getUserById(idUser, populateUserModalForm);
-//        $.ajax({
-//            url: 'user/getUser',
-//            type: 'get',
-//            data: 'idUser=' + idUser,
-//            success: function(response) {
-//                //Informations du client provenant du serveur  
-//                populateUserModalForm(response);
-//            }
-//            , error: function(response) {
-//                alert('ajax failed' + response);
-//            }
-//        });
-    });
-    function populateUserModalForm (ajaxResponse){
-           $('#editNomInput').val(ajaxResponse.nom);
-           $('#editPrenomInput').val(ajaxResponse.prenom);
-           $('#editEmailInput').val(ajaxResponse.email);
-           $('#editTelInput').val(ajaxResponse.telephone);
-           $('#editLoginInput').val(ajaxResponse.login);
-    }
+//    $('#table_utilisateurs').on('click', '.showUser', function(e) {
+//        e.preventDefault();
+//        $('#userEditSuccess').css('display', 'none');
+//        $('#userEditFailed').css('display', 'none');
+//        var idUser = $(this).attr('data-id');
+//        $('#viewUserModal').modal();
+//        
+//        routeController.user.getUserById(idUser, populateUserModalForm);
+//
+//    });
+//    function populateUserModalForm (ajaxResponse){
+//           $('#editNomInput').val(ajaxResponse.nom);
+//           $('#editPrenomInput').val(ajaxResponse.prenom);
+//           $('#editEmailInput').val(ajaxResponse.email);
+//           $('#editTelInput').val(ajaxResponse.telephone);
+//           $('#editLoginInput').val(ajaxResponse.login);
+//    }
     //Partie pour la modification d'un utilisateur
     $('#editUserFormulaire').submit(function(e) {
         var frm = $('#editUserFormulaire');
@@ -640,30 +629,30 @@ $(document).ready(function() {
         });
     });
 
-    $('.showProfil').click(function(e) {
-        e.preventDefault();
-        $('#profilMessageSuccess').css('display', 'none');
-        $('#profilMessageFailed').css('display', 'none');
-        var login = $(this).attr('data-id');
-
-        $.ajax({
-            url: 'user/getProfil',
-            type: 'get',
-            data: 'login=' + login,
-            success: function(response) {
-                infoProfil = response;
-                $('#viewProfilModal').modal();
-                $('#editProfilNomInput').val(response.nom);
-                $('#editProfilPrenomInput').val(response.prenom);
-                $('#editProfilEmailInput').val(response.email);
-                $('#editProfilTelInput').val(response.telephone);
-                $('#editProfilLoginInput').val(response.login);
-                /*$('#editProfilPasswordInput').val(response.password);*/
-            }, error: function(response) {
-                alert('ajax failed' + response);
-            }
-        });
-    });
+//    $('.showProfil').click(function(e) {
+//        e.preventDefault();
+//        $('#profilMessageSuccess').css('display', 'none');
+//        $('#profilMessageFailed').css('display', 'none');
+//        var login = $(this).attr('data-id');
+//
+//        $.ajax({
+//            url: getContextPath()+'/user/getProfil',
+//            type: 'get',
+//            data: 'login=' + login,
+//            success: function(response) {
+//                infoProfil = response;
+//                $('#viewProfilModal').modal();
+//                $('#editProfilNomInput').val(response.nom);
+//                $('#editProfilPrenomInput').val(response.prenom);
+//                $('#editProfilEmailInput').val(response.email);
+//                $('#editProfilTelInput').val(response.telephone);
+//                $('#editProfilLoginInput').val(response.login);
+//                /*$('#editProfilPasswordInput').val(response.password);*/
+//            }, error: function(response) {
+//                alert('ajax failed' + response);
+//            }
+//        });
+//    });
     $('.annulerModifProfil').click(function(e) {
         e.preventDefault();
         $('#editProfilNomInput').val(infoProfil.nom);
@@ -679,88 +668,88 @@ $(document).ready(function() {
 
     //Bloquer un utilisateur
 
-    $('#table_utilisateurs').on('click', '.bloquerUser', function(e) {
-        e.preventDefault();
-        var idUser = $(this).attr('data-id');
-        $.ajax({
-            url: 'user/bloquer',
-            type: 'get',
-            data: 'idUser=' + idUser,
-            success: function(response) {
-                $.notify(response.msg, "success");
-                setTimeout(function() {
-                    location.reload();
-                }, 1700);
-            }
-            , error: function(response) {
-                alert('ajax failed' + response);
-            }
-        });
-    });
+//    $('#table_utilisateurs').on('click', '.bloquerUser', function(e) {
+//        e.preventDefault();
+//        var idUser = $(this).attr('data-id');
+//        $.ajax({
+//            url: 'user/bloquer',
+//            type: 'get',
+//            data: 'idUser=' + idUser,
+//            success: function(response) {
+//                $.notify(response.msg, "success");
+//                setTimeout(function() {
+//                    location.reload();
+//                }, 1700);
+//            }
+//            , error: function(response) {
+//                alert('ajax failed' + response);
+//            }
+//        });
+//    });
 
 
 
 
 
 
-    $('#updateUserForm').on('click', '.bloquerUser', function(e) {
-        e.preventDefault();
-        var idUser = $(this).attr('data-id');
-        $.ajax({
-            url: 'user/bloquer',
-            type: 'get',
-            data: 'idUser=' + idUser,
-            success: function(response) {
-                $.notify(response.msg, "success");
-                setTimeout(function() {
-                    location.reload();
-                }, 1700);
-            }
-            , error: function(response) {
-                alert('ajax failed' + response);
-            }
-        });
-    });
-    $('#updateUserForm').on('click', '.debloquerUser', function(e) {
-        e.preventDefault();
-        var idUser = $(this).attr('data-id');
-        $.ajax({
-            url: 'user/debloquer',
-            type: 'get',
-            data: 'idUser=' + idUser,
-            success: function(response) {
-                $.notify(response.msg, "success");
-                setTimeout(function() {
-                    location.reload();
-                }, 1700);
-            }
-            , error: function(response) {
-                alert('ajax failed' + response);
-            }
-        });
-    });
-
-
-    //Bloquer un utilisateur
-
-    $('#table_utilisateurs').on('click', '.debloquerUser', function(e) {
-        e.preventDefault();
-        var idUser = $(this).attr('data-id');
-        $.ajax({
-            url: 'user/debloquer',
-            type: 'get',
-            data: 'idUser=' + idUser,
-            success: function(response) {
-                $.notify(response.msg, "success");
-                setTimeout(function() {
-                    location.reload();
-                }, 1700);
-            }
-            , error: function(response) {
-                alert('ajax failed' + response);
-            }
-        });
-    });
+//    $('#updateUserForm').on('click', '.bloquerUser', function(e) {
+//        e.preventDefault();
+//        var idUser = $(this).attr('data-id');
+//        $.ajax({
+//            url: 'user/bloquer',
+//            type: 'get',
+//            data: 'idUser=' + idUser,
+//            success: function(response) {
+//                $.notify(response.msg, "success");
+//                setTimeout(function() {
+//                    location.reload();
+//                }, 1700);
+//            }
+//            , error: function(response) {
+//                alert('ajax failed' + response);
+//            }
+//        });
+//    });
+//    $('#updateUserForm').on('click', '.debloquerUser', function(e) {
+//        e.preventDefault();
+//        var idUser = $(this).attr('data-id');
+//        $.ajax({
+//            url: 'user/debloquer',
+//            type: 'get',
+//            data: 'idUser=' + idUser,
+//            success: function(response) {
+//                $.notify(response.msg, "success");
+//                setTimeout(function() {
+//                    location.reload();
+//                }, 1700);
+//            }
+//            , error: function(response) {
+//                alert('ajax failed' + response);
+//            }
+//        });
+//    });
+//
+//
+//    //Bloquer un utilisateur
+//
+//    $('#table_utilisateurs').on('click', '.debloquerUser', function(e) {
+//        e.preventDefault();
+//        var idUser = $(this).attr('data-id');
+//        $.ajax({
+//            url: 'user/debloquer',
+//            type: 'get',
+//            data: 'idUser=' + idUser,
+//            success: function(response) {
+//                $.notify(response.msg, "success");
+//                setTimeout(function() {
+//                    location.reload();
+//                }, 1700);
+//            }
+//            , error: function(response) {
+//                alert('ajax failed' + response);
+//            }
+//        });
+//    });
 
 
 
@@ -862,44 +851,44 @@ $(document).ready(function() {
         });
     });
 
-    //DELETE ROLE
-    function deleteRoleById(idRole) {
-
-        $.ajax({
-            url: 'role/deleteRole?idRole=' + idRole,
-            type: 'delete',
-            success: function(response) {
-                if (response.resultat === 200) {
-
-                    $('#' + idRole).remove();
-                    $.notify(response.msg, "success");
-                } else {
-
-                    $.notify(response.msg, "warn");
-                }
-            }, error: function(response) {
-
-                $.notify(response.msg, "error");
-            }
-        });
-    }
+//    //DELETE ROLE
+//    function deleteRoleById(idRole) {
+//
+//        $.ajax({
+//            url: 'role/deleteRole?idRole=' + idRole,
+//            type: 'delete',
+//            success: function(response) {
+//                if (response.resultat === 200) {
+//
+//                    $('#' + idRole).remove();
+//                    $.notify(response.msg, "success");
+//                } else {
+//
+//                    $.notify(response.msg, "warn");
+//                }
+//            }, error: function(response) {
+//
+//                $.notify(response.msg, "error");
+//            }
+//        });
+//    }
 
     //CONFIRMATION DELETE ROLE
 
-    $('#table_roles').on('click', '.deleteRole', function(e) {
-        e.preventDefault();
-        var id = $(this).data('id');
-        //confirmDelete(id);
-        $('#deleteRoleConfirmation').modal({backdrop: 'static', keyboard: false})
-                .one('click', '#okDeleteRoleConfirmation', function() {
-                    $('#deleteRoleConfirmation').hide();
-                    deleteRoleById(id);
-                    // recharger la page avec un time 1700 ms
-                    setTimeout(function() {
-                        location.reload();
-                    }, 1700);
-                });
-    });
+//    $('#table_roles').on('click', '.deleteRole', function(e) {
+//        e.preventDefault();
+//        var id = $(this).data('id');
+//        //confirmDelete(id);
+//        $('#deleteRoleConfirmation').modal({backdrop: 'static', keyboard: false})
+//                .one('click', '#okDeleteRoleConfirmation', function() {
+//                    $('#deleteRoleConfirmation').hide();
+//                    deleteRoleById(id);
+//                    // recharger la page avec un time 1700 ms
+//                    setTimeout(function() {
+//                        location.reload();
+//                    }, 1700);
+//                });
+//    });
 
 
 
@@ -940,26 +929,26 @@ $(document).ready(function() {
         });
     });
     //Code de chargement d'un role selectionné sur la liste des roles
-    $('#table_roles').on('click', '.showRole', function(e) {
-        e.preventDefault();
-        $('#roleEditSuccess').css('display', 'none');
-        $('#roleEditFailed').css('display', 'none');
-        var idRole = $(this).attr('data-id');
-        $('#viewRoleModal').modal();
-        $.ajax({
-            url: 'getRole',
-            type: 'get',
-            data: 'idRole=' + idRole,
-            success: function(response) {
-                //Informations du client provenant du serveur  
-                $('#editDescRole').val(response.roleDesc);
-                $('#editNomRole').val(response.nameRole);
-            }
-            , error: function(response) {
-                alert('ajax failed' + response);
-            }
-        });
-    });
+//    $('#table_roles').on('click', '.showRole', function(e) {
+//        e.preventDefault();
+//        $('#roleEditSuccess').css('display', 'none');
+//        $('#roleEditFailed').css('display', 'none');
+//        var idRole = $(this).attr('data-id');
+//        $('#viewRoleModal').modal();
+//        $.ajax({
+//            url: 'getRole',
+//            type: 'get',
+//            data: 'idRole=' + idRole,
+//            success: function(response) {
+//                //Informations du client provenant du serveur  
+//                $('#editDescRole').val(response.roleDesc);
+//                $('#editNomRole').val(response.nameRole);
+//            }
+//            , error: function(response) {
+//                alert('ajax failed' + response);
+//            }
+//        });
+//    });
 
     //Partie pour la modification d'un role
     $('#editRoleFormulaire').submit(function(e) {

@@ -97,12 +97,12 @@ $(document).ready(function() {
         var contentString = [];
 
         for (i = 0; i < locations.length; i++) { //ficheLocalisation?idLocalisation=
-            var linkLocalisationRef = window.location.pathname+'ficheLocalisation?idLocalisation='+ locations[i][4]+'&dtype='+ locations[i][6];
-            var linkDemandes = window.location.pathname+'demandes?idLocalisation='+locations[i][4];
-            var linkProjet = window.location.pathname+'projets?idLocalisation='+locations[i][4];
-            var linkFicheLocaliteRef = window.location.pathname+'ficheLocalisation?idLocalisation='+ locations[i][4];
+            var linkLocalisationRef = getContextPath()+'/ficheLocalisation?idLocalisation='+ locations[i][4]+'&dtype='+ locations[i][6];
+            var linkDemandes = getContextPath()+'/demandes?idLocalisation='+locations[i][4];
+            var linkProjet = getContextPath()+'/projets?idLocalisation='+locations[i][4];
+            var linkFicheLocaliteRef = getContextPath()+'/ficheLocalisation?idLocalisation='+ locations[i][4];
            
-            contentString[i] = '<div id="content" style="min-width:160px; min-height:180px;">'
+            contentString[i] = '<div id="content" style="min-width:200px; min-height:180px;">'
                     + '<div id="siteNotice">'
                     + '</div>'
                     + '<h3 id="firstHeading" class="firstHeading">'
@@ -110,7 +110,7 @@ $(document).ready(function() {
                     + ' : '
                     + locations[i][0]
                     + '</h3>'
-                    + '<div  id="bodyContent">'
+                    + '<div  id="bodyContent" style="min-width:160px; min-height:180px;">'
                     +
                     '<div>'
                     + '<label>Nom Responsable : '
@@ -136,27 +136,28 @@ $(document).ready(function() {
                     '<div>'
                     + '<a class="btn btn-default" href='
                     + linkLocalisationRef
-                    + ' role="button">Fiche Localisation </a> '
+                    + ' role="button">Fiche </a> '
                     +
                     '<a class="btn btn-default" href='
                     + linkProjet
-                    + ' role="button">Liste des Projets</a>'
+                    + ' role="button">Projets</a>'
                     + '<a class="btn btn-default" href='
                     + linkDemandes
-                    + ' role="button">Liste des Demandes</a>'
-                    + '<a class="btn btn-default" href='
-                    + linkFicheLocaliteRef
-                    + ' role="button" style="margin-left:3px; padding-left:3px">Fiche Zone</a>'
-                    + '</div>' + '</div>' +
+                    + ' role="button">Demandes</a>'
+//                    + '<a class="btn btn-default" href='
+//                    + linkFicheLocaliteRef
+//                    + ' role="button" style="margin-left:3px; padding-left:3px">Fiche Zone</a>'
+                    + '</div>' 
+                    + '</div>' +
                     '</div>' + '</div>';
             
             var markerColor = "http://maps.google.com/mapfiles/ms/icons/red-dot.png";
             if (locations[i][6] == 'BATIMENT') {
                // markerColor = "http://maps.google.com/mapfiles/ms/icons/green-dot.png";
-                markerColor = window.location.pathname+"/img/markers/villa.png";
+                markerColor = getContextPath()+"/img/markers/villa.png";
             } else if (locations[i][6] == 'SITE') { 
               //  markerColor = "http://maps.google.com/mapfiles/ms/icons/yellow-dot.png";
-              markerColor = window.location.pathname+"/img/markers/hotel_0star.png";
+              markerColor = getContextPath()+"/img/markers/hotel_0star.png";
             }
 
             marker = new google.maps.Marker({
@@ -193,14 +194,18 @@ $(document).ready(function() {
                         console.info(results[0].formatted_address);
 
                         var loc = results[0].formatted_address;
-                        var contextPath = window.location.pathname;
+                        var contextPath = getContextPath();
                         lat = e.latLng.lat();
                         lng = e.latLng.lng();
                         add = results[0].formatted_address;
                         var arr = loc.split(',');
                         var nomCorrige = arr[arr.length - 2];
-                        $('#ficheLocalite').load(encodeURI(contextPath + 'load/localite?lon=' + lng + '&lat=' + lat + '&add=' + add));
-
+                        $('#ficheLocalite').load(encodeURI(contextPath + '/localisation/load/localite?lon=' + lng + '&lat=' + lat + '&add=' + add),function(){
+                            //document.getElementById("cleLocalite").value = extractKey(add,3," ");
+                            $("#cleLocalite").val(extractKey(add,3," "));
+                            $("#nomLocaliteCorrige").focus();
+                        });
+                        
                         $('#addLocalization').modal('show');
                     } else {
                         alert('No results found');
@@ -233,7 +238,33 @@ $(document).ready(function() {
        routeController.localisation.filterCarteResultatRecherche(frm.attr('method'), frm.attr('action'), data, remplirCarte);
 
     });
-
+    //$("#cleLocalite").bind("change paste keyup", function() {
+    $(document).on('change paste keyup', '#nomLocaliteCorrige', function() {
+        var nomCorrige = $.trim($(this).val());  
+        var clef = extractKey(nomCorrige, 3, " ");
+        document.getElementById("cleLocalite").value = clef;
+       
+    });
+    $(document).on('focusout', '#nomLocaliteCorrige', function() {
+        var clefObjet = $("#cleLocalite").val();  
+        routeController.localisation.verifyKey(clefObjet, function(response){
+           if(response.resultat === 200){
+               $("#cleLocalite").css({border :'1px solid green'});
+           } else{
+               $("#clefMessage").text("Cette clef n'est pas disponible.... veuillez en choisir une autre");
+               $("#clefMessage").css({color:'red', display:'block'});
+               
+                $("#cleLocalite").css({border :'1px solid red'});
+           }
+        });
+    });
+    $(document).on('focusin', '#nomLocaliteCorrige', function() {       
+                     
+               $("#clefMessage").text("");
+               $("#clefMessage").css({display:'none'});
+               $("#cleLocalite").css({border :'1px solid #707070'});         
+        
+    });
  
 });
  

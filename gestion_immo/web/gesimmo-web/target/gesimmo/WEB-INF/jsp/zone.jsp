@@ -5,19 +5,8 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 
 <!--Google map begin-->
-<%--<script src="http://maps.googleapis.com/maps/api/js?sensor=false&extension=.js&output=embed"></script>--%>
 <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script>
-<%--<script src="js/cartographie.js"></script>--%>
 <!--Google map begin End-->
-
-<script type="text/javascript">
-
-   // $(document).ready(function() {
-
-
-   // });
-</script>
-
 <sec:authorize access="isAuthenticated()">
 
     <!-- Begin Body -->

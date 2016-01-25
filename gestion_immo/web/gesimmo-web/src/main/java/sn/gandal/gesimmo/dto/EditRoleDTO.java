@@ -20,6 +20,7 @@ public class EditRoleDTO {
     private String roleDesc;
     private String msg;
     private int resultat;
+    private long idRole;
     
     public EditRoleDTO() {
     }
@@ -54,6 +55,14 @@ public class EditRoleDTO {
 
     public void setResultat(int resultat) {
         this.resultat = resultat;
+    }
+
+    public long getIdRole() {
+        return idRole;
+    }
+
+    public void setIdRole(long idRole) {
+        this.idRole = idRole;
     }
   
  

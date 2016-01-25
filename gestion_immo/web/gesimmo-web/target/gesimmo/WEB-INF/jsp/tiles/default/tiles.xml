@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 2.0//EN"
+       "http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
+<tiles-definitions>
+    
+    
+    <definition name="projetlist" extends="main">
+        <put-attribute name="home" value="/WEB-INF/jsp/v1/projets.jsp"  />
+        <!-- if user is anonymous, invite him to log in application through  login page-->
+        <put-attribute name="login" value="/WEB-INF/jsp/v1/login.jsp" />
+    </definition>
+    
+    <definition name="ficheProjet" extends="main">
+        <put-attribute name="home" value="/WEB-INF/jsp/v1/fiche_projet.jsp"  />
+        <!-- if user is anonymous, invite him to log in application through  login page-->
+        <put-attribute name="login" value="/WEB-INF/jsp/v1/login.jsp" />
+    </definition>
+
+    <definition name="programmelist" extends="main">
+        <put-attribute name="home" value="/WEB-INF/jsp/v1/programmes.jsp"  />
+        <!-- if user is anonymous, invite him to log in application through  login page-->
+        <put-attribute name="login" value="/WEB-INF/jsp/v1/login.jsp" />
+    </definition>
+    
+     
+    
+    <definition name="indicateurList" extends="main">
+        <put-attribute name="home" value="/WEB-INF/jsp/v1/indicateurs.jsp"  />
+        <!-- if user is anonymous, invite him to log in application through  login page-->
+        <put-attribute name="login" value="/WEB-INF/jsp/v1/login.jsp" />
+    </definition>
+    
+    <definition name="etapelist" extends="main">
+        <put-attribute name="home" value="/WEB-INF/jsp/v1/etapes.jsp"  />
+        <!-- if user is anonymous, invite him to log in application through  login page-->
+        <put-attribute name="login" value="/WEB-INF/jsp/v1/login.jsp" />
+    </definition>
+    
+      <definition name="ficheEtape" extends="main">
+        <put-attribute name="home" value="/WEB-INF/jsp/v1/fiche_etape.jsp"  />
+        <!-- if user is anonymous, invite him to log in application through  login page-->
+        <put-attribute name="login" value="/WEB-INF/jsp/v1/login.jsp" />
+    </definition>
+
+ 
+  <definition name="ficheProgramme" extends="main">
+        <put-attribute name="home" value="/WEB-INF/jsp/v1/fiche_programme.jsp"  />
+        <!-- if user is anonymous, invite him to log in application through  login page-->
+        <put-attribute name="login" value="/WEB-INF/jsp/v1/login.jsp" />
+    </definition>
+
+    <!-- DEFINITION FRAGMENT HTML -->
+
+    <definition name="fragment" template="/WEB-INF/jsp/v1/fragment/fragmentLayout.jsp">
+    </definition>
+
+    <definition extends="fragment" name="fragment/ficheAddLocaliteForm">
+        <put-attribute name="partialView" value="/WEB-INF/jsp/v1/fragment/fragmentAddLocaliteForm.jsp"/>
+    </definition>
+    
+    <definition extends="fragment" name="fragment/menu_localisation">
+        <put-attribute name="partialView" value="/WEB-INF/jsp/v1/menus/menu_localisation.jsp"/>
+    </definition>
+    
+    <definition extends="fragment" name="fragment/menulocalisationCarte">
+        <put-attribute name="partialView" value="/WEB-INF/jsp/v1/menus/menuLocalisation.jsp"/>
+    </definition>
+    
+     <definition extends="fragment" name="fragment/ficheLocalisation">
+        <put-attribute name="partialView" value="/WEB-INF/jsp/v1/fiches/ficheLocalisation.jsp"/>
+    </definition>
+
+
+
+
+    <!-- DEFINITION FRAGMENT HTML -->
+ </tiles-definitions>

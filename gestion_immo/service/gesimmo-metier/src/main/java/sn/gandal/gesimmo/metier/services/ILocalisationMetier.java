@@ -59,4 +59,7 @@ public interface ILocalisationMetier {
 
     public List<ObjetIncident> findIncidentByCriteres(LocalisationFormFilter localisationFormFilter);
 
+    public  boolean isKeyExist(String key);
+
+
 }

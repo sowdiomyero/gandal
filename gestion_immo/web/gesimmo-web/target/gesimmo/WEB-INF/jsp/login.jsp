@@ -27,7 +27,7 @@
 
 
                     <div class="panel-heading" style="background-color: rgba(255,255,255,0.47)">
-                        <form class="form-signin" role="form" action='<c:url value='j_spring_security_check' />' method="post">
+                        <form class="form-signin" role="form" action="${pageContext.request.contextPath}/j_spring_security_check" method="post">
                             
                             <div style="margin-bottom: 25px; margin-top: 30px" class="input-group">
                                 <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>

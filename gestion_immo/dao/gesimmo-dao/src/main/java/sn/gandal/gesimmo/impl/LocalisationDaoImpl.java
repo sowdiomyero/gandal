@@ -187,6 +187,14 @@ public class LocalisationDaoImpl implements ILocalisationDao {
         }
 
     }
+    @Override
+    public boolean isKeyExist(String key) {
+       List<Localisation> result = em.createNamedQuery(Localisation.FIND_LOCALISABLES_BY_CLEF).setParameter("clef", key).getResultList();
+       if(result != null && result.size() >0){
+           return true;
+       }
+       return false;
+    }
 
    
 }

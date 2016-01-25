@@ -15,7 +15,7 @@ import javax.validation.constraints.NotNull;
  *
  * @author sniang
  */
-public class EditUserDTO {
+public class EditUserDTO extends BasicResponse{
     
     @NotNull
     @NotEmpty
@@ -37,8 +37,9 @@ public class EditUserDTO {
     private String password;
     private String newPassword;
     private String confirmPassword;
-    private String msg;
-    private int resultat;
+   // private String msg;
+    private Long idUser;
+  //  private int resultat;
 
     public String getNom() {
         return nom;
@@ -87,30 +88,30 @@ public class EditUserDTO {
     /**
      * @return the msg
      */
-    public String getMsg() {
-        return msg;
-    }
-
-    /**
-     * @return the resultat
-     */
-    public int getResultat() {
-        return resultat;
-    }
-
-    /**
-     * @param msg the msg to set
-     */
-    public void setMsg(String msg) {
-        this.msg = msg;
-    }
-
-    /**
-     * @param resultat the resultat to set
-     */
-    public void setResultat(int resultat) {
-        this.resultat = resultat;
-    }
+//    public String getMsg() {
+//        return msg;
+//    }
+//
+//    /**
+//     * @return the resultat
+//     */
+//    public int getResultat() {
+//        return resultat;
+//    }
+//
+//    /**
+//     * @param msg the msg to set
+//     */
+//    public void setMsg(String msg) {
+//        this.msg = msg;
+//    }
+//
+//    /**
+//     * @param resultat the resultat to set
+//     */
+//    public void setResultat(int resultat) {
+//        this.resultat = resultat;
+//    }
 
     /**
      * @return the login
@@ -167,4 +168,14 @@ public class EditUserDTO {
     public void setConfirmPassword(String confirmPassword) {
         this.confirmPassword = confirmPassword;
     }
+
+    public Long getIdUser() {
+        return idUser;
+    }
+
+    public void setIdUser(Long idUser) {
+        this.idUser = idUser;
+    }
+    
+    
 }

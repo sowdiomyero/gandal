@@ -36,7 +36,7 @@ public class HomeController {
 
     //TODO à l'accueil il faut envoyer un objet de type site
 
-    @RequestMapping(value = "/")
+    @RequestMapping(value = "/n")
     public String homePage(Model model) {
 
         EditLocalisationForm localisationForm = new EditLocalisationForm();
