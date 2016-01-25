@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 2.0//EN"
+       "http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
+<tiles-definitions>
+
+   <definition name="localisation/list" extends="main">
+        <put-attribute name="home" value="/WEB-INF/jsp/v1/localisation/localisations.jsp"  />
+        <!-- if user is anonymous, invite him to log in application through  login page-->
+        <put-attribute name="login" value="/WEB-INF/jsp/v1/login.jsp" />
+    </definition>
+    
+        <definition name="localisation/view" extends="main">
+        <put-attribute name="home" value="/WEB-INF/jsp/v1/localisation/ficheDetailleeLocalisation.jsp"  />
+        <!-- if user is anonymous, invite him to log in application through  login page-->
+        <put-attribute name="login" value="/WEB-INF/jsp/v1/login.jsp" />
+    </definition>
+
+<!-- FRAGMENTS -->
+    <definition extends="fragment" name="fragment/localisation/view">
+        <put-attribute name="partialView" value="/WEB-INF/jsp/v1/localisation/ficheLocalisation.jsp"/>
+    </definition>
+    <!-- Lors de l'ajout d'une localité sur la carte -->
+     <definition extends="fragment" name="fragment/localisation/new">
+        <put-attribute name="partialView" value="/WEB-INF/jsp/v1/localisation/fragmentAddLocaliteForm.jsp"/>
+    </definition>
+    
+    <definition extends="fragment" name="fragment/localisation/search/form">
+        <put-attribute name="partialView" value="/WEB-INF/jsp/v1/localisation/rechercheLocalisationForm.jsp"/>
+    </definition>
+
+</tiles-definitions>

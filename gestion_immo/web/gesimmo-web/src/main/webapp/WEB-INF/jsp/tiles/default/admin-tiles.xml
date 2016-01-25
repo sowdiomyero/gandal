@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 2.0//EN"
+       "http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
+<tiles-definitions>
+
+<!--
+    <definition name="zonepage" extends="zonage">
+         if user authentified, display home page 
+               <put-attribute name="home" value="/WEB-INF/jsp/monlayout.jsp" />
+        <put-attribute name="home" value="/WEB-INF/jsp/zone.jsp" />
+         if user is anonymous, invite him to log in application through  login page
+        <put-attribute name="login" value="/WEB-INF/jsp/login.jsp" />
+    </definition>
+    
+    -->
+
+    <definition name="settings" extends="admin">
+        <put-attribute name="home" value="/WEB-INF/jsp/v1/settings.jsp"  />
+        <!-- if user is anonymous, invite him to log in application through  login page -->
+        <put-attribute name="login" value="/WEB-INF/jsp/v1/login.jsp" />
+    </definition>
+
+
+    <!-- DEFINITION FRAGMENT HTML -->
+ </tiles-definitions>
