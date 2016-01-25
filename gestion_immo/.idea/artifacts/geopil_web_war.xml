@@ -1,8 +1,0 @@
-<component name="ArtifactManager">
-  <artifact type="war" name="geopil-web:war">
-    <output-path>$PROJECT_DIR$/web/geopil-web/target</output-path>
-    <root id="archive" name="geopil.war">
-      <element id="artifact" artifact-name="geopil-web:war exploded" />
-    </root>
-  </artifact>
-</component>
