@@ -1,0 +1,113 @@
+//les models 
+'use strict';
+var connexion = require("../config/sequelize");
+
+// recuperation des objets de la connexion
+var Sequelize = connexion.Sequelize;
+var sequelize = connexion.db;
+
+module.exports={
+	user:sequelize.define('user',
+{
+          	id:{
+              type: Sequelize.INTEGER,
+              primaryKey: true,
+              autoIncrement: true
+            },
+             nomUser: {
+              type: Sequelize.STRING
+            },
+            prenomUser:{
+            	type:Sequelize.STRING
+            },
+            email:{
+              type:Sequelize.STRING
+            },
+             adresse:{
+              type:Sequelize.STRING
+            },
+             telephone:{
+              type:Sequelize.STRING
+            },
+},
+{
+   freezeTableName: true
+}),
+compte:sequelize.define('compte',
+{
+            idCompte:{
+              type: Sequelize.INTEGER,
+              primaryKey: true,
+              autoIncrement: true
+            },
+             username: {
+              type: Sequelize.STRING
+            },
+            password:{
+              type:Sequelize.STRING
+            },
+            etat:{
+              type:Sequelize.STRING
+            },
+}
+,
+{
+   freezeTableName: true
+}),
+
+role:sequelize.define('role',
+{
+  idRole:{
+    type: Sequelize.INTEGER,
+    primaryKey: true,
+    autoIncrement: true
+  },
+   libelleRole: {
+    type: Sequelize.STRING
+  }
+},
+{
+   freezeTableName: true
+}),
+actions:sequelize.define('action',{
+   idAction:{
+    type: Sequelize.INTEGER,
+    primaryKey: true,
+    autoIncrement: true
+  },
+   libelleAction: {
+    type: Sequelize.STRING
+  }
+
+},
+{
+  freezeTableName:true
+}),
+groupe:sequelize.define('groupe',{
+   idGroupe:{
+    type: Sequelize.INTEGER,
+    primaryKey: true,
+    autoIncrement: true
+  },
+   libelleGroupe: {
+    type: Sequelize.STRING
+  }
+},
+{
+  freezeTableName:true
+}),
+parametre:sequelize.define('groupe',{
+   idParametre:{
+    type: Sequelize.INTEGER,
+    primaryKey: true,
+    autoIncrement: true
+  },
+   libelleParametre: {
+    type: Sequelize.STRING
+  }
+},
+{
+  freezeTableName:true
+})
+}
+//les association entre les tables

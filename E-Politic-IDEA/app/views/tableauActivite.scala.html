@@ -1,0 +1,322 @@
+@(activites: java.util.List[Activites],compte: Compte)
+
+
+
+<div class="others" align="center">
+
+	<div class="panel panel-info" style="margin-top: 5px">
+		<div class="panel-heading">
+			<h4>Liste des activites</h4>
+		</div>
+	</div>
+	<div class="row" style="padding: 4px; margin: 4px; float: left">
+		<button class="btn btn-success btn-xs" data-toggle="modal"
+			data-target="#CreateActivity">
+			<span class="glyphicon glyphicon-plus-sign"></span> Ajouter une
+			activité
+		</button>
+		
+	</div>
+
+	<div class="table-responsive">
+		<table id="activites_table" class="display responsive no-wrap "
+			cellspacing="0" width="100%">
+			<thead>
+				<tr>
+					<th>Nom activité</th>
+					<th>Description</th>
+					<th>Secteur d'activité</th>
+					<th>Date de creation</th>
+					<th>Date de modification</th>
+					<th>Actions</th>
+
+				</tr>
+			</thead>
+
+			<tbody>
+				   @for( team <- activites) {
+				<tr>
+					<td>@team.getNomActivite()</td>
+					<td>@team.getDescActivite()</td>
+					<td>@team.getSecteur()</td>
+					<td>@team.getDateCreation().format("dd/MM/yyyy")</td>
+					<td>@team.getDateUpdated().format("dd/MM/yyyy")</td>
+
+					<td>
+					<!-- View --><a href="#" id="activityShow" class="btn btn-info btn-xs"
+						data-nom_activity="@team.getNomActivite()"
+						data-description_activity="@team.getDescActivite()"
+						data-secteur_activity="@team.getSecteur()"
+						data-dateCreation_activity="@team.getDateCreation().format(
+						"dd/MM/yyyy")"
+					data-dateUpdate_activity="@team.getDateUpdated().format(
+						"dd/MM/yyyy")" 
+					alt="Visualiser la fiche d'une activit�"><span
+							class="glyphicon glyphicon-eye-open"></span></a>
+					
+					<!-- Update --> <a href="#" id="activityUpdate"
+							 data-nomUp_activity="@team.getNomActivite()"
+						data-descriptionUp_activity="@team.getDescActivite()"
+						data-secteurUp_activity="@team.getSecteur()"
+						data-dateCreationUp_activity="@team.getDateCreation().format("dd/MM/yyyy")"
+					data-dateUpdateUp_activity="@team.getDateUpdated().format("dd/MM/yyyy")" 
+					data-idAct_activity="@team.getId()"
+					data-idLoc_activity="@compte.getIdLocalite()"
+						class="btn btn-info btn-xs"
+						alt="Modifier les informations sur le projet"><span
+							class="glyphicon glyphicon-pencil"></span></a> 
+							
+						<!-- Delete -->	
+						<a id="deleteActivite" data-idAct="@team.getId()"
+						 data-idLoc="@compte.getIdLocalite()" 						
+						class="btn btn-warning btn-xs"><span
+							class="glyphicon glyphicon-trash"></span></a></td>
+				</tr>
+				}
+			</tbody>
+		</table>
+	</div>
+
+
+	<!-- create activite -->
+
+	<div class="modal fade modal-admin" id="CreateActivity" tabindex="-1"
+		role="dialog" aria-labelledby="viewProfilModal" aria-hidden="true">
+		<div class="col-md-4  col-lg-offset-4" id="">
+			<div class="panel panel-info">
+				<div class="panel-heading">
+					<h3 class="panel-title">Ajouter une activité</h3>
+
+				</div>
+				<form action="@routes.ActiviteCtrl.addActivite(compte.getIdLocalite())"
+						method="post" id="formCreateActivity">
+				<div class="panel-body" style="color: #000033">
+
+
+
+					
+						<fieldset>
+							<legend>Informations activité</legend>
+							<!-- nom -->
+							<div class="row">
+								<div class="col-md-4">
+									<label class="pull-left" for="">Nom
+										activité: </label>
+								</div>
+								<div class="col-md-6">
+									<input type="text" class="form-control" required="required"
+										name="nom" placeholder="Nom" id="" />
+								</div>
+							</div>
+							<br>
+							<!-- description -->
+							<div class="row">
+								<div class="col-md-4">
+									<label class="pull-left" for="">Description
+										activité: </label>
+								</div>
+								<div class="col-md-6">
+									<input class="form-control" required="required"
+										name="description" placeholder="description"
+										id="" />
+								</div>
+							</div>
+							<br>
+							<!-- secteur -->
+							<div class="row">
+								<div class="col-md-4">
+									<label class="pull-left" for="">Secteur
+										d'activité: </label>
+								</div>
+								<div class="col-md-6">
+									<input class="form-control" required="required" name="secteur"
+										placeholder="secteur" id="" />
+								</div>
+							</div>
+							<br>
+
+						</fieldset>
+						
+				</div>
+				<div class="panel-footer text-center">
+					<button type="submit"  onClick=""
+							class="btn btn-info" value="submit" id="bntSubmitCreateActivity" data-idLocActivity="@compte.getIdLocalite()">Enregisrer</button>
+						<button type="reset" class=" annulerModifProfil btn btn-warning">Annuler
+							Modifications</button>
+						<button type="button" id="fermerModal" data-dismiss="modal"
+							class="btn btn-warning">Fermer</button>
+				</div>
+				</form>
+			</div>
+		</div>
+	</div>
+
+
+	<!-- update activite -->
+
+	<div class="modal fade modal-admin" id="ActivitiesUpdate" tabindex="-1"
+		role="dialog" aria-labelledby="viewProfilModal" aria-hidden="true">
+		<div class="col-md-4  col-lg-offset-4" id="">
+			<div class="panel panel-info">
+				<div class="panel-heading">
+					<h3 class="panel-title">Modifier une activité</h3>
+
+				</div>
+				<form action="@routes.ActiviteCtrl.updateActivite()" method="post"
+						id="formUpdateActivity">
+				<div class="panel-body" style="color: #000033">
+
+
+
+					
+						<fieldset>
+							<legend>Informations activité</legend>
+							<!-- nom -->
+							<div class="row">
+								<div class="col-md-4">
+									<label class="pull-left" for="nomUp_activity">Nom
+										activité: </label>
+								</div>
+								<div class="col-md-6">
+									<input class="form-control" required="required" name="nom"
+										placeholder="Nom" id="nomUp_activity" />
+								</div>
+							</div>
+							<br>
+							<!-- description -->
+							<div class="row">
+								<div class="col-md-4">
+									<label class="pull-left" for="descriptionUp_activity">Description
+										activité: </label>
+								</div>
+								<div class="col-md-6">
+									<input class="form-control" required="required"
+										name="description" placeholder="description"
+										id="descriptionUp_activity" />
+								</div>
+							</div>
+							<br>
+							<!-- secteur -->
+							<div class="row">
+								<div class="col-md-4">
+									<label class="pull-left" for="secteurUp_activity">Secteur
+										d'activité: </label>
+								</div>
+								<div class="col-md-6">
+									<input class="form-control" required="required" name="secteur"
+										placeholder="secteur" id="secteurUp_activity" />
+
+								</div>
+								<input type="hidden" name="idAct" id="idAct_activity"></input> <input
+									type="hidden" name="idLoc" id="idLoc_activity"></input>
+							</div>
+							</fieldset>
+							<br>
+									
+				</div>
+					<div class="panel-footer text-center">
+								<button type="submit" id="bntSubmitUpdateActivity" onClick=""
+							class="btn btn-info" value="submit">Enregisrer</button>
+						<button type="reset" class=" annulerModifProfil btn btn-warning">Annuler
+							Modifications</button>
+						<button type="button" id="fermerModalUpdateAcivite" data-dismiss="modal"
+							class="btn btn-warning">Fermer</button>
+							</div>
+				</form>
+			</div>
+		</div>
+	</div>
+
+
+	<!-- show activite -->
+
+<div class="modal fade modal-admin" id="ActivitiesShow" tabindex="-1"
+		role="dialog" aria-labelledby="viewProfilModal" aria-hidden="true">
+		
+
+				<div class="modal-body">
+					<div class="row">
+
+						<div class="col-md-3 col-md-offset-4" id="">
+							<div class="panel panel-info">
+								<div class="panel-heading">
+									<h3 class="panel-title">Information activité</h3>
+
+								</div>
+								<div class="panel-body" style="color: #000033">
+									<div class="alert alert-success" role="alert"
+										id="" style="display: none">
+										<div class="alert alert-danger" role="alert"
+											style="display: none" id=""></div>
+									</div>
+
+									<div
+										class="controle-panel-heading panel-heading panel-heading-landing-box">
+
+									</div>
+									<div class="panel-body panel-body-landing">
+										<table class="table">
+											<tr>
+												<td><b>Nom activité:</b></td>
+												<td id="nom_activity"></td>
+											</tr>
+											<tr>
+												<td><b>Description activité:</b></td>
+												<td id="description_activity"></td>
+											</tr>
+											<tr>
+												<td><b>Secteur d'activité:</b></td>
+												<td id="secteur_activity"></td>
+											</tr>
+											<tr>
+												<td><b>Date de création:</b></td>
+												<td id="dateCreation_activity"></td>
+											</tr>
+											<tr>
+												<td><b>Date de mis à jour:</b></td>
+												<td id="dateUpdate_activity"></td>
+											</tr>
+											
+										</table>
+									</div>
+									<div class="panel-footer panel-footer-landing">
+										<button type="button" id="fermerModalShowActivity" data-dismiss="modal"
+											class="btn btn-info">Fermer</button>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+				</div>
+			
+	</div>
+
+
+
+<!-- delete confirmation -->
+
+<div class="modal fade" id="confirmDelAct" role="dialog" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title">Confirmation suppression</h4>
+      </div>
+      <div class="modal-body">
+        <p>Voulez-vous vraiment supprimer ?</p>
+      </div>
+      <div class="modal-footer">
+      	<form method="post" action="@routes.ActiviteCtrl.delActivite()" id="formDelAct">
+      		<input type="hidden" name="idActDel" id="idActDel">
+      		<input type="hidden" name="idLocDel" id="idLocDel">
+        	<button type="button" class="btn btn-default" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> Non</button>
+        	<button type="submit" id="yesDelAct" class="btn btn-danger"><span class="glyphicon glyphicon-ok"></span> Oui</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+</div>
+

@@ -1,0 +1,75 @@
+<div id="userCrt">
+    <div class="userCreation">
+        <div id="userCreationTitle">Nouvel utilisateur</div>
+        <form>
+            <div class="colonne">
+                <fieldset>
+                    <legend>Informations personnelles</legend>
+                    <div class="formField">
+                        <label for="prenom">Prénom</label>
+                        <input type="text" name="prenom" ng-model="prenom" required/>
+                    </div>
+                    <br/>
+                    <div class="formField">
+                        <label for="nom">Nom</label>
+                        <input type="text" name="nom" ng-model="nom" required/>
+                    </div>
+                    <br/>
+                    <div class="formField">
+                        <label for="telephone">Téléphone</label>
+                        <input type="text" ng-model="telephone" required/>
+                    </div>
+                    <span class="alertForm" ng-show="!telephoneCorrect()">Numéro de téléphone non conforme</span>
+                    <br/>
+                    <div class="formField">
+                        <label for="fax">Fax</label>
+                        <input type="text" ng-model="fax"/>
+                    </div>
+                    <span class="alertForm" ng-show="!faxCorrect()">Numéro de fax non conforme</span>
+                    <br/>
+                    <div class="formField">
+                        <label for="adresse">Adresse</label>
+                        <input type="text" ng-model="adresse" required/>
+                    </div>
+                    <br/>
+                    <div class="formField">
+                        <label for="CNI">CNI</label>
+                        <input type="text" ng-model="cni" required/>
+                    </div>
+                    <span class="alertForm" ng-show="!cniCorrect()">Numéro de CNI non conforme</span>
+                    <br/>
+                </fieldset>
+            </div>
+            <div class="colonne" id="second">
+                <fieldset>
+                    <legend>Accès</legend>
+                    <div class="formField">
+                        <label for="email">Email</label>
+                        <input type="email" ng-model="email" required/>
+                    </div>
+                    <br/>
+                </fieldset>
+                <fieldset>
+                    <legend>Rôle</legend>
+                    <input type="radio" name="statut" value="administrateur" ng-model="statut" required/>
+                    <label for="statut">Administrateur</label>
+                    <br/>
+                    <input type="radio" name="statut" value="notaire" ng-model="statut"/>
+                    <label for="statut">Notaire</label>
+                    <br/>
+                    <input type="radio" name="statut" value="cadastre" ng-model="statut"/>
+                    <label for="statut">Cadastre</label>
+                    <br/>
+                </fieldset>
+            </div>
+            <br/><br/>
+            <div id="userCreationActions">
+                <button class="userCreationButton" type="submit" ng-click="actionValider = true" ng-click="envoi()">Valider</button>
+                <button class="userCreationButton" ng-click="annulation()">Annuler</button>
+
+                <br/><br/>{{statut}}
+                <br/><br/><span ng-bind="faxCorrect()"></span>
+
+        </form>
+    </div>
+</div>

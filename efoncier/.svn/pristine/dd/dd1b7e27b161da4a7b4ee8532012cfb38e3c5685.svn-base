@@ -1,0 +1,95 @@
+//les models 
+'use strict';
+var connexion = require("../config/sequelize");
+
+// recuperation des objets de la connexion
+var sequelize = connexion.sequelize;
+var Sequelize = connexion.Sequelize;
+module.exports={
+	user:sequelize.define('user',
+{
+          	id:{
+              type: Sequelize.INTEGER,
+              primaryKey: true,
+              autoIncrement: true
+            },
+             nomUser: {
+              type: Sequelize.STRING
+            },
+            prenomUser:{
+            	type:Sequelize.STRING
+            },
+            email:{
+              type:Sequelize.STRING
+            },
+             adresse:{
+              type:Sequelize.STRING
+            },
+             telephone:{
+              type:Sequelize.STRING
+            },
+            creatAt:{
+              type:Sequelize.DATE
+            },
+            updatedAt:{
+               type:Sequelize.DATE
+            }
+}),
+compte:sequelize.define('compte',
+{
+            idCompte:{
+              type: Sequelize.INTEGER,
+              primaryKey: true,
+              autoIncrement: true
+            },
+             username: {
+              type: Sequelize.STRING
+            },
+            password:{
+              type:Sequelize.STRING
+            },
+            etat:{
+              type:Sequelize.STRING
+            },
+             idUtilisateur:{
+              type:Sequelize.STRING
+            },
+            
+            creatAt:{
+              type:Sequelize.DATE
+            },
+            updatedAt:{
+               type:Sequelize.DATE
+            }
+}),
+
+role:sequelize.define('role',
+{
+  idRole:{
+    type: Sequelize.INTEGER,
+    primaryKey: true,
+    autoIncrement: true
+  },
+   libelleRole: {
+    type: Sequelize.STRING
+  },
+  creatAt:{
+    type:Sequelize.DATE
+  },
+  updatedAt:{
+     type:Sequelize.DATE
+  }
+}),
+
+userRole:sequelize.define('userRole',
+{
+  idRole:{
+    type: Sequelize.INTEGER,
+    primaryKey: true,
+  },
+  idUser:{
+    type: Sequelize.INTEGER,
+    primaryKey: true,
+  } 
+})
+}

@@ -1,0 +1,9 @@
+@(compte: Compte)(activites: java.util.List[Activites])
+
+@mlayout(compte) {
+
+    <div class="col-sm-12">
+    @if(activites!=null){
+		@tableauActivite(activites, compte)}
+    </div>
+}

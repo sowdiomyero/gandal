@@ -1,0 +1,10 @@
+@(compte: Compte)(userext: java.util.List[UserExterne], id: Long,  messagesSend: java.util.List[Inscription])
+
+
+@mlayout(compte) {
+
+    <div class="col-xs-12">
+		@tableauMembresEquipe(userext , id, messagesSend)
+    </div>
+
+}

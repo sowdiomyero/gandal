@@ -1,0 +1,90 @@
+@(membre: Membre)
+<div class="col-sm-3">
+    <div class="panel panel-warning">
+        <div class="panel-heading">
+            <div class="row">
+                <div class="col-xs-3">
+                    <i class="fa fa-map-marker fa-2x"></i>
+                </div>
+                <div class="col-xs-9 text-right">
+                    <div class="huge">@membre.TousLesMembres()</div>
+                    <div></div>
+                </div>
+            </div>
+        </div>
+        <a href="#">
+            <div class="panel-footer">
+                <span class="pull-left">Membres</span>
+                
+                <div class="clearfix"></div>
+            </div>
+        </a>
+    </div>
+
+</div>
+<div class="col-sm-3">
+    <div class="panel panel-primary">
+        <div class="panel-heading">
+            <div class="row">
+                <div class="col-xs-3">
+                    <i class="fa fa-users fa-2x"></i>
+                </div>
+                <div class="col-xs-9 text-right">
+                    <div class="badge">@membre.MembresActives()</div>
+                    <div></div>
+                </div>
+            </div>
+        </div>
+        <a href="#">
+            <div class="panel-footer">
+                <span class="pull-left">Membres Actives</span>
+              
+                <div class="clearfix"></div>
+            </div>
+        </a>
+    </div>
+</div>
+<div class="col-sm-3">
+    <div class="panel panel-warning">
+        <div class="panel-heading">
+            <div class="row">
+                <div class="col-xs-3">
+                    <i class="fa fa-tasks fa-2x"></i>
+                </div>
+                <div class="col-xs-9 text-right">
+                    <div class="badge">@membre.MembresDesactives()</div>
+                    <div></div>
+                </div>
+            </div>
+        </div>
+        <a href="#">
+            <div class="panel-footer">
+                <span class="pull-left">Membres desactives</span>
+              
+                <div class="clearfix"></div>
+            </div>
+        </a>
+    </div>
+</div>
+<div class="col-sm-3">
+    <div class="panel panel-yellow">
+        <div class="panel-heading">
+            <div class="row">
+                <div class="col-xs-3">
+                    <i class="fa fa-list-ol fa-2x"></i>
+                </div>
+                <div class="col-xs-9 text-right">
+                    <div class="badge">@membre.MembresBloques()</div>
+                    <div></div>
+                </div>
+            </div>
+        </div>
+        <a href="#">
+            <div class="panel-footer">
+                <span class="pull-left">Membres bloques</span>
+               
+                <div class="clearfix"></div>
+            </div>
+        </a>
+    </div>
+</div>

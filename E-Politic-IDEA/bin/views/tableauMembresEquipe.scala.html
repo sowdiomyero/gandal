@@ -1,0 +1,559 @@
+@(userext: java.util.List[UserExterne], idEquipe: Long,  messagesSend: java.util.List[Inscription])
+
+
+<div class="others" align="center">
+
+	<div class="panel panel-info" style="margin-top: 5px">
+		<div class="panel-heading">
+			<h4>Liste des membres</h4>
+		</div>
+	</div>
+	<div class="row">
+		<div class="" style="padding: 4px; margin: 4px; float: left">
+			<button class="btn btn-success btn-xs" data-toggle="modal"
+				data-target="#CreateAgent">
+				<span class="glyphicon glyphicon-plus-sign"></span> Ajouter un agent
+			</button>
+		</div>
+		
+		<div class="" style="padding: 4px; margin: 4px; float: left">
+			<button class="btn btn-success btn-xs" data-toggle="modal"
+				data-target="#send">
+				<span class="glyphicon glyphicon-envelope"></span> Envoyer un SMS
+			</button>
+		</div>
+	</div>
+
+	<table id="agents_table" class='display' cellspacing="0" width="100%">
+		<thead>
+			<tr>
+				<th>Nom</th>
+				<th>Prenom</th>
+				<th>Date naissance</th>
+				<th>Telephone</th>
+				<th>Email</th>
+				<th>Profession</th>
+				<th>Actions</th>
+			</tr>
+		</thead>
+
+		<tbody>
+
+			@for(team <- userext) {
+			<tr>
+				<td>@team.getNom()</td>
+				<td>@team.getPrenom()</td>
+				<td>@team.getDateNaissance().format("dd/MM/yyyy")</td>
+				<td>@team.getTelephone()</td>
+				<td>@team.getEmail()</td>
+				<td>@team.getProfession()</td>
+
+				<td>
+				<!-- View -->
+				<a href="#" id="dataShow" class="btn btn-info btn-xs"
+					data-nomU_agent="@team.getNom()" data-prenomU_agent="@team.getPrenom()"
+					data-dateU_agent="@team.getDateNaissance().format(
+					"dd/MM/yyyy")" data-telephoneU_agent="@team.getTelephone()"
+					data-emailU_agent="@team.getEmail()" data-professionU_agent="@team.getProfession()"
+					data-sexeU_agent="@team.getSexe()" data-tel1U_agent="@team.getTelephone()"
+					data-tel2U_agent="@team.getTelephone1()" data-cniU_agent="@team.getCarteIdentite()"
+					data-professionU_agent="@team.getProfession()"
+					alt="Visualiser la fiche du membre"><span
+						class="glyphicon glyphicon-eye-open"></span></a> 
+						
+						<!-- Update -->
+				<a id="data" href="#"
+					class="btn btn-info btn-xs" data-toggle="modal"
+					data-nom_agent="@team.getNom()" data-prenom_agent="@team.getPrenom()"
+					data-cni_agent="@team.getCarteIdentite()" data-sexe_agent="@team.getSexe()"
+					data-telephone_agent="@team.getTelephone()" data-dateNaissance_agent="@team.getDateNaissance().format("yyyy-MM-dd")"
+					data-telephone1_agent="@team.getTelephone1()" data-email_agent="@team.getEmail()"
+					data-profession_agent="@team.getProfession()" data-user_agent="@team.getId()" data-idEquipe_agent="@team.getEquipe().getId()"
+					alt="Modifier les informations sur le membre"><span
+						class="glyphicon glyphicon-pencil"></span> </a> 
+						<!-- Delete -->
+					<a id="deleteAgent" data-idAgent="@team.getId()"
+					class="btn btn-warning btn-xs" alt="Supprimer le membre"><span
+						class="glyphicon glyphicon-trash"></span></a></td>
+			</tr>
+			}
+
+		</tbody>
+	</table>
+
+	<!-- ajouter un agent -->
+
+	<div class="modal fade modal-admin" id="CreateAgent" tabindex="-1"
+		role="dialog" aria-labelledby="viewProfilModal" aria-hidden="true">
+		<div class="col-md-4  col-lg-offset-4" id="leftCol">
+			<div class="panel panel-info">
+				<div class="panel-heading">
+					<h3 class="panel-title">Ajouter un agent</h3>
+
+				</div>
+				
+					<form action="@routes.EquipeCtrl.addMembreEquipe(idEquipe)" method="post"
+						id="AddAgentFormulaire">
+						<div class="panel-body" style="color: #000033">
+						<fieldset>
+							<legend>Informations agent</legend>
+							<!-- nom -->
+							<div class="row">
+								<div class="col-md-4">
+									<label class="pull-left" for="editProfilNomInput">Nom:</label>
+								</div>
+								<div class="col-md-6">
+									<input class="form-control" required name="nom"
+										placeholder="Votre Nom" id="editProfilNomInput" />
+								</div>
+							</div>
+							<br>
+							<!-- prenom -->
+							<div class="row">
+								<div class="col-md-4">
+									<label for="editProfilPrenomInput" class="pull-left">Prenom:</label>
+								</div>
+								<div class="col-md-6">
+									<input class="form-control" name="prenom" required="required"
+										placeholder="Votre Prenom" id="editProfilPrenomInput" />
+								</div>
+							</div>
+							<br>
+							<!-- sexe -->
+							<div class="row">
+								<div class="col-md-4">
+									<label for="localiteMembre" class="pull-left">Sexe:</label>
+								</div>
+								<div class="col-md-6">
+									<select class="form-control selectize text-left" id="moteur" name="sexe" style="">
+										<option value="Homme"  class="">Homme</option>
+										<option value="Femme" class="">Femme</option>
+									</select>
+								</div>
+							</div>
+							<br>
+							<!-- email -->
+							<div class="row">
+								<div class="col-md-4">
+									<label for="editProfilEmailInput" class="pull-left">Email:</label>
+								</div>
+								<div class="col-md-6">
+									<input class="form-control" type="email" name="email"
+										required="required" placeholder="Votre Email"
+										id="editProfilEmailInput" />
+								</div>
+							</div>
+							<br>
+							<!-- date de naissance -->
+							<div class="row">
+								<div class="col-md-4">
+									<label for="editProfilNaissanceInput" class="pull-left">Date
+										de naisance:</label>
+								</div>
+								<div class="col-md-6">
+									<input type="date" class="form-control" required="required"
+										name="datenaissance" placeholder="Votre date de naissance"
+										id="editProfilNaissanceInput" />
+								</div>
+							</div>
+							<br>
+							<!-- CNI -->
+							<div class="row">
+								<div class="col-md-4">
+									<label for="editProfilCniInput" class="pull-left">CNI:</label>
+								</div>
+								<div class="col-md-6">
+									<input class="form-control" required="required" name="cni"
+										placeholder="Votre numéro d'identité" id="editProfilCniInput" />
+								</div>
+							</div>
+							<br>
+							<!-- tel1 -->
+							<div class="row">
+								<div class="col-md-4">
+									<label for="editProfilTel1Input" class="pull-left">Telephone1:</label>
+								</div>
+								<div class="col-md-6">
+									<input class="form-control" name="telephone"
+										required="required" placeholder="Votre Numero telephone"
+										id="editProfilTel1Input" type="tel"
+										pattern="^((\+\d{1,3}(-| )?\(?\d\)?(-| )?\d{1,5})|(\(?\d{2,6}\)?))(-| )?(\d{3,4})(-| )?(\d{4})(( x| ext)\d{1,5}){0,1}$" />
+								</div>
+							</div>
+							<br>
+							<!-- tel2 -->
+							<div class="row">
+								<div class="col-md-4">
+									<label for="editProfilTel2Input" class="pull-left">Telephone2:</label>
+								</div>
+								<div class="col-md-6">
+									<input class="form-control" name="telephone2"
+										placeholder="Votre second numero" id="editProfilTel2Input" />
+								</div>
+							</div>
+							<br>
+							<!-- profession -->
+							<div class="row">
+								<div class="col-md-4">
+									<label for="editProfilPasswordInput" class="pull-left">Profession:</label>
+								</div>
+								<div class="col-md-6">
+									<input class="form-control" name="profession"
+										required="required" placeholder="Votre Profession"
+										id="fonction" />
+								</div>
+							</div>
+							<br>
+
+						</fieldset>
+						
+				</div>
+				<div class="panel-footer text-center">
+						<button type="submit" id="btnAddAgent"
+							class="btn btn-info" value="submit" data-idEquipeAddAgent="@idEquipe">Enregisrer</button>
+						<button type="reset" class=" annulerModifProfil btn btn-warning">Annuler
+							Modifications</button>
+						<button type="button" id="fermerModal" data-dismiss="modal"
+							class="btn btn-warning">Fermer</button>
+				</div>
+				</form>
+			</div>
+		</div>
+	</div>
+
+
+	<!-- Modifier un agent -->
+
+	<div class="modal fade modal-admin" id="UpdateAgent" tabindex="-1"
+		role="dialog" aria-labelledby="viewProfilModal" aria-hidden="true">
+		<div class="col-md-4  col-lg-offset-4" id="leftCol">
+			<div class="panel panel-info">
+				<div class="panel-heading">
+					<h3 class="panel-title">Modifier un agent</h3>
+
+				</div>
+				
+			<form action="@routes.EquipeCtrl.updateMembreEquipe()" method="post" id="UpdateAgentFormulaire">
+				<div class="panel-body" style="color: #000033">
+						<fieldset>
+							<legend>Informations agent</legend>
+							<!-- nom -->
+							<div class="row">
+								<div class="col-md-4">
+									<label class="pull-left" for="editProfilNomInput">Nom:</label>
+								</div>
+								<div class="col-md-6">
+									<input class="form-control" required="required" name="nom"
+										placeholder="Votre Nom" id="editProfilNomInput1_agent" />
+								</div>
+							</div>
+							<br>
+							<!-- prenom -->
+							<div class="row">
+								<div class="col-md-4">
+									<label for="editProfilPrenomInput" class="pull-left">Prenom:</label>
+								</div>
+								<div class="col-md-6">
+									<input class="form-control" name="prenom" required="required"
+										placeholder="Votre PrÃ©nom" id="editProfilPrenomInput1_agent" />
+								</div>
+							</div>
+							<br>
+							<!-- sexe -->
+							<div class="row">
+								<div class="col-md-4">
+									<label for="localiteMembre" class="pull-left">Sexe:</label>
+								</div>
+								<div class="col-md-6">
+									<select name="sexe" id="selectSexe_agent" class="form-control">
+										<option value="HOMME">HOMME</option>
+										<option value="FEMME">FEMME</option>
+									</select>
+								</div>
+							</div>
+							<br>
+							<!-- email -->
+							<div class="row">
+								<div class="col-md-4">
+									<label for="editProfilEmailInput" class="pull-left">Email:</label>
+								</div>
+								<div class="col-md-6">
+									<input class="form-control" type="email" name="email"
+										required="required" placeholder="Votre Email"
+										id="editProfilEmailInput1_agent" />
+								</div>
+							</div>
+							<br>
+							<!-- date de naissance -->
+							<div class="row">
+								<div class="col-md-4">
+									<label for="editProfilNaissanceInput" class="pull-left">Date
+										de naisance:</label>
+								</div>
+								<div class="col-md-6">
+									<input type="date" class="form-control" required="required"
+										name="datenaissance" placeholder="Votre date de naissance"
+										id="dateN_agent" />
+								</div>
+							</div>
+							<br>
+							<!-- CNI -->
+							<div class="row">
+								<div class="col-md-4">
+									<label for="editProfilCniInput" class="pull-left">CNI:</label>
+								</div>
+								<div class="col-md-6">
+									<input class="form-control" required="required" name="cni"
+										placeholder="Votre numéro d'identité" id="editProfilCniInput1_agent" />
+								</div>
+							</div>
+							<br>
+							<!-- tel1 -->
+							<div class="row">
+								<div class="col-md-4">
+									<label for="editProfilTel1Input" class="pull-left">Telephone1:</label>
+								</div>
+								<div class="col-md-6">
+									<input class="form-control" name="telephone"
+										required="required" placeholder="Votre Numero telephone"
+										id="editProfilTel1Input1_agent" type="tel"
+										pattern="^((\+\d{1,3}(-| )?\(?\d\)?(-| )?\d{1,5})|(\(?\d{2,6}\)?))(-| )?(\d{3,4})(-| )?(\d{4})(( x| ext)\d{1,5}){0,1}$" />
+								</div>
+							</div>
+							<br>
+							<!-- tel2 -->
+							<div class="row">
+								<div class="col-md-4">
+									<label for="editProfilTel2Input" class="pull-left">Telephone2:</label>
+								</div>
+								<div class="col-md-6">
+									<input class="form-control" name="telephone2"
+										 placeholder="Votre second numero"
+										id="editProfilTel2Input2_agent" type="tel"
+										pattern="^((\+\d{1,3}(-| )?\(?\d\)?(-| )?\d{1,5})|(\(?\d{2,6}\)?))(-| )?(\d{3,4})(-| )?(\d{4})(( x| ext)\d{1,5}){0,1}$" />
+								</div>
+							</div>
+							<br>
+							<!-- profession -->
+							<div class="row">
+								<div class="col-md-4">
+									<label for="editProfilPasswordInput" class="pull-left">Profession:</label>
+								</div>
+								<div class="col-md-6">
+									<input class="form-control" name="profession"
+										required="required" placeholder="Votre Profession"
+										id="fonction1_agent" />
+								</div>
+								<input	type="hidden" name="idAgent" id="idAgent"></input>
+							 	<input	type="hidden" name="idEquipeResponsable" id="idEquipeResponsable_agent" ></input>
+							</div>
+							<br>
+						</fieldset>
+						
+				</div>
+				<div class="panel-footer text-center">
+						<button type="submit" id="bntUpdateAgent" onClick=""
+							class="btn btn-info" value="submit" >Enregisrer</button>
+						<button type="reset" class=" annulerModifProfil btn btn-warning">Annuler
+							Modifications</button>
+						<button type="button" id="fermerModal" data-dismiss="modal"
+							class="btn btn-warning">Fermer</button>			
+				</div>
+				</form>
+			</div>
+		</div>
+	</div>
+
+	<!-- Visualiser un agent -->
+	<div class="modal fade modal-admin" id="formShow" tabindex="-1"
+		role="dialog" aria-labelledby="viewProfilModal" aria-hidden="true">
+		
+				<div class="modal-body">
+					<div class="row">
+
+						<div class="col-md-3 col-md-offset-4" id="leftCol">
+							<div class="panel panel-info">
+								<div class="panel-heading">
+									<h3 class="panel-title">Informations agent</h3>
+
+								</div>
+								<div class="panel-body" style="color: #000033">
+									<div class="alert alert-success" role="alert"
+										id="profilMessageSuccess" style="display: none">
+										<div class="alert alert-danger" role="alert"
+											style="display: none" id="profilMessageFailed"></div>
+									</div>
+
+									<div
+										class="controle-panel-heading panel-heading panel-heading-landing-box">
+
+									</div>
+									<div class="panel-body panel-body-landing">
+										<table class="table">
+											<tr>
+												<td><b>Nom:</b></td>
+												<td id="nom_agent"></td>
+											</tr>
+											<tr>
+												<td><b>Prenom:</b></td>
+												<td id="prenom_agent"></td>
+											</tr>
+											<tr>
+												<td><b>Sexe:</b></td>
+												<td id="sexe_agent"></td>
+											</tr>
+											<tr>
+												<td><b>Email:</b></td>
+												<td id="email_agent"></td>
+											</tr>
+											<tr>
+												<td><b>Date de naissance:</b></td>
+												<td id="dateNaissance_agent"></td>
+											</tr>
+											<tr>
+												<td><b>CNI:</b></td>
+												<td id="cni_agent"></td>
+											</tr>
+											<tr>
+												<td><b>Telephone 1:</b></td>
+												<td id="tel1_agent"></td>
+											</tr>
+											<tr>
+												<td><b>Telephone 2:</b></td>
+												<td id="tel2_agent"></td>
+											</tr>
+											<tr>
+												<td><b>Profession:</b></td>
+												<td id="profession_agent"></td>
+											</tr>
+										</table>
+									</div>
+									
+									</div>
+									<div class="panel-footer text-center">
+									<button type="button" id="fermerModalShowAgent" data-dismiss="modal"
+											class="btn btn-info">Fermer</button>
+											</div>
+								</div>
+							</div>
+						</div>
+					
+			</div>
+
+		</div>
+
+
+
+
+	<!-- send sms -->
+	<div class="modal fade modal-admin" id="send" tabindex="-1"
+		role="dialog" aria-labelledby="viewProfilModal" aria-hidden="true">
+		<div class="col-md-2 col-lg-offset-5">
+			<div class="panel panel-primary">
+				<div class="panel-heading">
+					<span class="glyphicon glyphicon-comment"></span> Messages envoyés
+					aux agents
+					<div class="btn-group pull-right">
+						<button type="button" data-dismiss="modal"
+							class="btn btn-default btn-xs">
+							<span class="glyphicon glyphicon-remove"> </span>
+						</button>
+					</div>
+				</div>
+				<div class="panel-body" id="p_body">
+					<ul class="chat">
+						@for( team4 <- messagesSend) { @if(team4.getMessageOut() != null){
+						<li class=" clearfix"><span class="chat-img pull-right">
+						</span>
+							<div class="chat-body clearfix">
+								<div class="header">
+									<small class="pull-left text-muted"> <span
+										class="glyphicon glyphicon-time"></span>@team4.getDateUpdated().format("dd/MM/yyyy")
+									</small> <a data-idsms="@team4.getIdInscription()" id="delsms" class="btn btn-xs btn-danger pull-right"> <span
+										class="glyphicon glyphicon-trash"></span>
+									</a>
+
+								</div>
+								<br>
+								<p class="text-left">@team4.getMessageOut()</p>
+
+
+							</div></li>} }
+					</ul>
+				</div>
+				<div class="panel-footer" id="p-footer">
+					<form action="@routes.EquipeCtrl.pushSmsToAgent(idEquipe)"
+						method="post" id="notificationSms">
+
+						<div class="">
+							<input type="text" id="message" name="message" requiered=""
+								class="form-control" placeholder="Tapez votre message ici..." />
+							<span class="help-block"><p id="characterLeft"
+									class="help-block ">Vous avez atteint la taille maximale du
+									message.</p></span>
+						</div>
+						<br>
+						<div>
+
+							<button type="submit" name="btnSubmit" id="btnSendSmsAgent" data-idEquipeSms="@idEquipe" 
+							class="btn btn-info disabled">Envoyer</button>
+							<button type="reset" class="btn btn-warning">Annuler</button>
+							<button type="button" id="fermerModal" data-dismiss="modal"
+								class="btn btn-warning">Fermer</button>
+
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	
+	
+	<!-- delete confirmation agent -->
+
+<div class="modal fade" id="confirmDelAgent" role="dialog" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title">Confirmation suppression</h4>
+      </div>
+      <div class="modal-body">
+        <p>Voulez-vous vraiment supprimer ?</p>
+      </div>
+      <div class="modal-footer">
+      	<form method="post" action="@routes.EquipeCtrl.delMembreEquipe()" id="formDelAgent">
+      		<input type="hidden" name="idAgentDel" id="idAgentDel">
+        	<button type="button" class="btn btn-default" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> Non</button>
+        	<button type="submit" id="yesDelAgent" class="btn btn-danger"><span class="glyphicon glyphicon-ok"></span> Oui</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+	
+	
+	<!-- delete confirmation sms -->
+
+<div class="modal fade" id="confirmDelsms" role="dialog" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title">Confirmation suppression</h4>
+      </div>
+      <div class="modal-body">
+        <p>Voulez-vous vraiment supprimer ?</p>
+      </div>
+      <div class="modal-footer">
+      	<form method="post" action="@routes.EquipeCtrl.delSmsEquipe()" id="formDelsms">
+      		<input type="hidden" name="idsms" id="idsms">
+        	<button type="button" class="btn btn-default" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> Non</button>
+        	<button type="submit" id="yesDelsms" class="btn btn-danger"><span class="glyphicon glyphicon-ok"></span> Oui</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+	

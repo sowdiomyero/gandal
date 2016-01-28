@@ -1,0 +1,13 @@
+
+var models=require("../models/users");
+var Compte=models.compte;
+var User = models.user;
+var Role = models.role;
+
+/* Creation de l'utilisateur
+ */
+exports.creation = function(req, res) {
+	  var user = req.body;
+	  require("../services/userService").creationUser(user, User, Role, Compte,res);
+};
+

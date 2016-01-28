@@ -1,0 +1,41 @@
+'use strict';
+
+/**
+* Module dependencies.
+*/
+ var passport = require('passport');
+ 
+
+module.exports = function(app) {
+	
+	var user = require('../controllers/userCtrl');
+
+	// User Routes
+	app.get('/',function(req,res){
+		res.end("Profile");
+	});
+	app.get('/auth',function(req,res){
+		res.json("ok");
+	});
+
+        app.get('/success',function(req,res){
+                
+		res.json("{code : 'SUCCESS'}");
+	});
+	app.post('/api/user', user.creation);
+	/*app.post('/api/auth', passport.authenticate('local', { successRedirect: '/auth',
+                                   failureRedirect: '/auth',
+                                   failureFlash: true })
+            );*/
+
+app.post('/api/auth', function(req, res, next) {
+  passport.authenticate('local', function(err, user, inf) {
+    if (err) { return next(err); }
+    if (!user) { return res.json(inf); }
+    req.logIn(user, function(err) {
+      if (err) { return next(err); }
+      return res.json(user);
+    });
+  })(req, res, next);
+});
+};

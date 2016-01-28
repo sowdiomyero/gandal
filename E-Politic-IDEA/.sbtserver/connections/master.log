@@ -1,0 +1,13 @@
+New log file opened at Fri Jul 24 22:25:58 GMT 2015 by 1360@GISNITLPTDYS
+Taking next connection to: 58078
+New client attempting to connect on port: 58079-58078
+  Address = /192.168.1.16:58078
+This client on port 58079 has uuid 032c3eb1-75e1-49f8-9eb8-94d4a8427374 configName activator humanReadableName Activator protocolVersion 3 featureTags Vector()
+Connected Clients: activator-032c3eb1-75e1-49f8-9eb8-94d4a8427374
+Taking next connection to: 58078
+Checking to see if clients are empty...
+No non-daemon clients connected after 3 min. Shutting down.
+Server socket thread exiting.
+0 clients open, will close them...
+All client sockets have been closed.
+Closing the 1360@GISNITLPTDYS logs at Fri Jul 24 22:28:59 GMT 2015, goodbye.

@@ -1,0 +1,663 @@
+@(compte: Compte)(lesMembre: java.util.List[Membre])(localites: java.util.List[Localite])(profils: java.util.List[Profil])(membre1: Membre)
+
+
+@main2(compte){
+ <br>
+  @statisticsMembres(membre1)
+  
+    <div class="col-lg-12">
+   
+        <div class="others" align="center">
+      
+            <div class="row" style="padding: 4px; margin: 4px; float: left">
+                <button class="btn btn-success btn-xs" data-toggle="modal" data-target="#CreateMembre"><span class="glyphicon glyphicon-plus-sign"></span> Ajouter Membre</button>
+            </div>
+
+            <table id="members_table"class='display' cellspacing="0" width="100%">
+                <thead>
+                    <tr>
+                        <th>Nom</th>
+                        <th>Pr�nom</th>
+                        <th>Telephone</th>
+                        <th>Email</th>
+                        <th>Categorie</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                @for( membre <- lesMembre) {
+                    <tr>
+                        <td>@membre.getNom()</td>
+                        <td>@membre.getPrenom()</td>
+                        <td>@membre.getTelephone()</td>
+                        <td>@membre.getEmail()</td>
+                        <td>@membre.getCategorie()</td>
+                        <td>
+                            <a href="#" id="showMembre" class="btn btn-info btn-xs" alt="Visualiser la fiche du membre"
+                            data-nomU="@membre.getNom()" data-prenomU="@membre.getPrenom()" 
+                            data-sexeU="@membre.getSexe()" data-emailU="@membre.getEmail()" 
+							data-categorieU="@membre.getCategorie()" data-telephoneU="@membre.getTelephone()" 
+							data-telephoneU1="@membre.getTelephone1()" data-professionU="@membre.getProfession()" 
+							data-localiteU="">
+                            <span class="glyphicon glyphicon-eye-open"></span></a>
+                            
+                            <a href="" id="updateMembre"class="btn btn-info btn-xs" alt="Modifier les informations sur le membre"  
+                            data-nom="@membre.getNom()" data-prenom="@membre.getPrenom()" 
+                            data-sexe="@membre.getSexe()" data-email="@membre.getEmail()" 
+							data-categorie="@membre.getCategorie()" data-telephone="@membre.getTelephone()" 
+							data-telephone1="@membre.getTelephone1()" data-profession="@membre.getProfession()" data-user="@membre.getId()"
+							> 
+                            <span class="glyphicon glyphicon-pencil"></span>
+                            </a>
+                            
+                            <a href="#"  onclick="blockerMembre(@membre.getId())" class="btn btn-warning btn-xs" alt="Bloquer le membre"><span class="glyphicon glyphicon-remove"></span></a>
+                        </td>
+                    </tr>
+                }
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+<!--   <div class="col-lg-4" id="left" style="background-color: #faebcc"> -->
+<!-- 		<br> -->
+<!--         <h4>Localisation Géographique des militants</h4> -->
+<!--         <div class="panel panel-default"> -->
+<!--             <div class="panel-heading"><a href="" data-toggle="modal" data-target="#CreateUser">Créer Un Nouveau Militant</a></div> -->
+<!--         </div> -->
+<!--         <div class="row"> -->
+
+<!--             <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8"> -->
+
+<!--                 <form id="searchForm" class="form-horizontal" method="POST" action="@routes.Localisation.search()"> -->
+<!--                     <fieldset> -->
+
+<!--                             Form Name -->
+<!--                         <legend>Formulaire de recherche</legend> -->
+<!--                             Select Basic -->
+<!--                         <label for="typeCible">Type Localité :  </label> -->
+<!--                         <select id="selectbasic" name="typeCible" class="form-control"> -->
+<!--                             <option value="ALL:0"></option> -->
+<!--                             <option value="REGION:1">Region</option> -->
+<!--                             <option value="DEPARTEMENT:2">Département</option> -->
+<!--                             <option value="COMMUNE:3">Commune</option> -->
+<!--                             <option value="QUARTIER:4">Quartier</option> -->
+
+<!--                         </select> -->
+
+
+<!--                         <label for="nomLocaliteGoogle">Population Comprise entre :  </label> -->
+<!--                         <input class="form-control" type="number" name="between"  required="required"  placeholder="Début de la fourchette" value="1" > -->
+
+<!--                         <label for="nomLocaliteCorrige">Et : </label> -->
+<!--                         <input class="form-control" type="number" id="and" required="required"  name="and" placeholder="" value="10" /> -->
+
+<!--                         <label for="nbHabitants">Et Nombre de Militants > : </label> -->
+<!--                         <input class="form-control" type="number" name="nbMilitants" required="required" placeholder="Nombre d'habitants" value="0"/> -->
+<!--                             Textarea -->
+
+<!--                         <label class="control-label" for="textarea">Message</label> -->
+
+<!--                         <textarea class="form-control" id="textarea" name="message" placeholder="Composer ici votre message"></textarea> -->
+<!--                             Button (Double) -->
+
+<!--                         <div class="row"> -->
+<!--                             <div class="col-md-10"> -->
+<!--                             </div> -->
+<!--                             <div class="col-md-10"> -->
+<!--                                 <button id="btnSearch" type="submit" name="rechercher" class="btn btn-success">Search</button> -->
+<!--                                 <button id="btnSendSms" type="button" name="envoyerSms" class="btn btn-default">Sms</button> -->
+<!--                                 <button id="btnSendSms" type="button" name="envoyerSms" class="btn btn-default">Email</button> -->
+<!--                                 @*<button id="button2id" name="button2id" class="btn btn-danger">Cancel</button>*@ -->
+<!--                             </div> -->
+<!--                         </div> -->
+
+<!--                     </fieldset> -->
+<!--                 </form> -->
+<!--             </div> -->
+<!--         </div> -->
+<!--         <hr> -->
+<!--         <p> -->
+<!--             <a href="#" id="membresActifs">Visualise les membres les + actifs</a> | <a href="#">Visualiser les Responsables</a> -->
+<!--         </p> -->
+<!--         @*<hr> -->
+<!--         <p> -->
+<!--         <a href="http://bootply.com" target="_ext" class="center-block btn btn-primary">Acceder à la carte en plein ecran</a> -->
+<!--         </p>*@ -->
+<!--         <hr> -->
+<!--     </div> -->
+    
+    <div class="modal fade" id="addLocalization" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <form id="addLocaliteForm" class="form-horizontal" method="POST"
+            action="@routes.Localisation.addQuartier()">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">
+                            <span aria-hidden="true">×</span><span class="sr-only">Close</span>
+                        </button>
+                        <h4 class="modal-title" id="myModalLabel">Ajouter Une
+                            Localité</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row">
+
+                            <div class="col-md-12" id="leftCol2">
+                                <div class="panel panel-info">
+                                    <div class="panel-heading">
+                                        <h3 class="panel-title">Information Sur La Localité</h3>
+                                    </div>
+                                    <div class="panel-body" style="color: #000033">
+                                        <div class="alert alert-success" role="alert"
+                                        id="localiteMessageSuccess" style="display: none">
+                                            <div class="alert alert-danger" role="alert"
+                                            style="display: none"></div>
+                                        </div>
+
+                                        <label for="nomLocaliteGoogle">Nom Localité (Google):
+                                        </label> <input class="form-control" name="nomLocaliteGoogle"
+                                    id="nomLocaliteGoogle" readonly required="required"
+                                    placeholder="Nom Fourni par Google" /> <label
+                                    for="nomLocaliteCorrige">Nom Localité (Correction): </label>
+                                        <input class="form-control" id="nomLocaliteCorrige"
+                                        required="required" name="nomLocaliteCorrige" placeholder="" />
+
+                                        <label for="nbHabitants">Nb Habitants: </label> <input
+                                    class="form-control" name="nbHabitants" required="required"
+                                    placeholder="Nombre d'habitants" value="1" /> <label for="nbSections">Nb
+                                        Sections : </label> <input class="form-control" type="text"
+                                    name="sections" required="required"
+                                    placeholder="Nombre de Sections" /> <label for="gps">Coordonnées
+                                        : </label> <input class="form-control" id="gps" readonly name="gps"
+                                    required="required"
+                                    placeholder="Les Coordonnées Géographiques" type="text" />
+                                    </div>
+
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Annuler</button>
+                        <button type="button" id="saveLocalite" class="btn btn-primary">Enregistrer</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- -->
+
+    <div class="modal fade modal-admin" id="CreateMembre" tabindex="-1"
+    role="dialog" aria-labelledby="viewProfilModal" aria-hidden="true">
+        <div class="col-md-4  col-lg-offset-4">
+
+            
+                
+                    <div class="modal-body">
+                        <div class="row">
+
+                            <div class="col-md-12" id="leftCol">
+                                <div class="panel panel-info">
+                                    <div class="panel-heading">
+                                        <h3 class="panel-title text-center">Ajouter Membre</h3>
+                                        <c:if test="${not empty message}">
+                                            <div class="message green"></div>
+                                        </c:if>
+                                    </div>
+                                    <form action="@routes.MembreCtrl.addMembre()" method="post" id="addMembreForm">
+                                    
+                                    <div class="panel-body" style="color: #000033">
+                                    	<fieldset>
+										<legend class="text-center">Informations membre</legend>
+                                        <div class="alert alert-success" role="alert"
+                                        id="profilMessageSuccess" style="display: none">
+                                            <div class="alert alert-danger" role="alert"
+                                            style="display: none" id="profilMessageFailed"></div>
+                                        </div>
+
+                                        
+<div class="row">
+									<div class="col-md-5">
+                                        <label for="editProfilNomInput">Nom: </label>
+                                        
+                                        </div>
+									<div class="col-md-6"> <input
+                                    class="form-control" required="required" name="nom"
+                                    placeholder="Votre Nom" id="editProfilNomInput" />
+                                    		
+									</div>
+								</div>
+								<br>
+                                    
+                                    <div class="row">
+									<div class="col-md-5">
+									 <label
+                                    for="editProfilPrenomInput">Prenom: </label> 
+                                    
+                                    </div>
+									<div class="col-md-6"><input
+                                    class="form-control" name="prenom" required="required"
+                                    placeholder="Votre Prénom" id="editProfilPrenomInput" />
+                                    		
+									</div>
+								</div>
+								<br>
+                                    
+                                    <div class="row">
+									<div class="col-md-5">
+                                        <label for="localiteMembre">Sexe: </label>
+                                        
+                                        </div>
+									<div class="col-md-6">
+                                        <select class="form-control selectize" id="moteur" name="sexe">
+
+                                            <option value="Homme">Homme</option>
+                                            <option value="Femme">Femme</option>
+                                        </select>
+                                        		
+									</div>
+								</div>
+								<br>
+<div class="row">
+									<div class="col-md-5">
+                                        <label
+                                    for="editProfilEmailInput">Email: </label> 
+                                    
+                                    </div>
+									<div class="col-md-6"><input
+                                    class="form-control" type="email" name="email"
+                                    required="required" placeholder="Votre Email"
+                                    id="editProfilEmailInput" />
+                                    		
+									</div>
+								</div>
+								<br>
+                                    
+                                    <div class="row">
+									<div class="col-md-5">
+                                        <label for="localiteMembre">Categorie: </label>
+                                        
+                                        </div>
+									<div class="col-md-6">
+                                        <select class="form-control selectize" id="moteur" name="categorie">
+
+                                            <option value="ELU">Elu</option>
+                                            <option value="NOMME">Nommé</option>
+                                            <option value="COOPTE">Coopté</option>
+                                            <option value="INCONNU">Inconnu</option>
+                                        </select>
+                                        		
+									</div>
+								</div>
+								<br>
+                                        
+                                        <div class="row">
+									<div class="col-md-5">
+                                        <label for="editProfilTel1Input">Telephone1:
+                                        </label> 
+                                        </div>
+									<div class="col-md-6">
+                                        <input class="form-control" name="telephone"
+                                    required="required" placeholder="Votre Numero telephone"
+                                    id="editProfilTel1Input" type="tel"
+                                    pattern="^((\+\d{1,3}(-| )?\(?\d\)?(-| )?\d{1,5})|(\(?\d{2,6}\)?))(-| )?(\d{3,4})(-| )?(\d{4})(( x| ext)\d{1,5}){0,1}$" />
+                                    
+                                    </div>
+								</div>
+								<br>
+
+<div class="row">
+									<div class="col-md-5">
+                                        <label for="editProfilTel2Input">Telephone2: </label>
+                                        
+                                        </div>
+									<div class="col-md-6"> <input
+                                    class="form-control" name="telephone2"
+                                    placeholder="Votre second numero" id="editProfilTel2Input" />
+                                    
+                                    </div>
+								</div>
+								<br>
+
+<div class="row">
+									<div class="col-md-5">
+                                        <label for="editProfilPasswordInput">Profession : </label>
+                                        
+                                        </div>
+									<div class="col-md-6">
+                                        <input class="form-control" name="profession" type="fonction" required="required" placeholder="Votre Profession" id="fonction" />
+                                        </div>
+								</div>
+								<br>
+
+
+<div class="row">
+									<div class="col-md-5">
+                                        <label for="localiteMembre">Localite: </label>
+                                        
+                                        </div>
+									<div class="col-md-6">
+                                        <select class="form-control selectize" id="moteur" name="localite">
+                                        <option value="INCONNU:0"></option>
+                                        @for( zone <- localites) {
+                                            <option value="@zone.getNom():@zone.getId()">@zone.getNom()</option>
+                                        }
+                                        </select>
+                                        </div>
+								</div>
+								<br>
+
+								<div class="row">
+									<div class="col-md-5">
+									<div class="col-md-10">
+                                        <label for="acces">Creer Un Compte d'Accès: </label>
+                                        </div>
+										<div class="col-md-2">
+                                        <input type="checkbox" name="accces" checked>
+                                        </div>
+                                        </div>
+									<div class="col-md-6">
+
+                                        <select class="form-control selectize" id="profil" name="profil">
+                                            <option value="RESPONSABLE:0"></option>
+                                            @for( prof <- profils) {
+                                                <option value="@prof.getNom():@prof.getId()">@prof.getNom()</option>
+                                            }
+                                        </select>
+                                        </div>
+								</div>
+								</fieldset>
+								<br>
+                                    </div>
+                                      <div class="panel-footer text-center">
+
+                        <button type="submit" id="bntAddMembres" onClick="" class="btn btn-info" value="submit">Enregisrer</button>
+                        <button type="reset" class=" annulerModifProfil btn btn-warning">Annuler Modifications</button>
+                        <button type="button" id="fermerModal" data-dismiss="modal"
+                        class="btn btn-warning">Fermer</button>
+                    </div>
+                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                  
+                
+            </div>     
+    </div>
+    
+        <!--//////////////////////////////////////////////////////////////////////////////////////////////////////////////////::: -->
+
+<div class="modal fade modal-admin" id="ModifierMembre" tabindex="-1"
+	role="dialog" aria-labelledby="viewMembreModal" aria-hidden="true">
+	<div class="col-md-4  col-lg-offset-4" id="leftCol">
+		
+			<form action="@routes.MembreCtrl.updateMembre()" method="post"
+				id="UpdateMembreFormulaire">
+				
+				<div class="modal-body">
+					<div class="row">
+
+					<div class="col-md-12" id="leftCol">
+						<div class="panel panel-info">
+							<div class="panel-heading">
+								<h3 class="panel-title text-center">Informations Membre</h3>
+								<c:if test="${not empty message}">
+									<div class="message green"></div>
+								</c:if>
+							</div>
+							<div class="panel-body" style="color: #000033">
+								<div class="alert alert-success" role="alert"
+									id="membreMessageSuccess" style="display: none">
+									<div class="alert alert-danger" role="alert"
+										style="display: none" id="membreMessageFailed"></div>
+								</div>
+								<div class="row">
+									<div class="col-md-4">
+										<label for="editProfilNomInput">Nom: </label>
+									</div>
+									<div class="col-md-6">
+										<input class="form-control" required="required" name="nom"
+											placeholder="Votre Nom" id="editMembreNomInput"
+											readonly="true" />
+									</div>
+								</div>
+								<br>
+
+								<div class="row">
+									<div class="col-md-4">
+										<label for="editProfilPrenomInput">Prenom: </label>
+									</div>
+									<div class="col-md-6">
+										<input class="form-control" name="prenom" required="required"
+											placeholder="Votre Prénom" id="editMembrePrenomInput"
+											readonly="true" />
+									</div>
+								</div>
+								<br>
+
+								<div class="row">
+									<div class="col-md-4">
+										<label for="localiteMembre">Sexe: </label>
+									</div>
+									<div class="col-md-6">
+										<select class=" editMembreInput form-control selectize"
+											id="moteur" name="sexe">
+
+											<option value="Homme">Homme</option>
+											<option value="Femme">Femme</option>
+										</select>
+									</div>
+								</div>
+								<br>
+
+								<div class="row">
+									<div class="col-md-4">
+										<label for="editProfilEmailInput">Email: </label>
+									</div>
+									<div class="col-md-6">
+										<input class="form-control" type="email" name="email"
+											required="required" placeholder="Votre Email"
+											id="editMembreEmailInput" readonly="true" />
+
+									</div>
+								</div>
+								<br>
+
+								<div class="row">
+									<div class="col-md-4">
+										<label for="localiteMembre">Categorie: </label>
+									</div>
+									<div class="col-md-6">
+										<select class="form-control selectize"
+											id="editMembreCategorieInput" name="categorie">
+
+											<option value="ELU">Elu</option>
+											<option value="NOMME">Nommé</option>
+											<option value="COOPTE">Coopté</option>
+											<option value="INCONNU">Inconnu</option>
+										</select>
+									</div>
+								</div>
+								<br>
+
+								<div class="row">
+									<div class="col-md-4">
+										<label for="editProfilTel1Input">Telephone1: </label>
+									</div>
+									<div class="col-md-6">
+										<input class="form-control" name="telephone"
+											required="required" placeholder="Votre Numero telephone"
+											id="editMembreTel1Input" type="tel"
+											pattern="^((\+\d{1,3}(-| )?\(?\d\)?(-| )?\d{1,5})|(\(?\d{2,6}\)?))(-| )?(\d{3,4})(-| )?(\d{4})(( x| ext)\d{1,5}){0,1}$" />
+
+									</div>
+								</div>
+								<br>
+
+
+								<div class="row">
+									<div class="col-md-4">
+										<label for="editProfilTel2Input">Telephone2: </label>
+									</div>
+									<div class="col-md-6">
+										<input class="form-control" name="telephone2"
+											placeholder="Votre second numero" id="editMembreTel2Input" />
+
+									</div>
+								</div>
+								<br>
+
+								<div class="row">
+									<div class="col-md-4">
+										<label for="editProfilPasswordInput">Profession : </label>
+									</div>
+									<div class="col-md-6">
+										<input class="form-control" name="profession" type="fonction"
+											required="required" placeholder="Votre Profession"
+											id="editMembreFonctionInput" />
+									</div>
+								</div>
+								<br>
+
+								<div class="row">
+									<div class="col-md-4">
+										<label for="localiteMembre">Localite: </label>
+									</div>
+									<div class="col-md-6">
+										<select class="form-control selectize"
+											id="editMembreLocaliteInput" name="localite">
+											<!--                                         <option value="INCONNU:0"></option> -->
+											@for( zone <- localites) {
+											<option value="@zone.getNom():@zone.getId()">@zone.getNom()</option>
+											}
+										</select>
+									</div>
+								</div>
+								<br>
+
+								<div class="row">
+									<div class="col-md-4">
+										<label for="acces">Profil: </label>
+									</div>
+									<div class="col-md-6">
+
+										<select class="form-control selectize"
+											id="editMembreProfilInput" name="profil">
+											<option value="RESPONSABLE:0"></option> @for( profil <-
+											profils) {
+
+											<option value="@profil.getNom():@profil.getId()">@profil.getNom()</option>
+											}
+										</select>
+									</div>
+								</div>
+								<br> <input type="hidden" name="idMembre" id="idMembre"></input>
+
+								
+							</div>
+							<div class="panel-footer text-center">
+								<button type="submit" id="bntModifierMembre" class="btn btn-info"
+									value="submit">Enregisrer</button>
+								<button type="reset" class=" annulerModifMembre btn btn-warning">Annuler
+									Modifications</button>
+								<button type="button" id="fermerModalMembre"
+									data-dismiss="modal" class="btn btn-warning">Fermer</button>
+									</div>
+						</div>
+					</div>
+				</div>
+					
+
+				</div>
+				
+			</form>
+		</div>
+
+	
+
+</div>
+
+
+<!--//////////////////////////////////////////////////////////////////////////////////////////////////////////////////::: -->
+    <div class="modal fade modal-admin" id="ShowInfosMembre" tabindex="-1"
+		role="dialog" aria-labelledby="viewMembreModal" aria-hidden="true">
+		
+
+				<div class="modal-body">
+					<div class="row">
+
+						<div class="col-md-3 col-md-offset-4"  id="leftCol">
+							<div class="panel panel-info">
+								<div class="panel-heading">
+									<h3 class="panel-title text-center">Informations Membre</h3>
+
+								</div>
+								<div class="panel-body" style="color: #000033">
+									<div class="alert alert-success" role="alert"
+										id="profilMessageSuccess" style="display: none">
+										<div class="alert alert-danger" role="alert"
+											style="display: none" id="profilMessageFailed"></div>
+									</div>
+
+									
+									<div class="panel-body panel-body-landing">
+										<table class="table">
+											<tr>
+												<td><b>Nom:</b></td>
+												<td id="nom"></td>
+											</tr>
+											<tr>
+												<td><b>Prenom:</b></td>
+												<td id="prenom"></td>
+											</tr>
+											<tr>
+												<td><b>Sexe:</b></td>
+												<td id="sexe"></td>
+											</tr>
+											<tr>
+												<td><b>Email:</b></td>
+												<td id="email"></td>
+											</tr>
+											<tr>
+												<td><b>Categorie</b></td>
+												<td id="categorie"></td>
+											</tr>
+											
+											<tr>
+												<td><b>Telephone 1:</b></td>
+												<td id="tel1"></td>
+											</tr>
+											<tr>
+												<td><b>Telephone 2:</b></td>
+												<td id="tel2"></td>
+											</tr>
+											<tr>
+												<td><b>Profession:</b></td>
+												<td id="profession"></td>
+											</tr>
+											<tr>
+												<td><b>Localite:</b></td>
+												<td id="localite"></td>
+											</tr>
+											
+										</table>
+									</div>
+									<div class="panel-footer text-center">
+									<button type="button" id="fermerModalShowMembre" data-dismiss="modal"
+											class="btn btn-info" >Fermer</button></div>
+									
+								</div>
+							</div>
+						</div>
+					</div>
+
+				</div>
+			
+	</div>
+
+}
+

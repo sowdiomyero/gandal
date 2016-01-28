@@ -1,0 +1,20 @@
+ @(compte: Compte ,localite: Localite )
+
+
+@main2(compte) {
+<div class="row" style="padding-top: 5px; margin-top: 5px">
+              @*  @if(compte.getMembre().getIdLocalite != null){
+                    @defining(Inscription.getInscriptionsSemaine(compte.getMembre().getIdLocalite)) { inscriptions =>
+                        @statisticsMembre(compte);
+                    }
+                }*@
+            </div>          
+            <div class="row">
+             <div class="col-sm-12">
+    <br><br>
+        @ficheLocalite(compte, localite)
+   
+ </div>
+            
+            </div>
+}

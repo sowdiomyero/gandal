@@ -1,0 +1,13 @@
+@(compte: Compte)(messagesValides: java.util.List[Inscription],
+messagesNotValides: java.util.List[Inscription], messagesErrones:
+java.util.List[Inscription], messagesdupliques:
+java.util.List[Inscription], messagesSend: java.util.List[Inscription])
+
+
+
+@mlayout(compte) {
+
+<div class="col-sm-12">@tableauMessage(messagesValides,
+	messagesNotValides, messagesErrones, messagesdupliques, messagesSend, compte)</div>
+
+}

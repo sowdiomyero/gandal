@@ -1,0 +1,34 @@
+{
+  "name": "foncier",
+  "description": "",
+  "main": "app.js",
+  "version": "0.1.0",
+  "author": "Groupe Idyal",
+  "scripts": {
+    "start": "node node_modules/grunt-cli/bin/grunt",
+    "test": "node node_modules/grunt-cli/bin/grunt test",
+    "postinstall": "bower install"
+  },
+  "dependencies": {
+    "body-parser": "^1.14.1",
+    "connect-flash": "^0.1.1",
+    "cookie-parser": "^1.4.0",
+    "express": "latest",
+    "express-session": "^1.11.3",
+    "i18n-2": "^0.4.6",
+    "latest": "^0.2.0",
+    "method-override": "^2.3.5",
+    "mysql": "^2.9.0",
+    "node-bcrypt": "0.0.1",
+    "passport": "^0.3.0",
+    "passport-local": "^1.0.0",
+    "sequelize": "^1.7.11"
+  },
+  "devDependencies": {
+    "chai": "^3.2.0",
+    "karma": "^0.13.10",
+    "karma-mocha": "^0.2.0",
+    "mocha": "^2.2.5",
+    "sinon": "latest"
+  }
+}

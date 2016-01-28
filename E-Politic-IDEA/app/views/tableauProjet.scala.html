@@ -1,0 +1,493 @@
+@(projets: java.util.List[Projet], allProjets: java.util.List[Projet],
+compte: Compte )
+
+
+<div class="others" align="center">
+
+	<div class="panel panel-info" style="margin-top: 5px">
+		<div class="panel-heading">
+			<h4>Liste des Projets de la localite</h4>
+		</div>
+	</div>
+	<div class="row" style="padding: 4px; margin: 4px; float: left">
+
+		<button class="btn btn-success btn-xs" data-toggle="modal"
+			data-target="#CreateProject">
+			<span class="glyphicon glyphicon-plus-sign"></span> Creer un nouveau
+			projet
+		</button>
+
+
+
+		<button class="btn btn-success btn-xs" data-toggle="modal"
+			data-target="#AffecterProject">
+			<span class="glyphicon glyphicon-plus-sign"></span> Ajouter un projet
+			existant
+		</button>
+
+	</div>
+
+	<div class="table-responsive">
+		<table id="projets_table" class="display responsive no-wrap "
+			cellspacing="0" width="100%">
+			<thead>
+				<tr>
+					<th>Nom projet</th>
+					<th>Desciption</th>
+					<th>Date debut</th>
+					<th>Date fin</th>
+					<th>Contact</th>
+					<th>Autorite</th>
+					<th>Actions</th>
+
+				</tr>
+			</thead>
+
+			<tbody>
+				@for( team <- projets) {
+				<tr>
+					<td>@team.getNomProjet()</td>
+					<td>@team.getDescProjet()</td>
+					<td>@team.getDateDebut().format("dd/MM/yyyy")</td>
+					<td>@team.getDateFin().format("dd/MM/yyyy")</td>
+					<td>@team.getContatact()</td>
+					<td>@team.getAutorite()</td>
+					<td>
+						<!-- View --> <a href="#" id="Viewproject"
+						class="btn btn-info btn-xs" data-nom_projet="@team.getNomProjet()"
+						data-description_projet="@team.getDescProjet()"
+						data-dateD_projet="@team.getDateDebut().format("dd/MM/yyyy")"
+						data-dateF_projet="@team.getDateFin().format("dd/MM/yyyy")"
+					data-contact_projet="@team.getContatact()"
+						data-autorite_projet="@team.getAutorite()" data-cout_previsionnel_projet = "@team.getCoutPrevisionel()" data-emploi_previsionnel_projet = "@team.getEmploiPrevisionel()"
+						data-etat_projet = "@team.getEtat()"
+						alt="Visualiser la fiche d'une activité"><span
+							class="glyphicon glyphicon-eye-open"></span></a>
+							
+							<!-- Fiche projet -->
+							<a href="@routes.ProjetCtrl.infoProjet(team.getId())" class="btn btn-info btn-xs" alt="Visualiser la fiche du projet"><span class="glyphicon glyphicon-folder-open"></span></a>
+							
+							
+							 <!-- Update --> <a
+						id="updatePro" href="#" class="btn btn-info btn-xs"
+						data-nomUpPro="@team.getNomProjet()"
+						data-descriptionUpPro="@team.getDescProjet()"
+						data-dateDUpPro="@team.getDateDebut().format("yyyy-MM-dd")"
+						data-dateFUpPro="@team.getDateFin().format("yyyy-MM-dd")"
+					data-contactUpPro="@team.getContatact()"
+						data-autoriteUpPro="@team.getAutorite()"
+						data-idPro="@team.getId()" data-idLoc="@compte.getIdLocalite()"
+						data-cout_previsionnel_projetUp = "@team.getCoutPrevisionel()" data-emploi_previsionnel_projetUp = "@team.getEmploiPrevisionel()"
+						data-etat_projetUp = "@team.getEtat()"
+						alt="Modifier les informations sur le projet"><span
+							class="glyphicon glyphicon-pencil"></span></a> 
+					<!-- Delete --> 
+					<a data-idPro="@team.getId()" data-idLoc="@compte.getIdLocalite()" id="deleteProject"
+						class="btn btn-warning btn-xs" alt="Supprimer le projet"><span
+							class="glyphicon glyphicon-trash"></span></a>
+							
+					</td>
+				</tr>
+				}
+			</tbody>
+		</table>
+	</div>
+
+
+	<!--Show project-->
+	<div class="modal fade modal-admin" id="projectShow" tabindex="-1"
+		role="dialog" aria-labelledby="viewProfilModal" aria-hidden="true">
+
+		<div class="modal-body">
+			<div class="row">
+
+				<div class="col-md-3 col-md-offset-4" id="leftCol">
+					<div class="panel panel-info">
+						<div class="panel-heading">
+							<h3 class="panel-title">Informations projet</h3>
+
+						</div>
+						<div class="panel-body" style="color: #000033">
+							<div class="alert alert-success" role="alert"
+								id="profilMessageSuccess" style="display: none">
+								<div class="alert alert-danger" role="alert"
+									style="display: none" id="profilMessageFailed"></div>
+							</div>
+
+							<div
+								class="controle-panel-heading panel-heading panel-heading-landing-box">
+
+							</div>
+							<div class="panel-body panel-body-landing">
+								<table class="table">
+									<tr>
+										<td><b>Nom projet:</b></td>
+										<td id="nom_projet"></td>
+									</tr>
+									<tr>
+										<td><b>Description projet:</b></td>
+										<td id="description_projet"></td>
+									</tr>
+									<tr>
+										<td><b>Date début du projet:</b></td>
+										<td id="dateD_projet"></td>
+									</tr>
+									<tr>
+										<td><b>Date fin du projet:</b></td>
+										<td id="dateF_projet"></td>
+									</tr>
+									<tr>
+										<td><b>Contact:</b></td>
+										<td id="contact_projet"></td>
+									</tr>
+									<tr>
+										<td><b>Autorite:</b></td>
+										<td id="autorite_projet"></td>
+									</tr>
+									<tr>
+										<td><b>Cout prévisionnel:</b></td>
+										<td id="cout_previsionnel_projet"></td>
+									</tr>
+									<tr>
+										<td><b>Emploi prévisionnel:</b></td>
+										<td id="emploi_previsionnel_projet"></td>
+									</tr>
+									
+									<tr>
+										<td><b>Etat:</b></td>
+										<td id="etat_projet"></td>
+									</tr>
+
+								</table>
+							</div>
+							<div class="panel-footer panel-footer-landing">
+								<button type="button" id="fermerModal" data-dismiss="modal"
+									class="btn btn-info">Fermer</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!--add project -->
+	<div class="modal fade modal-admin" id="CreateProject" tabindex="-1"
+		role="dialog" aria-labelledby="viewProfilModal" aria-hidden="true">
+		<div class="col-md-4 col-lg-offset-4" id="leftCol">
+			<div class="panel panel-info">
+				<div class="panel-heading">
+					<h3 class="panel-title">Ajouter un projet</h3>
+
+				</div>
+				<div class="panel-body" style="color: #000033">
+
+					<form action="@routes.ProjetCtrl.addProjet(compte.getIdLocalite())"
+						method="post" id="formCreateProjet">
+						<fieldset>
+							<legend>Informations projet</legend>
+							<!-- nom -->
+							<div class="row">
+								<div class="col-md-4 text-left">
+									<label for="editProfilNomInput">Nom projet: </label>
+								</div>
+								<div class="col-md-6">
+									<input type="text" class="form-control" required="required"
+										name="nomProUp" placeholder="Nom" />
+								</div>
+							</div>
+							<br>
+							<!-- description -->
+							<div class="row">
+								<div class="col-md-4 text-left">
+									<label for="editProfilNomInput">Description projet: </label>
+								</div>
+								<div class="col-md-6">
+									<input class="form-control" required="required"
+										name="descriptionProUp" placeholder="description du projet" />
+								</div>
+							</div>
+							<br>
+							<!-- Date debut  -->
+							<div class="row">
+								<div class="col-md-4 text-left">
+									<label for="editProfilNomInput">Date debut du projet: </label>
+								</div>
+								<div class="col-md-6">
+									<input type="date" class="form-control" required="required"
+										name="dateDProUp" placeholder="Date debut du projet" />
+
+								</div>
+
+							</div>
+							<br>
+							<!-- Date fin -->
+							<div class="row">
+								<div class="col-md-4 text-left">
+									<label for="editProfilNomInput">Date fin du projet: </label>
+								</div>
+								<div class="col-md-6">
+									<input type="date" class="form-control" required="required"
+										name="dateFProUp" placeholder="Date fin du projet" />
+								</div>
+
+							</div>
+							<br>
+							<!-- Contact du projet -->
+							<div class="row">
+								<div class="col-md-4 text-left">
+									<label for="editProfilNomInput">Contact du projet: </label>
+								</div>
+								<div class="col-md-6">
+									<input type="text" class="form-control" required="required"
+										name="contactProUp" placeholder="contact" />
+
+								</div>
+
+							</div>
+							<br>
+							<!-- Autorité du projet -->
+							<div class="row">
+								<div class="col-md-4 text-left">
+									<label for="editProfilNomInput">Autorité du projet: </label>
+								</div>
+								<div class="col-md-6">
+									<input type="text" class="form-control" required="required"
+										name="autoriteProUp" placeholder="autorité" />
+
+								</div>
+
+							</div>
+							<br>
+							<!-- Cout prévisionnel -->
+							<div class="row">
+								<div class="col-md-4 text-left">
+									<label for="editProfilNomInput">Cout prévisionnel du projet: </label>
+								</div>
+								<div class="col-md-6">
+									<input type="number" min="0" class="form-control" required="required"
+										name="coutPrevisionnelProUp" placeholder="Cout prévisionnel du projet" />
+								</div>
+							</div>
+							<br>
+							<!-- Nombre d'emploi prévisionnel -->
+							<div class="row">
+								<div class="col-md-4 text-left">
+									<label for="editProfilNomInput">Nombre d'emploi prévisionnel du projet </label>
+								</div>
+								<div class="col-md-6">
+									<input type="number" min="0" class="form-control" required="required"
+										name="emlpoiPrevisionnelProUp" placeholder="Nombre d'emploi prévisionnel" />
+								</div>
+							</div>
+							<br>
+							
+							
+
+						</fieldset>
+
+						
+				</div>
+				<div class="panel-footer panel-footer-landing">
+								<button type="submit" id="bntSubmitCreateProjet" onClick=""
+							class="btn btn-info" value="submit"
+							data-idLocProjet="@compte.getIdLocalite()">Enregisrer</button>
+						<button type="reset" class=" annulerModifProfil btn btn-warning">Annuler
+							Modifications</button>
+						<button type="button" id="fermerModal" data-dismiss="modal"
+							class="btn btn-warning">Fermer</button>
+							</div>
+				</form>
+			</div>
+		</div>
+	</div>
+
+
+	<!--Update project -->
+	<div class="modal fade modal-admin" id="UpdateProject" tabindex="-1"
+		role="dialog" aria-labelledby="viewProfilModal" aria-hidden="true">
+		<div class="col-md-4 col-lg-offset-4" id="leftCol">
+			<div class="panel panel-info">
+				<div class="panel-heading">
+					<h3 class="panel-title">Modifier un projet</h3>
+
+				</div>
+				<div class="panel-body" style="color: #000033">
+
+
+
+					<form action="@routes.ProjetCtrl.updateProject()" method="post"
+						id="formUpdateProjet">
+						<fieldset>
+							<legend>Informations projet</legend>
+							<!-- nom -->
+							<div class="row">
+								<div class="col-md-4  text-left">
+									<label for="editProfilNomInput">Nom projet: </label>
+								</div>
+								<div class="col-md-6">
+									<input type="text" class="form-control" required="required"
+										name="nomProUp" placeholder="Nom" id="nomProUp" />
+								</div>
+							</div>
+							<br>
+							<!-- description -->
+							<div class="row">
+								<div class="col-md-4 text-left">
+									<label for="editProfilNomInput">Description projet: </label>
+								</div>
+								<div class="col-md-6">
+									<input class="form-control" required="required"
+										name="descriptionProUp" placeholder="description du projet"
+										id="descriptionProUp" />
+								</div>
+							</div>
+							<br>
+							<!-- Date debut  -->
+							<div class="row">
+								<div class="col-md-4 text-left">
+									<label for="editProfilNomInput">Date debut du projet: </label>
+								</div>
+								<div class="col-md-6">
+									<input type="date" class="form-control" required="required"
+										name="dateDProUp" placeholder="Date debut du projet"
+										id="dateDProUp" />
+								</div>
+
+							</div>
+							<br>
+							<!-- Date fin -->
+							<div class="row">
+								<div class="col-md-4 text-left">
+									<label for="editProfilNomInput">Date fin du projet: </label>
+								</div>
+								<div class="col-md-6">
+									<input type="date" class="form-control" required="required"
+										name="dateFProUp" placeholder="Date fin du projet"
+										id="dateFProUp" />
+								</div>
+
+							</div>
+							<br>
+							<!-- Contact du projet -->
+							<div class="row">
+								<div class="col-md-4 text-left">
+									<label for="editProfilNomInput">Contact du projet: </label>
+								</div>
+								<div class="col-md-6">
+									<input type="text" class="form-control" required="required"
+										name="contactProUp" placeholder="contact" id="contactProUp" />
+								</div>
+
+							</div>
+							<br>
+							<!-- Autorité du projet -->
+							<div class="row">
+								<div class="col-md-4 text-left">
+									<label for="editProfilNomInput">Autorité du projet: </label>
+								</div>
+								<div class="col-md-6">
+									<input type="text" class="form-control" required="required"
+										name="autoriteProUp" placeholder="autorité" id="autoriteProUp" />
+								</div>
+								<input type="hidden" name="idPro" id="idPro"></input> <input
+									type="hidden" name="idLocPro" id="idLocPro"></input>
+							</div>
+							<br>
+							
+							<!-- Cout prévisionnel -->
+							<div class="row">
+								<div class="col-md-4 text-left">
+									<label for="editProfilNomInput">Cout prévisionnel du projet: </label>
+								</div>
+								<div class="col-md-6">
+									<input type="number" min="0" class="form-control" required="required"
+										name="coutPrevisionnelProUp" id="coutPrevisionnelProUp" placeholder="Cout prévisionnel du projet" />
+								</div>
+							</div>
+							<br>
+							<!-- Nombre d'emploi prévisionnel -->
+							<div class="row">
+								<div class="col-md-4 text-left">
+									<label for="editProfilNomInput">Nombre d'emploi prévisionnel du projet </label>
+								</div>
+								<div class="col-md-6">
+									<input type="number" min="0" class="form-control" required="required"
+										name="emlpoiPrevisionnelProUp" id="emlpoiPrevisionnelProUp" placeholder="Nombre d'emploi prévisionnel" />
+								</div>
+							</div>
+							<br>
+
+						</fieldset>
+						
+				</div>
+				<div class="panel-footer panel-footer-landing">
+
+						<button type="submit" id="bntSubmitUpdateProjet" onClick=""
+							class="btn btn-info" value="submit">Enregisrer</button>
+						<button type="reset" class=" annulerModifProfil btn btn-warning">Annuler
+							Modifications</button>
+						<button type="button" id="fermerModal" data-dismiss="modal"
+							class="btn btn-warning">Fermer</button>
+							</div>
+				</form>
+			</div>
+		</div>
+	</div>
+
+
+	<!--Show all project-->
+	<div class="modal fade modal-admin" id="AffecterProject" tabindex="-1"
+		role="dialog" aria-labelledby="viewProfilModal" aria-hidden="true">
+		<div class="col-md-8 col-lg-offset-2" id="leftCol">
+			<div class="panel panel-info">
+				<div class="panel-heading">
+					<h3 class="panel-title">Ajouter un projet</h3>
+
+				</div>
+				<div class="panel-body" style="color: #000033">
+
+					@tableauAllProjet(allProjets, compte)</div>
+
+				<div class="panel-footer panel-footer-landing">
+					<button type="button" id="fermerModalAllPoject"
+						data-dismiss="modal" class="btn btn-info">Fermer</button>
+				</div>
+
+			</div>
+		</div>
+	</div>
+
+	
+
+</div>
+		
+		<!-- delete confirmation -->
+
+	<div class="modal fade" id="confirmDelPro" role="dialog"
+		aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal"
+						aria-hidden="true">&times;</button>
+					<h4 class="modal-title">Confirmation suppression</h4>
+				</div>
+				<div class="modal-body">
+					<p>Voulez-vous vraiment supprimer ?</p>
+				</div>
+				<div class="modal-footer">
+					<form method="post" action="@routes.ProjetCtrl.delProjet()" id="formDelPro">
+						<input type="hidden" name="idProDel" id="idProDel">
+						<input type="hidden" name="idLocDel" id="idLocDel">
+						<button type="button" class="btn btn-default" data-dismiss="modal">
+							<span class="glyphicon glyphicon-remove"></span> Non
+						</button>
+						<button type="submit" id="yesDelPro" class="btn btn-danger">
+							<span class="glyphicon glyphicon-ok"></span> Oui
+						</button>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>

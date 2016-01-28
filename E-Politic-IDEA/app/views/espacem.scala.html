@@ -1,0 +1,81 @@
+@(compte: Compte = null, scripts: Html = Html(""))(content: Html)
+
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>@Messages("title")</title>
+        <link rel="stylesheet" media="screen" href="@routes.Assets.at("stylesheets/bootstrap.css")">
+        <meta name="viewport" content="initial-scale=1.0, compte-scalable=no" />
+        <link rel="stylesheet" media="screen" href="@routes.Assets.at("stylesheets/main.css")">
+        <link rel="shortcut icon" type="image/png" href="@routes.Assets.at("images/favicon.png")">
+        <script src="@routes.Assets.at("javascripts/jquery/jquery-2.1.0.min.js")" type="text/javascript"></script>
+        @*<script src="@routes.Assets.at("javascripts/jquery.js")" type="text/javascript"></script>*@
+        <script src="@routes.Assets.at("javascripts/bootstrap.js")" type="text/javascript"></script>
+        <script src="@routes.Assets.at("javascripts/jquery-dataTable.min.js")" type="text/javascript"></script>
+        <script src="@routes.Assets.at("javascripts/selectize.js")" type="text/javascript"></script>
+        <script src="@routes.Assets.at("javascripts/scripts.js")" type="text/javascript"></script>
+        <script src="http://maps.googleapis.com/maps/api/js?sensor=false&extension=.js&output=embed"></script>
+        <link rel="stylesheet" media="screen" href="@routes.Assets.at("stylesheets/font-awesome.min.css")">
+        <link rel="stylesheet" media="screen" href="@routes.Assets.at("stylesheets/styles.css")">
+        <link rel="stylesheet" media="screen" href="@routes.Assets.at("stylesheets/dataTables.min.css")">
+        <link rel="stylesheet" media="screen" href="@routes.Assets.at("stylesheets/selectize.bootstrap3.css")">
+        @scripts
+    </head>
+    <body>
+
+        <div class="navbar navbar-custom navbar-fixed-top">
+            <div class="navbar-header"><a class="navbar-brand" href="#">E-Militants</a>
+                <a class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </a>
+            </div>
+            @logged(compte)
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li class="active"><a href="@routes.Application.index()">Espace Membre</a></li>
+                    <li><a href="@routes.Application.index()">Cartographie</a></li>
+                    <li><a href="@routes.MembreCtrl.index()">Equipe</a></li>
+                </ul>
+                <form class="navbar-form">
+                    <div class="form-group" style="display:inline;">
+                        <div class="input-group">
+                            <div class="input-group-btn">
+                                <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-chevron-down"></span></button>
+
+                            </div>
+                            <input type="text" class="form-control" placeholder="Que recherchez vous ?">
+                            @*<span class="input-group-addon"><span class="glyphicon glyphicon-search"></span> </span>*@
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+        </div>
+
+
+
+            <!-- -->
+
+
+
+        <div class="container-fluid" id="main">
+            <div class="row">
+            @content
+            </div>
+        </div>
+
+        <hr>
+        <div class="footer text-center">
+            <div>
+                <small>
+                    Pied de page
+                </small>
+            </div>
+        </div>
+
+
+    </body>
+</html>

@@ -1,0 +1,14 @@
+var app = angular.module("piedpage",[]);
+app.directive("thefooter", function() {
+    return {
+        restrict : 'EA',
+        replace : true,
+        transclude : true,
+        template : '<div class="footer" >' +
+                        '<div class="barre"></div>' +
+                        '<div class="general">' +
+                            '<span class="exp">Copyright 2015, All rights reserved </span><a href="#">Groupe idyal</a>' +
+                        '</div>' +
+                    '</div>'
+    }
+});

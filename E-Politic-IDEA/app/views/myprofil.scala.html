@@ -1,0 +1,247 @@
+@(compte: Compte)
+
+
+
+
+<!--Show project-->
+<!-- <div class="modal fade modal-admin" id="myProfilShow" tabindex="-1" -->
+<!-- 	role="dialog" aria-labelledby="viewEtapeModal" aria-hidden="false"> -->
+
+ 
+ 
+ 	<div class="row">
+
+		<div class="col-md-7  col-lg-offset-2" id="leftCol">
+			<div class="panel panel-info">
+				<div class="panel-heading">
+					<h3 class="panel-title">Mon compte</h3>
+
+				</div>
+				<form action="@routes.ProfilCtrl.update()" method="post"
+						id="editProfilFormulaire">
+				
+				<div class="panel-body" style="color: #000033">
+				<fieldset>
+							<legend>Information du compte:</legend>
+							<div class="row">
+								<div class="col-md-3">
+									<label for="email">Email: </label>
+								</div>
+								<div class="col-md-6">
+									<input class="form-control" type="email" name="email"
+										required="required" placeholder="Votre Email" disabled="disabled"
+										id="editProfilEmailInput1" value="@compte.getEmail()"
+										  />
+								</div>
+							</div>
+							<br>
+
+							<div class="div-changePassword">
+								<br>
+								<div class="row">
+									<div class="col-md-3">
+										<label for="password">Ancien mot de passe: </label>
+									</div>
+									<div class="col-md-6">
+										<input class="form-control" type="password" name="password"
+										  placeholder="Votre mot de passe"
+											id="password" />
+									</div>
+								</div>
+								<br>
+
+
+
+								<div class="row">
+									<div class="col-md-3">
+										<label for="password">Nouveau Mot de passe: </label>
+									</div>
+									<div class="col-md-6">
+										<input class="form-control" type="password" name="newpassword"
+									  placeholder="Votre mot de passe"
+											id="newpassword" />
+									</div>
+								</div>
+								<br>
+
+
+								<div class="row">
+									<div class="col-md-3">
+										<label for="password">Confirmation : </label>
+									</div>
+									<div class="col-md-6">
+										<input class="form-control " type="password"
+											name="confirmPassword"
+											placeholder="Confirmation  mot de passe" id="cpassword" />
+											<span id="span-error" >Vos mots de passe ne correspondent pas</span>
+									</div>
+								</div>
+
+								
+									
+								
+
+
+
+							</div>
+							<div style="float: right">
+								<a href="#" data-toggle="modal" id="changePassword"> <span
+									class="glyphicon glyphicon-cog"></span> Changer votre password
+								</a>
+							</div>
+							<br>
+						</fieldset>
+
+
+						<fieldset>
+							<legend>Informations personnelles:</legend>
+							<div class="row">
+								<div class="col-md-3">
+									<label for="editProfilPrenomInput">Nom: </label>
+								</div>
+								<div class="col-md-6">
+									<input class="form-control " required="required" name="nom"
+										placeholder="Votre Nom" id="editProfilNomInput1"
+										value="@compte.getNom()" />
+								</div>
+							</div>
+							<br>
+
+
+							<div class="row">
+								<div class="col-md-3">
+									<label for="editProfilPrenomInput">Prenom: </label>
+								</div>
+								<div class="col-md-6">
+									<input class="form-control" name="prenom" required="required"
+										placeholder="Votre Prénom" id="editProfilPrenomInput1"
+										value="@compte.getPrenom()" />
+								</div>
+							</div>
+							<br>
+
+
+							<div class="row">
+								<div class="col-md-3">
+									<label for="localiteMembre">Sexe: </label>
+								</div>
+								<div class="col-md-6">
+									<select class="form-control selectize" id="moteur1" name="sexe">
+
+										<option value="Homme" selected="selected">Homme</option>
+										<option value="Femme">Femme</option>
+
+
+
+									</select>
+								</div>
+							</div>
+							<br>
+
+							<div class="row">
+								<div class="col-md-3">
+									<label for="editProfilNaissanceInput">Date de naisance:
+									</label>
+								</div>
+								<div class="col-md-6">
+									<input type="date" class="form-control" required="required"
+										name="datenaissance" placeholder="Votre date de naissance"
+										id="editProfilNaissanceInput1"
+										value="@compte.getDateNaissance().format("yyyy-MM-dd")" />
+								</div>
+							</div>
+							<br>
+
+
+							<div class="row">
+								<div class="col-md-3">
+									<label for="editProfilCniInput">CNI: </label>
+								</div>
+								<div class="col-md-6">
+									<input class="form-control" required="required" name="cni"
+										placeholder="Votre num�ro d'identit�" id="editProfilCniInput1"
+										value="@compte.getCarteIdentite() " />
+								</div>
+							</div>
+							<br>
+
+
+							<div class="row">
+								<div class="col-md-3">
+									<label for="editProfilTel1Input">Telephone1: </label>
+								</div>
+								<div class="col-md-6">
+									<input class="form-control" name="telephone"
+										required="required" placeholder="Votre Numero telephone"
+										id="editProfilTel1Input1" type="tel"
+										pattern="^((\+\d{1,3}(-| )?\(?\d\)?(-| )?\d{1,5})|(\(?\d{2,6}\)?))(-| )?(\d{3,4})(-| )?(\d{4})(( x| ext)\d{1,5}){0,1}$"
+										value="@compte.getTelephone()" />
+								</div>
+							</div>
+							<br>
+
+							<div class="row">
+								<div class="col-md-3">
+									<label for="editProfilTel2Input" class="pull-left">Telephone2:
+									</label>
+								</div>
+								<div class="col-md-6">
+									<input class="form-control" name="telephone2"
+										placeholder="Votre second numero" id="editProfilTel2Input2"
+										type="tel"
+										pattern="^((\+\d{1,3}(-| )?\(?\d\)?(-| )?\d{1,5})|(\(?\d{2,6}\)?))(-| )?(\d{3,4})(-| )?(\d{4})(( x| ext)\d{1,5}){0,1}$"
+										value="@compte.getTelephone1()" />
+
+								</div>
+							</div>
+							<br>
+
+
+							<div class="row   ">
+								<div class="col-md-3">
+									<label for="profession">Profession : </label>
+								</div>
+								<div class="col-md-6">
+									<input class="form-control" name="profession"
+										required="required" placeholder="Votre Profession"
+										id="fonction1" value="@compte.getProfession()" />
+								</div>
+							</div>
+							<br>
+
+
+							<div class="row">
+								<div class="col-md-3">
+									<label for="categorie">Categorie: </label>
+								</div>
+								<div class="col-md-6">
+									<input class="form-control" name="categorie"
+										disabled="disabled" id="fonction1"
+										value="@compte.getNomCategorie()" />
+								</div>
+							</div>
+							<br>
+						</fieldset>
+				</div>
+				<div class="panel-footer text-center">
+					<button type="submit" class="btn btn-info" id="btn-modifierProfil"
+							value="submit">Enregisrer</button>
+						<button type="reset" class=" annulerModifProfil btn btn-warning" >Annuler
+							Modifications</button>
+							<button type="button" id="" data-dismiss="modal"
+					class="btn btn-warning">Fermer</button>
+				</div>
+				</form>
+			</div>
+		</div>
+	</div>
+ 
+
+ 
+ 
+ 
+
+
+
+
+

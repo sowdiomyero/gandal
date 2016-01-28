@@ -1,0 +1,9 @@
+ {
+	"foncier":{
+	  "username":"root",
+	  "password": "",
+	  "database":"foncier",
+	  "host":"localhost",
+	  "dialect":"mysql"
+	}
+}

@@ -1,0 +1,21 @@
+'use strict';
+
+/**
+ * @ngdoc directive
+ * @name utilisateursApp.directive:fcEntete
+ * @description
+ * # fcEntete
+ */
+angular.module('utilisateursApp')
+  .directive('fcEntete', function () {
+    return {
+      template: '<div class="header">' +
+                        '<div class="general">' +
+                            '<span class="structure">Foncier</span><br/>' +
+                            '<span class="exp">Application de gestion du foncier</span>' +
+                        '</div>' +
+                        '<div class="barre"></div>' +
+                    '</div>',
+      restrict: 'EA'
+    };
+  });

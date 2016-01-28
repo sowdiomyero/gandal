@@ -1,0 +1,70 @@
+var bcrypt = require('node-bcrypt');
+
+exports.hashage = function(user){
+                        salt=bcrypt.gensalt();
+                        return bcrypt.hashpw(user.password, salt);
+                      } 
+                        
+
+//Insertions des données dans les tables User,Role,Compte et UserRole
+exports.Insertions = function(user, User, Role, Compte,res){
+
+                            //Hashage du password
+                         user.password = exports.hashage(user);
+
+                            User.create({
+                                 prenomUser: user.prenom,
+                                 nomUser: user.nom,
+                                 fonction :user.fonction,
+                                 telephone :user.telephone,
+                                 fax:user.fax,
+                                 adresse : user.adresse,
+                                 cni : user.cni}).success(function(userCreated) {
+                                                               console.log("User créé");
+                                                               Compte.create({
+                                                               email:user.email,
+                                                               password : user.password,
+                                                               userId : userCreated.id
+                                                              });
+                                                              Role.find({where : { libelleRole : user.role }}).then(function(result){
+                                                                 userCreated.setRoles([result]).success(function() {
+                                                                 console.log("CREATION SUCCESS");
+                                                                  return res.status(200).json(userCreated);
+                                                               });
+                                                             });
+                                
+                                                       });
+
+
+                          }
+
+
+
+//Creation d'utilisateur
+module.exports.creationUser = function( user, User, Role, Compte,res){
+                   //Validation du username
+                         if(user.email=="") {
+
+                            return res.status(2000).json({ 
+                              error: { message:'vueillez renseigner le champs email' }
+                            });
+                          }
+                      else{
+                      Compte.find({ where: { email: user.email } })
+                        .done(function(error, userFound) {
+                          
+                      
+                          if(userFound) {
+
+                            return res.status(2000).json({ 
+                              error: { message:'Email deja utilisé' }
+                            });
+                          }
+                          
+                                
+                            else
+                                exports.Insertions(user, User, Role, Compte,res);
+                            
+                        });
+                   }
+} 

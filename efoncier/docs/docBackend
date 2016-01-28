@@ -1,0 +1,44 @@
+﻿GESTION DES UTILISATEURS
+
+*Creation d'un utilisateur : 
+     Requetes :
+	    - les informations d'inscription de l'utilisateur (nom,prenom,role,telephone,adresse,email,password,cni) doivent etre stockées dans un object "user" qui doit etre envoyé par un POST à l'adresse  
+	    "http://localhost:8080/api/user" 
+     Reponses  : 
+     	
+		- Si la creation réussi , on envoi un objet 
+		repoonse:{
+		code:"CREATE_SUCCESS",
+		objet:user //user est l'objet contenant l'ensemble des information de creation de d'un  utilisateurs
+		message:"Création  réussie"
+       }
+        -si la creation echoue:
+                >>s'il ya une erreur au niveau de certains champs on envoie un objet "reponse" pour spécifier les champs concernés 
+                  exemple de reponse où il  ya une erreur sur l'"adresse",et "email"
+                  reponse:{
+                         code:"CREATE_FAILED",
+                         objet:"", //on ne met rien dans objet en cas d'erreur
+                         message:
+                         {
+                         adresse:"le champs adresse ne peut pas etre null",
+                         email:"l'email saisie est incrrecte"
+                         ...
+
+                         }
+
+                  } 
+                  dans ce cas  la proprieté "message" de l'objet "reponse" est un objet et ces proprietés sont les champs du formulaire de creation où il ya erreur 
+               >>Si l'email est déjà utilisé  l'objet reponse prend la forme
+                reponse{
+                 coe:"EMAIL_DUPLICATED",
+                 objet:"",
+                 message:"Email déja utilisé"
+                }
+
+ *Connection à l'application:
+    Requetes:
+    les informations de connexion (email,password) doivent etre stockées dans un object qui doit etre posté à l'adresse "http://localhost:8080/api/auth"
+
+    Reponses:
+
+    

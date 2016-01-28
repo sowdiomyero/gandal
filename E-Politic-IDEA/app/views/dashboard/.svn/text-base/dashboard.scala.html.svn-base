@@ -1,0 +1,63 @@
+@(compte: Compte)(responsables: java.util.List[Membre] )(dpts: java.util.List[Localite])(inscriptions: java.util.List[JourInscription])
+
+    @scripts={
+        <script src="@routes.Assets.at("javascripts/charts.js")" type="text/javascript"></script>
+        <script src="@routes.Assets.at("javascripts/chart-more.js")" type="text/javascript"></script>
+        <script src="@routes.Assets.at("javascripts/exportChart.js")" type="text/javascript"></script> 
+    }
+    @main2(compte, scripts) {
+
+        <div class="row">
+            <br>
+
+             @statistics(inscriptions)
+
+        </div>
+
+
+        <div class="row">
+
+            <div class="col-sm-1"></div>
+            <div class="col-sm-10">
+                <br>
+                <div class="col-sm-6">
+                    <div class="panel-success">
+                        <div class="panel-heading">Tableau recapitulatif des Inscriptions par Région</div>
+                        <div class="panel-body" id="graph">cops et contenu du panel</div>
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="panel-success">
+                        <div class="panel-heading">Tableau recapitulatif des Inscriptions par Région</div>
+                        <div class="panel-body" id="graph2">cops et contenu du panel</div>
+                    </div>
+                </div>
+
+                <div class="col-sm-6">
+                    <div class="panel-info">
+                        <div class="panel-heading">Evolution des Inscriptions par Semaine</div>
+                        <div class="panel-body" id="pie">cops et contenu du panel</div>
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="panel-info">
+                        <div class="panel-heading">Evolution des Inscriptions par Semaine</div>
+                        <div class="panel-body" id="courbe">cops et contenu du panel</div>
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="panel-info">
+                        <div class="panel-heading">Evolution des Inscriptions par Semaine</div>
+                        <div class="panel-body" id="donut">cops et contenu du panel</div>
+                    </div>
+                </div>
+            </div>
+
+
+
+        </div>
+
+
+
+
+    }

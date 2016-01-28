@@ -1,0 +1,16 @@
+﻿GESTION DES UTILISATEURS
+
+*Creation d'un utilisateur : 
+     Requetes :
+	    - les informations d'inscription de l'utilisateur (nom,prenom,role,telephone,adresse,email,password,cni) doivent etre stockées dans un object "user" qui doit etre envoyé par un POST à l'adresse "http://localhost:8080/api/user" 
+     Reponses  : 
+     	- Si l'email est déjà utilisé on envoie le code 2000 et { "error": {"username": "Email deja utilisé" }}
+		- Si la creation réussi , on envoie le code 200.
+
+ *Connection à l'application:
+    Requetes:
+    les informations de connexion (email,password) doivent etre stockées dans un object qui doit etre posté à l'adresse "http://localhost:8080/api/auth"
+
+    Reponses:
+
+    

@@ -1,0 +1,13 @@
+var UserEnvoyes = require('');
+
+ 
+User.create({
+	prenom : UserEnvoyes.prenom,
+	nom : UserEnvoyes.nom,
+	fonction : UserEnvoyes.fonction,
+	telephone : UserEnvoyes.telephone,
+	email : UserEnvoyes.email,
+	fax : UserEnvoyes.fax,
+	adresse : UserEnvoyes.adresse,
+	idCompte : UserEnvoyes.idCompte
+})

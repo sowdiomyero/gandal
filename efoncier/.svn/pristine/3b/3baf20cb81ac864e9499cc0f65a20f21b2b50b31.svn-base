@@ -1,0 +1,140 @@
+//les models 
+'use strict';
+var Sequelize = require('sequelize');
+module.exports={
+	user:{
+	id:{
+    type: Sequelize.INTEGER,
+    primaryKey: true,
+    autoIncrement: true
+  },
+   nomUser: {
+    type: Sequelize.STRING
+  },
+  prenomUser:{
+  	type:Sequelize.STRING
+  },
+  email:{
+    type:Sequelize.STRING
+  },
+   adresse:{
+    type:Sequelize.STRING
+  },
+   telephone:{
+    type:Sequelize.STRING
+  },
+  creatAt:{
+    type:Sequelize.DATE
+  },
+  updatedAt:{
+     type:Sequelize.DATE
+  }
+},
+compte:{
+  idComppe:{
+    type: Sequelize.INTEGER,
+    primaryKey: true,
+    autoIncrement: true
+  },
+   username: {
+    type: Sequelize.STRING
+  },
+  password:{
+    type:Sequelize.STRING
+  },
+  etat:{
+    type:Sequelize.STRING
+  },
+   idUtilisateur:{
+    type:Sequelize.STRING
+  },
+  
+  creatAt:{
+    type:Sequelize.DATE
+  },
+  updatedAt:{
+     type:Sequelize.DATE
+  }
+},
+
+groupe:{
+  idGroupe:{
+    type: Sequelize.INTEGER,
+    primaryKey: true,
+    autoIncrement: true
+  },
+   libelleGroupe: {
+    type: Sequelize.STRING
+  },
+  creatAt:{
+    type:Sequelize.DATE
+  },
+  updatedAt:{
+     type:Sequelize.DATE
+  }
+},
+action:{
+  idAction:{
+    type: Sequelize.INTEGER,
+    primaryKey: true,
+    autoIncrement: true
+  },
+   libelleAction: {
+    type: Sequelize.STRING
+  },
+  creatAt:{
+    type:Sequelize.DATE
+  },
+  updatedAt:{
+     type:Sequelize.DATE
+  }
+},
+role:{
+  idRole:{
+    type: Sequelize.INTEGER,
+    primaryKey: true,
+    autoIncrement: true
+  },
+   libelleRole: {
+    type: Sequelize.STRING
+  },
+  creatAt:{
+    type:Sequelize.DATE
+  },
+  updatedAt:{
+     type:Sequelize.DATE
+  }
+},
+role:{
+  idRole:{
+    type: Sequelize.INTEGER,
+    primaryKey: true,
+    autoIncrement: true
+  },
+   libelleRole: {
+    type: Sequelize.STRING
+  },
+  creatAt:{
+    type:Sequelize.DATE
+  },
+  updatedAt:{
+     type:Sequelize.DATE
+  }
+},
+parametre:{
+  idParametre:{
+    type: Sequelize.INTEGER,
+    primaryKey: true,
+    autoIncrement: true
+  },
+   libelleParametre: {
+    type: Sequelize.STRING
+  },
+  creatAt:{
+    type:Sequelize.DATE
+  },
+  updatedAt:{
+     type:Sequelize.DATE
+  },
+}
+}

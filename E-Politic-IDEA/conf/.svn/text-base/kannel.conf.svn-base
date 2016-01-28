@@ -1,0 +1,16 @@
+# Kannel serveur
+
+kannel.host="http://192.168.1.22"
+kannel.full.host="http://192.168.1.22:13013/cgi-bin/sendsms?"
+
+# Mail Port, example : 465, 587 or 25
+kannel.port=13013
+
+# Kannel Auth User, example : username
+# Comment if no auth
+kannel.username="idyal"
+
+# Kannel Auth Password
+# Comment if no auth
+kannel.password=domn4idyal
+

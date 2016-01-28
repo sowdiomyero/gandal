@@ -1,0 +1,13 @@
+@(compte: Compte)(projets: java.util.List[Projet], allProjets: java.util.List[Projet])
+
+
+@mlayout(compte) {
+
+    <div class="col-sm-12">
+   
+		@tableauProjet(projets, allProjets, compte)
+
+	 
+    </div>
+
+}

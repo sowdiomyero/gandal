@@ -1,0 +1,138 @@
+@(localites: java.util.List[Localite],responsables: java.util.List[Membre],localite:Localite )
+	<div>	
+	<br>
+	@statisticsLocalite(localite)	
+	</div>
+<div class="others col-lg-8"  >
+<br>
+    <table id="localites_table"class='display' cellspacing="0" width="100%">
+        <thead>
+            <tr>
+                <th>Nom</th>
+                <th>Responsable</th>
+                <th>Population</th>
+                <th>Inscrits</th>
+                <th>Militants</th>
+                <th>Objectifs</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+
+        <tbody>
+        @for( zone <- localites) {
+            <tr>
+                <td>@zone.getNom()</td>
+                <td>@zone.getNomResponsable()</td>
+                <td>@zone.getInfoAdministrative().getPopulation</td>
+                <td>@zone.getNbTotalInscrits()</td>
+                <td>@zone.getNbMilitants()</td>
+                <td>
+                    <canvas class="canvas" id="@zone.getId()" height="45" width="40"  data-index="@zone.getObjectifs()" ></canvas>
+                </td>
+                <td>
+                    <a href="@routes.Localisation.infosLocalite(zone.getId())" class="btn btn-info btn-xs" alt="Visualiser la fiche de la localite"><span class="glyphicon glyphicon-folder-open"></span></a>
+                    <a id="updateLocalite" href="" class="btn btn-info btn-xs" alt="Modifier lalocalite"
+                     data-idLocalite="@zone.getId()" data-nomLocalite="@zone.getNom()"
+                     data-nbrPopulation="@zone.getInfoAdministrative().getPopulation()"
+                     data-nbrElecteurs="@zone.getInfoAdministrative().getNbElecteurs()"
+                     data-nbrSection="@zone.getNbSections()"data-objectif="@zone.getObjectifs()"
+                    data-typeLocalite="@zone.getDType()"
+                     data-responsable="@zone.getNomResponsable()"
+                      data-responsableId="@zone.getIdResponsable()"
+                      data-parent="@zone.getNomParentLocalite()"
+                      data-parentId="@zone.getIdParentLocalite()">
+                    <span class="glyphicon glyphicon-pencil"></span>
+                     </a> 
+<!--                     <a href=""class="btn btn-warning btn-xs" alt="Supprimer la localite"><span class="glyphicon glyphicon-trash"></span></a> -->
+                
+                	
+                </td>
+            </tr>
+        }
+        </tbody>
+    </table>
+</div>
+
+<div class="modal fade" id="updateLocalization" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <form id="updateLocaliteForm" class="form-horizontal" method="POST" action="@routes.Localisation.updateQuartier()">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
+                        <h4 class="modal-title" id="myModalLabel">Modifier Une Localité</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row">
+
+                            <div class="col-md-12" id="leftCol2">
+                                <div class="panel panel-info">
+                                    <div class="panel-heading">
+                                        <h3 class="panel-title">Informations Sur La Localité</h3>
+                                    </div>
+                                    <div class="panel-body" style="color: #000033">
+                                        <div class="alert alert-success" role="alert" id="localiteMessageSuccess" style="display: none">
+                                            <div class="alert alert-danger" role="alert" style="display: none" >
+                                            </div>
+                                        </div>
+
+                                        <label for="nomLocaliteGoogle">Nom Localité: </label>
+                                        <input class="form-control" name="nomLocaliteGoogle" id="nomLocalite" readonly required="required"  placeholder="Nom Fourni par Google" />
+
+                                        <label for="gps">Coordonnées : </label>
+                                        <input class="form-control" id="gps" readonly name="gps" required="required" placeholder="Les Coordonnées Géographiques"
+                                        type="text" id="cordonnees"/>
+
+                                        <label for="nbHabitants">Nombre Habitants: </label>
+                                        <input class="form-control" name="nbHabitants" required="required" placeholder="Nombre d'habitants" id="nbrHabitants"/>
+
+                                        <label for="nbHabitants">Nombre Electeurs: </label>
+                                        <input class="form-control" type="number" name="nbElecteurs" required="required" placeholder="Nombre d'electeurs connus de la zone" id="nbrElecteurs"/>
+
+                                        <label for="nbHabitants">Objectifs d'inscriptions: </label>
+                                        <input class="form-control" type="number" name="nbObjectifs" required="required" placeholder="Nombre d'inscriptions à atteindre" id="nbrObjectifs"/>
+
+                                        <label for="nbSections">Nombre de Sections : </label>
+                                        <input class="form-control" type="number" name="sections" required="required" placeholder="Nombre de Sections" id="nbrSections" />
+
+                                        <label for="selectDType">Type Localité : </label>
+                                        <select id="typeLocalite" name="dtype" class="form-control">
+                                            <option value="QUARTIER">QUARTIER</option>
+                                            <option value="COMMUNE">COMMUNE</option>
+                                            <option value="DEPARTEMENT">DEPARTEMENT</option>
+                                            <option value="REGION">REGION</option>
+                                        </select>
+
+                                        <label for="rattachement">Rattachement : </label>
+                                        <select id="nomRattachement" name="rattachement" class="form-control">
+                                            <option  value=""> </option>
+                                            @for(localiteMembre <- localites){
+                                                <option value="@localiteMembre.getNom():@localiteMembre.getId()">@localiteMembre.getNom().toUpperCase()</option>
+                                            }
+                                        </select>
+
+                                        <label for="idResponsable">Responsable : </label>
+                                        <select id="nomResponsable" name="responsable" class="form-control">
+                                            <option value=""> </option>
+                                            @for(resp <- responsables){
+                                                <option value="@resp.getNomPrenom():@resp.getId()">@resp.getNomPrenom()</option>
+                                            }
+                                        </select>
+                                        
+                                        <input  type="hidden" id="idLocaliteModif" name="idlocalite"/>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal"id=btnModifLocalite>Annuler</button>
+                        <button type="button" id="btnUpdateLocalite" class="btn btn-primary">Enregistrer</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+
+
+	

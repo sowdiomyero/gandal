@@ -1,0 +1,9 @@
+/*creation des tables*/
+var Sequelize=require("sequelize");
+var config=var config=require(__dirname+'/app/config/config.json')['foncier'];
+var db =new Sequelize(config.database,config.username,config.password,config);
+var models=require('../models/users.js');
+//Définition des tables 
+//table utilisateurs
+var User=db.define('users',models.user);
+var Compte=db.define("")

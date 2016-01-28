@@ -1,0 +1,15 @@
+@(compte: Compte)(equipes: java.util.List[Equipe])
+
+
+@mlayout(compte) {
+
+    <div class="col-sm-7">
+		@tableauEquipe(equipes)
+    </div>
+    <div class="col-sm-5" id="left">
+
+        @recherche()
+
+    </div>
+
+}

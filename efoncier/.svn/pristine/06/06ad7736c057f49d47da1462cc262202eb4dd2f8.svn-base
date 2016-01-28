@@ -1,0 +1,17 @@
+'use strict';
+
+/**
+ * @ngdoc function
+ * @name utilisateursApp.controller:MainCtrl
+ * @description
+ * # MainCtrl
+ * Controller of the utilisateursApp
+ */
+angular.module('utilisateursApp')
+  .controller('MainCtrl', function () {
+    this.awesomeThings = [
+      'HTML5 Boilerplate',
+      'AngularJS',
+      'Karma'
+    ];
+  });

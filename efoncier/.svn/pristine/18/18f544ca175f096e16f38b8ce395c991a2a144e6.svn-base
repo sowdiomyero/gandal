@@ -1,0 +1,13 @@
+'use strict';
+
+/**
+ * @ngdoc function
+ * @name utilisateursApp.controller:CreateuserCtrl
+ * @description
+ * # CreateuserCtrl
+ * Controller of the utilisateursApp
+ */
+angular.module('utilisateursApp')
+  .controller('CreateuserCtrl', function ($scope) {
+    $scope.nom = "Doudou";
+  });

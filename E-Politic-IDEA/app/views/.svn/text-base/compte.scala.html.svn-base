@@ -1,0 +1,48 @@
+@(localites: java.util.List[Localite])
+<div class="others" align="center">
+
+    <div class="panel panel-info" style=" margin-top: 5px">
+        <div class="panel-heading">
+            <h4>Liste des localités</h4>
+        </div>
+    </div>
+    <div class="row" style="padding: 4px; margin: 4px; float: left">
+        <button class="btn btn-success btn-xs" data-toggle="modal" data-target="#CreateMembre"><span class="glyphicon glyphicon-plus-sign"></span> Ajouter une Localité</button>
+    </div>
+
+    <table id="members_table"class='display' cellspacing="0" width="100%">
+        <thead>
+            <tr>
+                <th>Nom</th>
+                <th>Responsable</th>
+                <th>Population</th>
+                <th>Inscrits</th>
+                <th>Militants</th>
+                <th>Objectifs</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+
+        <tbody>
+        @for( zone <- localites) {
+            <tr>
+                <td>@zone.getNom()</td>
+                <td>@zone.getNomResponsable()</td>
+                <td>@zone.getNbMilitants()</td>
+                <td>@zone.getInfoAdministrative().getPopulation()</td>
+                <td>@zone.getInfoAdministrative().getPopulation()</td>
+                <td>0%</td>
+                <td>
+                    <a href="/localite/view/@zone.getId()" class="btn btn-info btn-xs" alt="Visualiser la fiche de la localite"><span class="glyphicon glyphicon-eye-open"></span></a>
+                    <a href="#" class="btn btn-primary btn-xs" alt="Acceder à son espace"><span class="glyphicon glyphicon-folder-open"></span></a>
+                </td>
+            </tr>
+        }
+        </tbody>
+    </table>
+
+
+
+
+</div>
+

@@ -1,0 +1,61 @@
+@(projetForm: Form[views.forms.ProjetForm])
+
+@import helper._
+    @implicitFieldConstructor = @{ FieldConstructor(twitterBootstrapInput.render) }
+
+<h3>@Messages("project.add")</h3>
+
+@form(routes.ProjetCtrl.addProject(), 'class -> "form") {
+
+    @if(projetForm.hasGlobalErrors) {
+        <p class="error">
+            <span class="label label-danger">@projetForm.globalError.message</span>
+        </p>
+    }
+
+    <fieldset>
+        @inputText(
+            projetForm("nomProjet"),
+            'placeholder -> "Nom du projet",
+            '_label -> null,
+            '_help -> Messages("project.form.name"),
+            'class -> "form-control"
+        )
+        @inputPassword(
+            projetForm("descProjet"),
+            '_label -> null,
+            'placeholder -> "Description",
+            '_help -> Messages("project.form.desc"),
+            'class -> "form-control"
+        )
+
+        @inputPassword(
+            projetForm("contact"),
+            '_label -> null,
+            'placeholder -> "Contact",
+            '_help -> Messages("project.form.contact"),
+            'class -> "form-control"
+        )
+        @inputPassword(
+            projetForm("dateDebut"),
+            '_label -> null,
+            'placeholder -> "Date Debut Projet",
+            '_help -> Messages("project.form.date.start"),
+            'class -> "form-control"
+        )
+
+        @inputPassword(
+            projetForm("dateFin"),
+            '_label -> null,
+            'type -> "date",
+            'placeholder -> "Date Fin Projet",
+            '_help -> Messages("project.form.date.end"),
+            'class -> "form-control"
+        )
+    </fieldset>
+
+    <div class="form-actions">
+        <input type="submit" class="btn btn-primary" value="@Messages("form.enregistrer")">
+        <small><a href="@controllers.account.routes.Reset.ask">@Messages("form.annuler")</a></small>
+    </div>
+}

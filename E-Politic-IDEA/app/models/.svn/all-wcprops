@@ -1,0 +1,167 @@
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/svn/poc/!svn/ver/264/branches/E-Politic/app/models
+END
+Departement.java
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/svn/poc/!svn/ver/73/branches/E-Politic/app/models/Departement.java
+END
+Localite.java
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/svn/poc/!svn/ver/252/branches/E-Politic/app/models/Localite.java
+END
+Projet.java
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/svn/poc/!svn/ver/258/branches/E-Politic/app/models/Projet.java
+END
+Personne.java
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/svn/poc/!svn/ver/153/branches/E-Politic/app/models/Personne.java
+END
+User.java
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/svn/poc/!svn/ver/122/branches/E-Politic/app/models/User.java
+END
+LocaliteActivite.java
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/svn/poc/!svn/ver/220/branches/E-Politic/app/models/LocaliteActivite.java
+END
+Etape.java
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/svn/poc/!svn/ver/258/branches/E-Politic/app/models/Etape.java
+END
+Section.java
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/svn/poc/!svn/ver/72/branches/E-Politic/app/models/Section.java
+END
+LocaliteActivitePk.java
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/svn/poc/!svn/ver/112/branches/E-Politic/app/models/LocaliteActivitePk.java
+END
+InfoGeographique.java
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/svn/poc/!svn/ver/72/branches/E-Politic/app/models/InfoGeographique.java
+END
+Commune.java
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/svn/poc/!svn/ver/72/branches/E-Politic/app/models/Commune.java
+END
+Membre.java
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/svn/poc/!svn/ver/264/branches/E-Politic/app/models/Membre.java
+END
+Compte.java
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/svn/poc/!svn/ver/206/branches/E-Politic/app/models/Compte.java
+END
+InfoAdministrative.java
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/svn/poc/!svn/ver/198/branches/E-Politic/app/models/InfoAdministrative.java
+END
+Profil.java
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/svn/poc/!svn/ver/122/branches/E-Politic/app/models/Profil.java
+END
+LocaliteProjet.java
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/svn/poc/!svn/ver/212/branches/E-Politic/app/models/LocaliteProjet.java
+END
+UserExterne.java
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/svn/poc/!svn/ver/253/branches/E-Politic/app/models/UserExterne.java
+END
+Token.java
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/svn/poc/!svn/ver/72/branches/E-Politic/app/models/Token.java
+END
+Activites.java
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/svn/poc/!svn/ver/137/branches/E-Politic/app/models/Activites.java
+END
+Inscription.java
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/svn/poc/!svn/ver/221/branches/E-Politic/app/models/Inscription.java
+END
+Categorie.java
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/svn/poc/!svn/ver/75/branches/E-Politic/app/models/Categorie.java
+END
+Quartier.java
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/svn/poc/!svn/ver/141/branches/E-Politic/app/models/Quartier.java
+END
+JourInscription.java
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/svn/poc/!svn/ver/141/branches/E-Politic/app/models/JourInscription.java
+END
+Equipe.java
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/svn/poc/!svn/ver/153/branches/E-Politic/app/models/Equipe.java
+END
+BaseEntity.java
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/svn/poc/!svn/ver/141/branches/E-Politic/app/models/BaseEntity.java
+END
+Region.java
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/svn/poc/!svn/ver/141/branches/E-Politic/app/models/Region.java
+END
+InscriptionID.java
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/svn/poc/!svn/ver/122/branches/E-Politic/app/models/InscriptionID.java
+END

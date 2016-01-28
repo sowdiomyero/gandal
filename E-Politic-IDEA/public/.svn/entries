@@ -1,0 +1,40 @@
+10
+
+dir
+264
+http://gisnsrvprim.idyal.local/svn/poc/branches/E-Politic/public
+http://gisnsrvprim.idyal.local/svn/poc
+
+
+
+2015-07-09T11:13:15.076043Z
+262
+ddiaw
+
+
+svn:special svn:externals svn:needs-lock
+
+
+
+
+
+
+
+
+
+
+
+15f5f95f-d671-fd43-97a3-60beb1f548e6
+
+fonts
+dir
+
+images
+dir
+
+javascripts
+dir
+
+stylesheets
+dir
+

@@ -1,0 +1,18 @@
+.userCreation {
+    border: 1px solid black;
+    margin-top: 5%;
+    margin-left: 30%;
+    width: 900px;
+    padding: 2%;
+    height: 400px;
+}
+.colonne-une {
+    float: left;
+}
+.colonne-deux {
+    float: right;
+}
+.fc-input {
+    float: right;
+    margin: 1%;
+}

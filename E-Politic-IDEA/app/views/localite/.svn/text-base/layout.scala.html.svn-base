@@ -1,0 +1,23 @@
+@(compte: Compte)(content: Html)
+
+@espacem(compte) {
+
+    <div class="row">
+        <div class="col col-lg-8">
+            @content
+        </div>
+        <div class="col col-lg-4">
+            <ul class="nav nav-pills nav-stacked">
+                <li>
+                    Menu Contextuel
+                </li>
+                <li>
+                    <a href="@controllers.account.settings.routes.Password.index">@Messages("localiteMembre.projet")</a>
+                </li>
+                <li>
+                    <a href="@controllers.account.settings.routes.Email.index">@Messages("localiteMembre.activite")</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+}

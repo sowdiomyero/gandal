@@ -1,0 +1,546 @@
+@(projet: Projet)
+
+
+
+ 
+ 
+	<div class="row" style="padding: 4px; margin: 4px; float: left">
+
+		<div class="row" style="padding: 4px; margin: 4px; float: left">
+			<button class="btn btn-success btn-xs" data-toggle="modal"
+				data-target="#CreateEtape">
+				<span class="glyphicon glyphicon-plus-sign"></span> Ajouter une
+				etape
+			</button>
+
+
+		</div>
+
+	</div>
+
+
+
+
+
+
+	<div class="table-responsive">
+		<table id="etape_table" class="display responsive no-wrap "
+			cellspacing="0" width="100%">
+			<thead>
+				<tr>
+					<th>Nom etape</th>
+   					<th>etat</th>
+ 					<th>Actions</th>
+
+				</tr>
+			</thead>
+
+			<tbody>
+				@for( team <- projet.getEtapes()) {
+				<tr>
+					<td>@team.getNomEtape()</td>
+					<td>@team.getEtat()</td>
+					<td>
+						<!-- View --> <a href="#" id="Viewetape"
+						class="btn btn-info btn-xs" data-nom_etape="@team.getNomEtape()"
+						data-description_etape="@team.getDescEtape()"
+						data-dateD_etape="@team.getDateDebut().format("dd/MM/yyyy")"
+						data-dateF_etape="@team.getDateFin().format("dd/MM/yyyy")"
+					data-contact_etape="@team.getContatact()"
+						data-cout_reel_etape="@team.getCoutReel()"
+						data-emploi_reel_etape="@team.getEmploiReel()"
+						data-autorite_etape="@team.getAutorite()"
+						data-cout_previsionnel_etape="@team.getCoutPrevisionel()"
+						data-emploi_previsionnel_etape="@team.getEmploiPrevisionel()"
+						data-etat_etape="@team.getEtat()"
+						alt="Visualiser la fiche d'une activité"><span
+							class="glyphicon glyphicon-eye-open"></span></a> <!-- Update --> <a
+						id="updateEtape" href="#" class="btn btn-info btn-xs"
+						data-nomUpetape="@team.getNomEtape()"
+						data-descriptionUpetape="@team.getDescEtape()"
+						data-dateDUpetape="@team.getDateDebut().format("yyyy-MM-dd")"
+						data-dateFUpetape="@team.getDateFin().format("yyyy-MM-dd")"
+					data-contactUpetape="@team.getContatact()"
+						data-autoriteUpetape="@team.getAutorite()"
+						data-idEtape="@team.getId()"
+						data-cout_reel_etapeUp="@team.getCoutReel()"
+						data-emploi_reel_etapeUp="@team.getEmploiReel()"
+						data-cout_previsionnel_etapeUp="@team.getCoutPrevisionel()"
+						data-emploi_previsionnel_etapeUp="@team.getEmploiPrevisionel()"
+						data-etat_etapeUp="@team.getEtat()"
+						alt="Modifier les informations sur le projet"><span
+							class="glyphicon glyphicon-pencil"></span></a> <!-- Delete --> <a
+						href="#"
+						class="btn btn-warning btn-xs" alt="Supprimer etape"><span
+							class="glyphicon glyphicon-trash"></span></a>
+
+						<button class="btn btn-success btn-xs" data-toggle="modal"
+							data-target="#ChangeStateEtape">Etat</button>
+
+					</td>
+				</tr>
+				}
+			</tbody>
+		</table>
+	</div>
+ 	
+
+
+	<!--Show project-->
+	<div class="modal fade modal-admin" id="etapeShow" tabindex="-1"
+		role="dialog" aria-labelledby="viewEtapeModal" aria-hidden="true">
+
+		<div class="modal-body">
+			<div class="row">
+
+				<div class="col-md-3 col-md-offset-4" id="">
+					<div class="panel panel-info">
+						<div class="panel-heading">
+							<h3 class="panel-title">Informations etape</h3>
+
+						</div>
+						<div class="panel-body" style="color: #000033">
+							<div class="alert alert-success" role="alert"
+								id="profilMessageSuccess" style="display: none">
+								<div class="alert alert-danger" role="alert"
+									style="display: none" id="profilMessageFailed"></div>
+							</div>
+
+							<div
+								class="controle-panel-heading panel-heading panel-heading-landing-box">
+
+							</div>
+							<div class="panel-body panel-body-landing">
+								<table class="table">
+									<tr>
+										<td><b>Nom etape:</b></td>
+										<td id="nom_etape"></td>
+									</tr>
+									<tr>
+										<td><b>Description etape:</b></td>
+										<td id="description_etape"></td>
+									</tr>
+									<tr>
+										<td><b>Date début de l'etape:</b></td>
+										<td id="dateD_etape"></td>
+									</tr>
+									<tr>
+										<td><b>Date fin de l'etape:</b></td>
+										<td id="dateF_etape"></td>
+									</tr>
+									<tr>
+										<td><b>Contact:</b></td>
+										<td id="contact_etape"></td>
+									</tr>
+									<tr>
+										<td><b>Autorite:</b></td>
+										<td id="autorite_etape"></td>
+									</tr>
+									<tr>
+										<td><b>Cout prévisionnel:</b></td>
+										<td id="cout_previsionnel_etape"></td>
+									</tr>
+									<tr>
+										<td><b>Cout reel:</b></td>
+										<td id="cout_reel_etape"></td>
+									</tr>
+									<tr>
+										<td><b>Nombre d'emploi prévisionnel:</b></td>
+										<td id="emploi_previsionnel_etape"></td>
+									</tr>
+									<tr>
+										<td><b>Nombre d'emploi reel:</b></td>
+										<td id="emploi_reel_etape"></td>
+									</tr>
+									<tr>
+										<td><b>Etat:</b></td>
+										<td id="etat_etape"></td>
+									</tr>
+
+								</table>
+							</div>
+							<div class="panel-footer panel-footer-landing">
+								<button type="button" id="fermerModalViewEtape"
+									data-dismiss="modal" class="btn btn-info">Fermer</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!--add project -->
+	<div class="modal fade modal-admin" id="CreateEtape" tabindex="-1"
+		role="dialog" aria-labelledby="viewProfilModal" aria-hidden="true">
+		<div class="col-md-4 col-lg-offset-4" id="">
+			<div class="panel panel-info">
+				<div class="panel-heading">
+					<h3 class="panel-title">Ajouter une etape</h3>
+
+				</div>
+				<div class="panel-body" style="color: #000033">
+
+
+
+					<form action="@routes.ProjetCtrl.addEtape(projet.getId())"
+						method="post" id="formCreateEtape">
+						<fieldset>
+							<legend>Informations de l'etape</legend>
+							<!-- nom -->
+							<div class="row">
+								<div class="col-md-4 text-left">
+									<label for="">Nom de l'etape: </label>
+								</div>
+								<div class="col-md-6">
+									<input type="text" class="form-control" required="required"
+										name="nomEtape" placeholder="Nom" />
+								</div>
+							</div>
+							<br>
+							<!-- description -->
+							<div class="row">
+								<div class="col-md-4 text-left">
+									<label for="">Description de l'etape: </label>
+								</div>
+								<div class="col-md-6">
+									<input class="form-control" required="required"
+										name="descriptionEtape" placeholder="description de l'etape" />
+								</div>
+							</div>
+							<br>
+							<!-- Date debut  -->
+							<div class="row">
+								<div class="col-md-4 text-left">
+									<label for="">Date debut de l'etape: </label>
+								</div>
+								<div class="col-md-6">
+									<input type="date" class="form-control" required="required"
+										name="dateDEtape" placeholder="Date debut de l'etape" />
+
+								</div>
+
+							</div>
+							<br>
+							<!-- Date fin -->
+							<div class="row">
+								<div class="col-md-4 text-left">
+									<label for="">Date fin de l'etape: </label>
+								</div>
+								<div class="col-md-6">
+									<input type="date" class="form-control" required="required"
+										name="dateFEtape" placeholder="Date fin de l'etape" />
+								</div>
+
+							</div>
+							<br>
+							<!-- Contact du etape -->
+							<div class="row">
+								<div class="col-md-4 text-left">
+									<label for="">Contact de l'etape: </label>
+								</div>
+								<div class="col-md-6">
+									<input type="text" class="form-control" required="required"
+										name="contactEtape" placeholder="contact" />
+
+								</div>
+
+							</div>
+							<br>
+							<!-- Autorité du etape -->
+							<div class="row">
+								<div class="col-md-4 text-left">
+									<label for="">Autorité de l'etape: </label>
+								</div>
+								<div class="col-md-6">
+									<input type="text" class="form-control" required="required"
+										name="autoriteEtape" placeholder="autorité" />
+
+								</div>
+
+							</div>
+							<br>
+							<!-- Cout prévisionnel -->
+							<div class="row">
+								<div class="col-md-4 text-left">
+									<label for="">Cout prévisionnel de l'etape: </label>
+								</div>
+								<div class="col-md-6">
+									<input type="number" min="0" class="form-control"
+										required="required" name="coutPrevisionnelEtape"
+										placeholder="Cout prévisionnel de l'etape" />
+								</div>
+							</div>
+							<br>
+							<!-- Cout reel-->
+							<div class="row">
+								<div class="col-md-4 text-left">
+									<label for="">Cout reel de l'etape: </label>
+								</div>
+								<div class="col-md-6">
+									<input type="number" min="0" class="form-control"
+										required="required" name="coutReelEtape"
+										placeholder="Cout Reel de l'etape" />
+								</div>
+							</div>
+							<br>
+
+							<!-- Nombre d'emploi prévisionnel -->
+							<div class="row">
+								<div class="col-md-4 text-left">
+									<label for="">Nombre d'emploi prévisionnel de l'etape </label>
+								</div>
+								<div class="col-md-6">
+									<input type="number" min="0" class="form-control"
+										required="required" name="emlpoiPrevisionnelEtape"
+										placeholder="Nombre d'emploi prévisionnel" />
+								</div>
+							</div>
+							<br>
+
+							<!-- Nombre d'emploi reel -->
+							<div class="row">
+								<div class="col-md-4 text-left">
+									<label for="">Nombre d'emploi reel de l'etape </label>
+								</div>
+								<div class="col-md-6">
+									<input type="number" min="0" class="form-control"
+										required="required" name="emlpoiReelEtape"
+										placeholder="Nombre d'emploi Reel" />
+								</div>
+							</div>
+							<br>
+
+
+
+						</fieldset>
+				</div>
+				<div class="panel-footer panel-footer-landing">
+					<button type="submit" id="bntSubmitCreateEtape" onClick=""
+						class="btn btn-info" value="submit" data-idLocProjet="">Enregisrer</button>
+					<button type="reset" class=" annulerModifProfil btn btn-warning">Annuler
+						Modifications</button>
+					<button type="button" id="fermerModalEtape" data-dismiss="modal"
+						class="btn btn-warning">Fermer</button>
+				</div>
+				</form>
+			</div>
+		</div>
+	</div>
+
+
+	<!--Update project -->
+	<div class="modal fade modal-admin" id="UpdateEtape" tabindex="-1"
+		role="dialog" aria-labelledby="viewEtapeUpdateModal"
+		aria-hidden="true">
+		<div class="col-md-4 col-lg-offset-4" id="">
+			<div class="panel panel-info">
+				<div class="panel-heading">
+					<h3 class="panel-title">Modifier un etape</h3>
+
+				</div>
+				<div class="panel-body" style="color: #000033">
+
+
+
+					<form action="@routes.ProjetCtrl.updateEtape()" method="post"
+						id="formUpdateEtape">
+						<fieldset>
+							<legend>Informations etape</legend>
+							<!-- nom -->
+							<div class="row">
+								<div class="col-md-4  text-left">
+									<label for="">Nom etape: </label>
+								</div>
+								<div class="col-md-6">
+									<input type="text" class="form-control" required="required"
+										name="nomEtapeUp" placeholder="Nom" id="nomEtapeUp" />
+								</div>
+							</div>
+							<br>
+							<!-- description -->
+							<div class="row">
+								<div class="col-md-4 text-left">
+									<label for="">Description etape: </label>
+								</div>
+								<div class="col-md-6">
+									<input class="form-control" required="required"
+										name="descriptionEtapeUp" placeholder="description du etape"
+										id="descriptionEtapeUp" />
+								</div>
+							</div>
+							<br>
+							<!-- Date debut  -->
+							<div class="row">
+								<div class="col-md-4 text-left">
+									<label for="">Date debut du etape: </label>
+								</div>
+								<div class="col-md-6">
+									<input type="date" class="form-control" required="required"
+										name="dateDEtapeUp" placeholder="Date debut du etape"
+										id="dateDEtapeUp" />
+								</div>
+
+							</div>
+							<br>
+							<!-- Date fin -->
+							<div class="row">
+								<div class="col-md-4 text-left">
+									<label for="">Date fin du etape: </label>
+								</div>
+								<div class="col-md-6">
+									<input type="date" class="form-control" required="required"
+										name="dateFEtapeUp" placeholder="Date fin du etape"
+										id="dateFEtapeUp" />
+								</div>
+
+							</div>
+							<br>
+							<!-- Contact du etape -->
+							<div class="row">
+								<div class="col-md-4 text-left">
+									<label for="">Contact du etape: </label>
+								</div>
+								<div class="col-md-6">
+									<input type="text" class="form-control" required="required"
+										name="contactEtapeUp" placeholder="contact"
+										id="contactEtapeUp" />
+								</div>
+
+							</div>
+							<br>
+							<!-- Autorité du etape -->
+							<div class="row">
+								<div class="col-md-4 text-left">
+									<label for="">Autorité du etape: </label>
+								</div>
+								<div class="col-md-6">
+									<input type="text" class="form-control" required="required"
+										name="autoriteEtapeUp" placeholder="autorité"
+										id="autoriteEtapeUp" />
+								</div>
+								<input type="hidden" name="idEtape" id="idEtape"></input>
+							</div>
+							<br>
+
+							<!-- Cout prévisionnel -->
+							<div class="row">
+								<div class="col-md-4 text-left">
+									<label for="">Cout prévisionnel du etape: </label>
+								</div>
+								<div class="col-md-6">
+									<input type="number" min="0" class="form-control"
+										required="required" name="coutPrevisionnelEtapeUp"
+										id="coutPrevisionnelEtapeUp"
+										placeholder="Cout prévisionnel du etape" />
+								</div>
+							</div>
+							<br>
+
+							<!-- Cout reel-->
+							<div class="row">
+								<div class="col-md-4 text-left">
+									<label for="">Cout reel de l'etape: </label>
+								</div>
+								<div class="col-md-6">
+									<input type="number" min="0" class="form-control"
+										required="required" name="coutReelEtapeUp"
+										id="coutReelEtapeUp" placeholder="Cout Reel de l'etape" />
+								</div>
+							</div>
+							<br>
+
+							<!-- Nombre d'emploi prévisionnel -->
+							<div class="row">
+								<div class="col-md-4 text-left">
+									<label for="">Nombre d'emploi prévisionnel du etape </label>
+								</div>
+								<div class="col-md-6">
+									<input type="number" min="0" class="form-control"
+										required="required" name="emlpoiPrevisionnelEtapeUp"
+										id="emlpoiPrevisionnelEtapeUp"
+										placeholder="Nombre d'emploi prévisionnel" />
+								</div>
+							</div>
+							<br>
+
+							<!-- Nombre d'emploi reel -->
+							<div class="row">
+								<div class="col-md-4 text-left">
+									<label for="">Nombre d'emploi reel de l'etape </label>
+								</div>
+								<div class="col-md-6">
+									<input type="number" min="0" class="form-control"
+										required="required" name="emlpoiReelEtapeUp"
+										id="emlpoiReelEtapeUp" placeholder="Nombre d'emploi Reel" />
+								</div>
+							</div>
+							<br>
+
+						</fieldset>
+				</div>
+				<div class="panel-footer panel-footer-landing">
+
+					<button type="submit" id="bntSubmitUpdateEtape" onClick=""
+						class="btn btn-info" value="submit">Enregisrer</button>
+					<button type="reset" class="btn btn-warning">Annuler
+						Modifications</button>
+					<button type="button" id="fermerModalUpdateEtape"
+						data-dismiss="modal" class="btn btn-warning">Fermer</button>
+				</div>
+				</form>
+			</div>
+		</div>
+	</div>
+
+
+	<!--Change state -->
+	<div class="modal fade modal-admin" id="ChangeStateEtape" tabindex="-1"
+		role="dialog" aria-labelledby="viewProfilModal" aria-hidden="true">
+		<div class="col-md-4 col-lg-offset-4" id="">
+			<div class="panel panel-info">
+				<div class="panel-heading">
+					<h3 class="panel-title">Ajouter une etape</h3>
+
+				</div>
+				<div class="panel-body" style="color: #000033">
+
+
+
+					<form action="#"
+						method="post" id="formChangeStateEtape">
+						<fieldset>
+							<legend>Informations de l'etape</legend>
+							<!-- sexe -->
+							<div class="row">
+								<div class="col-md-4">
+									<label class="pull-left">Etat:</label>
+								</div>
+								<div class="col-md-6">
+									<select class="form-control selectize text-left" name="etat"
+										style=""> 
+										<option value="EN_COURS" class="">Etape en cours</option>
+										<option value="SUSPENDU" class="">Etape suspendu</option>
+										<option value="TERMINE" class="">Etape terminer</option>
+										<option value="DEMARRE" class="">Etape démarrer</option>
+										<option value="PLANIFIE" class="">Etape planifie</option>
+									</select>
+								</div>
+							</div>
+
+
+
+						</fieldset>
+				</div>
+				<div class="panel-footer panel-footer-landing">
+					<button type="submit" id="ChangeStateEtape" onClick=""
+						class="btn btn-info" value="submit" data-idLocProjet="">Enregisrer</button>
+					<button type="reset" class=" annulerModifProfil btn btn-warning">Annuler
+						Modifications</button>
+					<button type="button" id="fermerModalEtape" data-dismiss="modal"
+						class="btn btn-warning">Fermer</button>
+				</div>
+				</form>
+			</div>
+		</div>
+	</div>

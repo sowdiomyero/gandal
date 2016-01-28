@@ -1,0 +1,61 @@
+@(compte: Compte) @scripts={
+<script src="@routes.Assets.at("javascripts/highcharts.js")" type="text/javascript"></script>
+<script src="@routes.Assets.at("javascripts/chart_localite.js")" type="text/javascript"></script>
+<script src="@routes.Assets.at("javascripts/exportChart.js")" type="text/javascript"></script>
+<script src="@routes.Assets.at("javascripts/Chart3D.js")" type="text/javascript"></script>
+} @mlayout(compte, scripts) {
+
+<div class="row"></div>
+
+<div class="row">
+
+	<div class="col-sm-1"></div>
+	<div class="col-sm-10">
+		<br>
+		<div class="col-sm-6">
+			<div class="panel-success">
+				<div class="panel-heading">Tableau récapitulatif des
+					Inscriptions par Agent</div>
+				<div class="panel-body" id="graph1"></div>
+			</div>
+		</div>
+		<div class="col-sm-6">
+			<div class="panel-success">
+				<div class="panel-heading">Tableau récapitulatif des
+					Inscriptions par Mois</div>
+				<div class="panel-body" id="graph2">cops et contenu du panel</div>
+			</div>
+		</div>
+
+		<div class="col-sm-6">
+			<div class="panel-info">
+				<div class="panel-heading">Tableau récapitulatif des cout de
+					realisation par projet</div>
+				<div class="panel-body" id="graph3">cops et contenu du panel</div>
+			</div>
+		</div>
+		<div class="col-sm-6">
+			<div class="panel-info">
+				<div class="panel-heading">Tableau récapitulatif des emplois
+					generes par projet</div>
+				<div class="panel-body" id="graph4">cops et contenu du panel</div>
+			</div>
+		</div>
+		<div class="col-sm-6">
+			<div class="panel-info">
+				<div class="panel-heading">Tableau récapitulatif du niveau
+					d'execution des projets</div>
+				<div class="panel-body" id="graph5">cops et contenu du panel</div>
+			</div>
+		</div>
+		<div class="col-sm-6">
+			<div class="panel-info">
+				<div class="panel-heading">Tableau récapitulatif des taux de décaissement des projets</div>
+				<div class="panel-body" id="graph6">cops et contenu du panel</div>
+			</div>
+		</div>
+	</div>
+
+</div>
+
+}

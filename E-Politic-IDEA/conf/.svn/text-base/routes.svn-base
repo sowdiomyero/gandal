@@ -1,0 +1,149 @@
+# Routes
+# This file defines all application routes (Higher priority routes first)
+# ~~~~
+
+# Home page
+GET         /                                                 controllers.Application.index()
+GET         /admin/cartographie                               controllers.Localisation.cartographie()
+GET         /admin/dashboard                                  controllers.Dashboard.displayDashboard()
+#GET         /dashboard                                        controllers.Dashboard.displayDashboard()
+GET         /admin/regions/                                   controllers.Dashboard.getRegionInscriptionStatistics()
+GET         /admin/objectifs/regions/                         controllers.Dashboard.getRegionObjectifsStatistics()
+GET         /admin/per/regions/                               controllers.Dashboard.getPourcentageInscriptionByRegion()
+GET         /admin/inscriptions/                              controllers.Dashboard.getInscriptionBetweenTwoDates()
+
+GET         /dashboard/membre                                 controllers.DashboardMembre.dashboard()
+
+GET         /membre/infoGenerale/:id                          controllers.InfoGeneraleCtrl.index(id: Long)
+
+GET         /membre/compte                                    controllers.ProfilCtrl.index()
+
+POST         /membre/compte/update                             controllers.ProfilCtrl.update()
+
+POST         /membre/objectif                                 controllers.ObjectifCtrl.add()
+
+
+
+
+POST        /locations/search                                 controllers.Localisation.search()
+GET         /locations/:niveau                                controllers.Localisation.getLocaliteByType(niveau:String)
+GET         /locations                                        controllers.Localisation.getAllLocalites()
+GET         /infoLocalite/:idLocalite                         controllers.Localisation.infosLocalite(idLocalite: Long)
+GET         /localite/dashboard                               controllers.DashboardLocaliteCtrl.dashboard() 
+GET         /localite/dashboard/inscription                   controllers.DashboardLocaliteCtrl.getLocaliteInscriptionStatistics() 
+GET         /localite/dashboard/agent                         controllers.DashboardLocaliteCtrl.getLocaliteInscriptionByUserStatistics() 
+GET         /localite/dashboard/projet/cout                   controllers.DashboardLocaliteCtrl.getLocaliteCoutProjetStatistics()
+GET         /localite/dashboard/projet/Emploi                 controllers.DashboardLocaliteCtrl.getLocaliteEmploiProjetStatistics() 
+GET         /localite/dashboard/projet/tauxAvancement         controllers.DashboardLocaliteCtrl.getLocaliteProjetTauxAvStatistics()
+#GET         /localite/dashboard/projet/tauxDecaissement       controllers.DashboardLocaliteCtrl.getLocaliteProjetTauxDecaissementStatistics()
+
+
+POST        /inscription                                      controllers.InscriptionCtrl.add()
+
+
+
+GET         /sms                                              controllers.SmsPullPush.pullSms(message,numero,password)
+POST        /sms/send                                         controllers.SmsPullPush.pushSms()
+
+GET         /equipes/membre/:id                               controllers.EquipeCtrl.membresEquipe(id:Long)
+GET         /equipes/membre                                   controllers.EquipeCtrl.index()
+POST		/equipes/membre/sendSms/:idEquipe				  controllers.EquipeCtrl.pushSmsToAgent(idEquipe: Long)
+POST		/equipes/membre/add/:idEquipeResponsable		  controllers.EquipeCtrl.addMembreEquipe(idEquipeResponsable:Long)
+POST		/equipes/membre/del		                          controllers.EquipeCtrl.delMembreEquipe()
+POST		/equipes/membre/update							  controllers.EquipeCtrl.updateMembreEquipe()
+GET         /equipes/inscription                              controllers.EquipeCtrl.showAllMessageEquipes()
+GET         /equipes/inscription/valide/:idIns                controllers.EquipeCtrl.updateInscriptionToValide(idIns:Long)
+GET         /equipes/inscription/Notvalide/:idIns             controllers.EquipeCtrl.updateInscriptionToNotValide(idIns:Long)
+GET         /equipes/inscription/badSyntax/:idIns             controllers.EquipeCtrl.updateInscriptionToBadSyntax(idIns:Long)
+GET         /equipes/inscription/duplicate/:idIns             controllers.EquipeCtrl.updateInscriptionToDuplicate(idIns:Long)
+POST        /equipes/inscription/del                          controllers.EquipeCtrl.delSmsEquipe()
+
+POST        /project                                          controllers.ProjetCtrl.addProject()
+GET         /projects                                         controllers.ProjetCtrl.home()
+GET         /projets/:id                                      controllers.ProjetCtrl.index(id:Long)
+GET         /projets/fiche/:idProjet                          controllers.ProjetCtrl.infoProjet(idProjet:Long)
+POST        /projet/add/:idLoc                                controllers.ProjetCtrl.addProjet(idLoc: Long)
+POST		/projets/update                                   controllers.ProjetCtrl.updateProject()
+POST		/projets/del						  			  controllers.ProjetCtrl.delProjet()
+GET			/projets/addpl/:idPro/:idLoc					  controllers.ProjetCtrl.addProjetToLocalite(idPro: Long, idLoc: Long)
+GET			/projets/UpdateStaTeProjet/:idPro/:etat		      controllers.ProjetCtrl.updateStateProjet(idPro: Long, etat: String)
+
+POST		/projets/update/personnes                         controllers.ProjetCtrl.updatePersonnesProject()
+POST		/projets/update/details                           controllers.ProjetCtrl.updateDetailsProject()
+POST		/projets/update/budgets                           controllers.ProjetCtrl.updateBudgetsProject()
+POST		/projets/update/date                              controllers.ProjetCtrl.updateDatesProject()
+POST		/projets/update/emplois                           controllers.ProjetCtrl.updateEmploisProject()
+GET         /projets/etape/fiche/:idEtape                     controllers.ProjetCtrl.infoEtape(idEtape:Long)
+GET			/projets/UpdateStaTeEtape/:idEtape/:etat		  controllers.ProjetCtrl.updateStateEtape(idEtape: Long, etat: String)
+POST		/projets/etape/update/execution                   controllers.ProjetCtrl.updateNiveauExecutionEtape()
+POST		/projets/etape/update/personnes                         controllers.ProjetCtrl.updatePersonnesEtape()
+POST		/projets/etape/update/details                           controllers.ProjetCtrl.updateDetailsEtape()
+POST		/projets/etape/update/budgets                           controllers.ProjetCtrl.updateBudgetsEtape()
+POST		/projets/etape/update/date                              controllers.ProjetCtrl.updateDatesEtape()
+POST		/projets/etape/update/emplois                           controllers.ProjetCtrl.updateEmploisEtape()
+POST		/projets/etape/terminer                           controllers.ProjetCtrl.terminerEtape()
+ 
+
+
+
+
+
+
+POST        /etape/add/:idProjet                              controllers.ProjetCtrl.addEtape(idProjet: Long)
+POST		/etape/update                                     controllers.ProjetCtrl.updateEtape()
+POST		/etape/del						                  controllers.ProjetCtrl.delEtape()
+
+GET         /activites/:id                                    controllers.ActiviteCtrl.index(id:Long)
+POST		/activites/add/:id								  controllers.ActiviteCtrl.addActivite(id:Long)
+POST			/activites/del                   				  controllers.ActiviteCtrl.delActivite()
+POST		/activites/update				                  controllers.ActiviteCtrl.updateActivite()
+
+
+GET         /json                                             controllers.Localisation.sayHello()
+GET         /departements                                     controllers.Localisation.getAllDepartements
+GET         /departements/:regionId                           controllers.Localisation.getDepartementsByRegionId(regionId:Long)
+GET         /quartiers/:departementId                         controllers.Localisation.getQuartiersByDepartementsId(departementId:Long)
+POST        /localiteMembre/add                               controllers.Localisation.addQuartier()
+GET         /localites                                        controllers.Localisation.listLocalites()
+POST        /localites/recherche                              controllers.Localisation.recherche()
+POST        /localites/update                                 controllers.Localisation.updateQuartier()
+
+GET         /membres                                          controllers.MembreCtrl.index()
+POST        /membres                                          controllers.MembreCtrl.addMembre()
+GET         /membres/:idLocalite                              controllers.MembreCtrl.getMembreByLocaliteIdAndTypeLocalite(idLocalite:Long)
+GET         /membres/block/:idMembre                          controllers.MembreCtrl.blockMembre(idMembre:Long)
+POST        /membres/update                                   controllers.MembreCtrl.updateMembre()
+
+
+POST        /login                                            controllers.Application.authenticate()
+GET         /logout                                           controllers.Application.logout()
+
+GET         /settings                                         controllers.account.settings.Index.index()
+GET         /settings/password                                controllers.account.settings.Password.index()
+POST        /settings/password                                controllers.account.settings.Password.runPassword()
+GET         /settings/email                                   controllers.account.settings.Email.index()
+POST        /settings/email                                   controllers.account.settings.Email.runEmail()
+
+# Registers the user, sending an email to confirm the account.
+GET         /signup                                           controllers.account.Signup.create()
+POST        /signup                                           controllers.account.Signup.save()
+
+# Accessed when the user confirms the registration.
+GET         /confirm/:confirmToken                            controllers.account.Signup.confirm(confirmToken:String)
+
+# Displays a page to send a reset email given the user's email.
+GET         /reset/ask                                        controllers.account.Reset.ask()
+POST        /reset/ask                                        controllers.account.Reset.runAsk()
+
+# Resets the password using the password.
+GET         /reset/:token                                     controllers.account.Reset.reset(token:String)
+POST        /reset/:token                                     controllers.account.Reset.runReset(token:String)
+
+GET         /email/:token                                     controllers.account.settings.Email.validateEmail(token:String)
+
+# Map static resources from the /public folder to the /assets URL path
+GET         /assets/img/glyphicons-halflings.png              controllers.Assets.at(path="/public", file="/images/glyphicons-halflings.png")
+GET         /assets/img/glyphicons-halflings-white.png        controllers.Assets.at(path="/public", file="/images/glyphicons-halflings-white.png")
+GET         /assets/*file                                     controllers.Assets.at(path="/public", file)
+
+

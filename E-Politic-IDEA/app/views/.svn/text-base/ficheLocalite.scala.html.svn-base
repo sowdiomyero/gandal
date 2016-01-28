@@ -1,0 +1,254 @@
+ @(compte: Compte ,localite: Localite )
+
+@if(compte.isAdmin()){
+
+<div class="row" style="padding: 4px; margin: 4px; float: left">
+@if(localite.getTeam()!=null){
+	<button class="btn btn-success btn-xs" data-toggle="modal"
+		data-target="#CreateInscription">
+		<span class="glyphicon glyphicon-plus-sign"></span> Ajouter une
+		inscription
+	</button>
+}
+	<button class="btn btn-success btn-xs" data-toggle="modal"
+		data-target="#CreateObjectif">
+		<span class="glyphicon glyphicon-plus-sign"></span> Ajouter un
+		objectif
+
+	</button>
+</div>
+<br>
+<br>
+
+}
+
+<ul id="myTab" class="nav nav-tabs nav-pills">
+
+	<li class="active"><a href="#info" data-toggle="tab">
+			Informations generales </a></li>
+
+
+	<li><a href="#activites" data-toggle="tab">Activites</a></li>
+
+	<li><a href="#projets" data-toggle="tab">Projets</a></li>
+
+</ul>
+
+<div id="myTabContent" class="tab-content">
+
+
+	<div class="tab-pane fade in active" id="info">
+
+		<div class="row">
+			<div class="col-sm-6 ">
+				<div class="panel panel-info">
+					<div class="panel-heading">
+						<h3 class="panel-title">Informations administratives</h3>
+
+					</div>
+					<div class="panel-body" style="color: #000033">
+
+
+						@for( team <-localite.getParentsLocalite()) { <label>@team.getDType()
+							: </label> <input class="form-control" value="@team.getNom()"
+							disabled="disabled" /><br> } <label>Nombre de
+							population : </label>
+						<div class="badge badge-info" role="alert">@localite.getNbPopulation()
+						</div>
+
+						<br> <br> <label>Nombre d'electeurs : </label>
+						<div class="badge badge-info" role="alert">@localite.getNbElecteurs()
+						</div>
+
+						<br> <br> <label>Nombre d'inscrits : </label>
+						<div class="badge badge-info" role="alert">@localite.getNbTotalInscrits()
+						</div>
+
+						<br> <br> <label>Objectif(%): </label>
+						<div class="badge badge-info" role="alert">@localite.getObjectifs()%
+						</div>
+						<br> <br> <label>Objectif: </label>
+						<div class="badge badge-info" role="alert">@localite.getNombreObjectifs()
+						</div>
+						<br> <br> <label>Pourcentage de realisation des
+							objectifs: </label>
+						<div class="progress">
+							<div class="progress-bar" role="progressbar" aria-valuenow="60"
+								aria-valuemin="0" aria-valuemax="100"
+								style="width: @localite.getPourcentageRealisation()%;">@localite.getPourcentageRealisation()%</div>
+						</div>
+
+					</div>
+
+				</div>
+			</div>
+
+			<div class="col-sm-6  ">
+				<div class="panel panel-info">
+					<div class="panel-heading">
+						<h3 class="panel-title">Informations geographiques</h3>
+
+					</div>
+					<div class="panel-body" style="color: #000033">
+
+						<label>Google Code: </label> <input class="form-control"
+							value="@localite.getGoogleCodeQuartier()"
+							disabled="disabled" /><br> <label>Latitude : </label> <input
+							class="form-control"
+							value="@localite.getLatitude()"
+							disabled="disabled" /><br> <label>Longitude : </label> <input
+							class="form-control"
+							value="@localite.getLongitude()"
+							disabled="disabled" /><br> <label>Altitude : </label> <input
+							class="form-control"
+							value="@localite.getAltitude()"
+							disabled="disabled" /><br>
+
+
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-sm-12  ">
+				<div class="panel panel-info">
+					<div class="panel-heading">
+						<h3 class="panel-title">Informations rattachements</h3>
+
+					</div>
+					<div class="panel-body" style="color: #000033">
+						<label>Nom equipe : </label> <input class="form-control"
+							value="@localite.getNomEquipe()" disabled="disabled" /><br>
+						<label>Responsable : </label> <input class="form-control"
+							value="@localite.getNomResponsable()"
+							disabled="disabled" /><br> <label>Nombre de
+							militants : </label>
+						<div class="badge badge-info" role="alert">@localite.getNbMilitantsLocalite()
+						</div>
+
+						<br> <br> <label>Nombre de sections : </label>
+						<div class="badge badge-info" role="alert">@localite.getNbSections()</div>
+
+
+					</div>
+				</div>
+			</div>
+		</div>
+
+	</div>
+
+
+	<div class="tab-pane fade" id="activites">
+		@tableauActivite(localite.getListActivites(),compte)</div>
+
+	<div class="tab-pane fade" id="projets">@tableauProjet(localite.getListProjets(), localite.getListExterneProjet(), compte)</div>
+
+</div>
+
+<div class="modal fade modal-admin" id="CreateInscription" tabindex="-1"
+	role="dialog" aria-labelledby="viewProfilModal" aria-hidden="true">
+		<div class="col-md-4  col-lg-offset-4" id="">
+			<div class="panel panel-info">
+				<div class="panel-heading">
+					<h3 class="panel-title">Ajouter une inscription</h3>
+
+				</div>
+				<form action="@routes.InscriptionCtrl.add()" method="post" id="editProfilFormulaire">
+				<div class="panel-body" style="color: #000033">
+
+						<fieldset>
+							<legend>Informations inscription</legend>
+							
+							<!--  -->
+							<div class="row">
+								<div class="col-md-4">
+									<label class="pull-left" for="">Nombre d'inscrits: </label>
+								</div>
+								<div class="col-md-6">
+									<input class="form-control " required="required"
+												name="nbreInscrit" placeholder="nombre d'inscrits" type="number" min="0"  max="@localite.getNbElecteurs()" />
+								</div>
+							</div>
+							<br>
+							<!--  -->
+							<div class="row">
+								<div class="col-md-4">
+									<label class="pull-left" for="">Date d'inscription: </label>
+								</div>
+								<div class="col-md-6">
+									<input type="date" class="form-control" required="required"
+												name="dateInscription" placeholder="date d'inscription"/> <input type="hidden"
+												name="idlocalite" value="@localite.getId()" />
+								</div>
+							</div>
+							<br>	
+							</fieldset>
+												
+				</div>
+				<div class="panel-footer text-center">
+					<button type="submit " onClick=""
+						class="btn btn-info" value="submit">Enregisrer</button>
+					<button type="reset" class=" annulerModifProfil btn btn-warning">Annuler
+						Modifications</button>
+					<button type="button" id="fermerModal" data-dismiss="modal"
+						class="btn btn-warning">Fermer</button>
+				</div>
+				</form>
+			</div>
+		</div>
+	</div>
+
+<<div class="modal fade modal-admin" id="CreateObjectif" tabindex="-1"
+	role="dialog" aria-labelledby="viewProfilModal" aria-hidden="true">
+		<div class="col-md-4  col-lg-offset-4" id="">
+			<div class="panel panel-info">
+				<div class="panel-heading">
+					<h3 class="panel-title">Ajouter un objectif  pour la localité</h3>
+
+				</div>
+				<form action="@routes.ObjectifCtrl.add()" method="post" id="editObjectifFormulaire">
+				<div class="panel-body" style="color: #000033">
+
+						<fieldset>
+						
+							<!--  -->
+							<div class="row">
+								<div class="col-sm-4 ">
+									<label class="pull-left" for="">Objectif(%): </label>
+									<input class="form-control " required="required"
+												name="objectifPourcent" placeholder="Votre objectif"
+												id="editObjectif" type="number" min="1" max="100" /> <input type="hidden"
+												name="idlocalite" value="@localite.getId()" />
+												<input type="hidden" id="nbElecteur" value="@localite.getNbElecteurs()"/>
+								</div>
+								<div class="col-sm-4 ">
+									<label class="pull-left" for="">Objectif(Nbre): </label>
+									<input class="form-control " 
+												name="objectifPourcent" placeholder="Votre objectif"
+												id="editObjectifNombre" type="number" min="1" /> <input type="hidden"
+												name="idlocalite" value="@localite.getId()" />
+												<input type="hidden" id="nbElecteur" value="@localite.getNbElecteurs()"/>
+								</div>
+								<div class="col-sm-4 ">
+										<label id="objectif-nombre-text"> </label><br>
+										 <label id="objectif-nombre"></label>
+							 </div>
+							</div>
+							
+							
+							</fieldset>
+												
+				</div>
+				<div class="panel-footer text-center">
+					<button type="submit" id="bntAddObjectif" onClick=""
+						class="btn btn-info" value="submit">Enregisrer</button>
+					<button type="reset" class=" annulerModifProfil btn btn-warning" id="btnAnnulerAddObjectif">Annuler
+						Modifications</button>
+					<button type="button" id="fermerModalObjectif" data-dismiss="modal"
+						class="btn btn-warning">Fermer</button>
+				</div>
+				</form>
+			</div>
+		</div>
+	</div>

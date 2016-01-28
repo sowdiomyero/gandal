@@ -1,0 +1,6 @@
+var UserEnvoyes = require('');
+
+UserRole.create({
+	idUtilisateur : UserEnvoyes.idUtilisateur,
+	idRole : UserEnvoyes.idRole
+})

@@ -1,0 +1,49 @@
+@(compte: Compte, localiteMembre: Localite, projetForm: Form[views.forms.ProjetForm], nature: String)
+
+
+@main2(compte) {
+
+    <div class="row">
+        <div class="col col-lg-2">
+
+        </div>
+        <div class="col col-lg-8">
+           <h2>Gestion de la Localite @localiteMembre</h2>
+        </div>
+        <div class="col col-lg-2">
+
+        </div>
+    </div>
+        <div class="row">
+        <div class="col col-lg-2">
+            <div  style="padding-top: 40px; margin-top: 10px">
+
+                <ul class="nav nav-pills nav-stacked">
+                    <li>
+                        <a href="@controllers.account.settings.routes.Password.index">Regions</a>
+                    </li>
+                    <li>
+                        <a href="@controllers.account.settings.routes.Email.index">Departements</a>
+                    </li>
+                    <li>
+                        <a href="@controllers.account.settings.routes.Email.index">Communes</a>
+                    </li>
+                    <li>
+                        <a href="@controllers.account.settings.routes.Email.index">Quartiers</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="col-xs-6">
+            <div class="">
+           @* @if(nature.equalsIgnoreCase("PROJET")){
+                @projet(projetForm)
+            }*@
+            </div>
+        </div>
+
+        <div class="col-xs-4" id="left">
+        /*@recherche()*/
+        </div>
+    </div>
+}

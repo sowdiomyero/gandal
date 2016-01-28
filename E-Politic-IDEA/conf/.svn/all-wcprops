@@ -1,0 +1,59 @@
+K 25
+svn:wc:ra_dav:version-url
+V 45
+/svn/poc/!svn/ver/258/branches/E-Politic/conf
+END
+application.conf
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/svn/poc/!svn/ver/258/branches/E-Politic/conf/application.conf
+END
+kannel.conf
+K 25
+svn:wc:ra_dav:version-url
+V 57
+/svn/poc/!svn/ver/153/branches/E-Politic/conf/kannel.conf
+END
+play.plugins
+K 25
+svn:wc:ra_dav:version-url
+V 57
+/svn/poc/!svn/ver/70/branches/E-Politic/conf/play.plugins
+END
+mail.conf.example
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/svn/poc/!svn/ver/70/branches/E-Politic/conf/mail.conf.example
+END
+routes
+K 25
+svn:wc:ra_dav:version-url
+V 52
+/svn/poc/!svn/ver/258/branches/E-Politic/conf/routes
+END
+mail.conf
+K 25
+svn:wc:ra_dav:version-url
+V 54
+/svn/poc/!svn/ver/75/branches/E-Politic/conf/mail.conf
+END
+messages.en
+K 25
+svn:wc:ra_dav:version-url
+V 57
+/svn/poc/!svn/ver/180/branches/E-Politic/conf/messages.en
+END
+cloudbees.conf
+K 25
+svn:wc:ra_dav:version-url
+V 59
+/svn/poc/!svn/ver/70/branches/E-Politic/conf/cloudbees.conf
+END
+messages.fr
+K 25
+svn:wc:ra_dav:version-url
+V 57
+/svn/poc/!svn/ver/180/branches/E-Politic/conf/messages.fr
+END

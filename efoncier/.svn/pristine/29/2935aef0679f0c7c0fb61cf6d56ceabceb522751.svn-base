@@ -1,0 +1,16 @@
+angular.module('utilisateurs')
+.controller('createUserCtrl', function($scope) {
+	$scope.formComplet = function() {
+		if ($scope.prenom == '') return false;
+
+		if ($scope.nom == '') return false;
+		
+		if ($scope.telephone == '') return false;
+		
+		if ($scope.fax == '') return false;
+		
+		if ($scope.adresse == '') return false;
+		
+		if ($scope.cni == '') return false;
+	}
+})

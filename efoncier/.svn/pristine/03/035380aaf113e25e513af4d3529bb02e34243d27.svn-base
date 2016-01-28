@@ -1,0 +1,62 @@
+
+/*var flash = require('connect-flash');
+var express =require('express');
+var app=express();
+ cookieParser=require('cookie-parser');
+
+app.configure=function() {
+  app.use(express.cookieParser('keyboard cat'));
+  app.use(express.session({ cookie: { maxAge: 60000 }}));
+  app.use(flash());
+};*/
+
+var bcrypt = require('node-bcrypt');
+
+exports.authenticate= function(user,password){
+  var suc = bcrypt.checkpw(password, user.password);
+  console.log(suc);
+  return suc;
+
+}
+
+Compte =require("../models/users").compte;
+var passport=require("passport");
+var LocalStrategy = require('passport-local').Strategy;
+
+//Serialize sessions
+passport.serializeUser(function(user, done) {
+  done(null, user.idCompte);
+});
+ 
+passport.deserializeUser(function(id, done) {
+    Compte.find({where: {idCompte: id}}).then(function(user){
+        console.log('Session: { id: ' + user.idCompte + ', username: ' + user.email + ' }');
+        done(null, user);
+    }).catch(function(err){
+        done(err, null);
+    });
+});
+
+
+passport.use(new LocalStrategy({
+    usernameField: 'email',
+    passwordField: 'password'
+  },
+  function(email, password, done) {
+    Compte.find({ where: { email: email }}).then(function(user,req) {
+      if (!user) {
+        done(null, false, { message: 'Utilisateur inconnu ou mot de passe invalide' });
+      } else if (!exports.authenticate(user,password)) {
+        done(null, false, { message: 'Utilisateur inconnu ou mot de passe invalide'});
+ }
+       else {
+       console.log(' id: ' + user.idCompte + ', username: ' + user.email );
+        done(null, user);
+      }
+    }).catch(function(err){
+      done(err);
+    });
+  }
+));
+
+

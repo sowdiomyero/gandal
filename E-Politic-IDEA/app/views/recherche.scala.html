@@ -1,0 +1,87 @@
+
+
+    <h4>Localisation Géographique des militants</h4>
+
+
+    <div class="panel panel-default">
+        <div class="panel-heading"><a href="" data-toggle="modal" data-target="#CreateUser">Ajouter Un Membre</a></div>
+    </div>
+
+    <div class="row">
+
+        <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8">
+
+            <form id="searchForm" class="form-horizontal" method="POST" action="@routes.Localisation.search()">
+
+                <fieldset>
+
+                        <!-- Form Name -->
+                    <legend>Formulaire de recherche</legend>
+
+                        <!-- Select Basic -->
+                    <label for="typeCible">Type Localité :  </label>
+                    <select id="selectbasic" name="typeCible" class="form-control">
+                        <option value="ALL:0"></option>
+                        <option value="REGION:1">Region</option>
+                        <option value="DEPARTEMENT:2">Département</option>
+                        <option value="COMMUNE:3">Commune</option>
+                        <option value="QUARTIER:4">Quartier</option>
+
+                    </select>
+
+
+                    <label for="nomLocaliteGoogle">Population Comprise entre :  </label>
+                    <input class="form-control" type="number" name="between"  required="required"  placeholder="Début de la fourchette" value="1" >
+
+                    <label for="nomLocaliteCorrige">Et : </label>
+                    <input class="form-control" type="number" id="and" required="required"  name="and" placeholder="" value="10" />
+
+                    <label for="nbHabitants">Et Nombre de Militants > : </label>
+                    <input class="form-control" type="number" name="nbMilitants" required="required" placeholder="Nombre d'habitants" value="0"/>
+
+
+
+
+                        <!-- Textarea -->
+
+                    <label class="col-md-4 control-label" for="textarea">Message</label>
+
+                    <textarea class="form-control" id="textarea" name="message" placeholder="Composer ici votre message"></textarea>
+
+
+
+
+                        <!-- Button (Double) -->
+
+                    <div class="row">
+                        <div class="col-md-10">
+                            </div>
+                        <div class="col-md-10">
+                            <button id="btnSearch" type="submit" name="rechercher" class="btn btn-success">Search</button>
+                            <button id="btnSendSms" type="button" name="envoyerSms" class="btn btn-default">Sms</button>
+                            <button id="btnSendSms" type="button" name="envoyerSms" class="btn btn-default">Email</button>
+                            @*<button id="button2id" name="button2id" class="btn btn-danger">Cancel</button>*@
+                        </div>
+                    </div>
+
+                </fieldset>
+            </form>
+        </div>
+
+    </div>
+    <hr>
+
+
+    <p>
+        <a href="#" id="foyersActifs">Visualise les foyers les + actifs</a> | <a href="#">Visualiser les Responsables</a>
+    </p>
+
+
+
+    @*<hr>
+    <p>
+    <a href="http://bootply.com" target="_ext" class="center-block btn btn-primary">Acceder à la carte en plein ecran</a>
+    </p>*@
+
+    <hr>
+

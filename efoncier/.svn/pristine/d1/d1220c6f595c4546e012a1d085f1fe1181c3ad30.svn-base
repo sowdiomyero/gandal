@@ -1,0 +1,20 @@
+{
+  "name": "foncier",
+  "description": "",
+   "main": "app.js",
+  "version": "0.1.0",
+  "author": "Groupe Idyal",
+  "scripts": {
+    "start": "node node_modules/grunt-cli/bin/grunt",
+    "test": "node node_modules/grunt-cli/bin/grunt test",
+    "postinstall": "bower install"
+  },
+  "dependencies": {
+    "express": "latest"
+  },
+  "devDependencies": {
+    "chai": "^3.2.0",
+    "mocha": "^2.2.5",
+    "sinon": "latest"
+  }
+}

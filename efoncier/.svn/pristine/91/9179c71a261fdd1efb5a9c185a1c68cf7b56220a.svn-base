@@ -1,0 +1,26 @@
+
+//Insertion d'utilisateur
+module.exports = function(user, User, Role, Compte){
+                   User.create({
+                           prenomUser: user.prenom,
+                           nomUser: user.nom,
+                           fonction :user.fonction,
+                           telephone :user.telephone,
+                           email:user.email,
+                           fax:user.fax,
+                           adresse : user.adresse
+                         }).success(function(users) {
+                               console.log("User created");
+                               Compte.create({
+                               username : user.username,
+                               password : user.password,
+                               userId : users.id
+                              });
+                              Role.find({where : { libelleRole : user.role }}).then(function(result){
+                                 users.setRoles([result]).success(function() {
+                                 console.log("CREATION SUCESS");
+                               });
+                             });
+    
+                           });
+} 

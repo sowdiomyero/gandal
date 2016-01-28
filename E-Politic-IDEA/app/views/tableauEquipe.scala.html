@@ -1,0 +1,48 @@
+@(equipes: java.util.List[Equipe])
+<div class="others" align="center">
+
+    <div class="panel panel-info" style=" margin-top: 5px">
+        <div class="panel-heading">
+            <h4>Liste des Equipes</h4>
+        </div>
+    </div>
+    <div class="row" style="padding: 4px; margin: 4px; float: left">
+        <button class="btn btn-success btn-xs" data-toggle="modal" data-target="#CreateMembre"><span class="glyphicon glyphicon-plus-sign"></span> Ajouter une Localité</button>
+    </div>
+
+	<div class="table-responsive">
+    <table id="members_table" class="display responsive no-wrap " cellspacing="0" width="100%">
+        <thead>
+            <tr>
+                <th>Nom</th>
+                <th>Responsable</th>
+                <th>Localite</th>
+                <th>Objectifs</th>
+                <th>Taille</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+
+        <tbody>
+        @for( team <- equipes) {
+            <tr>
+                <td>@team.getNom()</td>
+                <td>@team.getNomResponsable()</td>
+                <td>@team.getNomLocalite()</td>
+                <td>10%</td>
+                <td>@team.getTeamMembers().size()</td>
+                <td>
+                    <a href="#" class="btn btn-info btn-xs" alt="Visualiser la fiche de la localite"><span class="glyphicon glyphicon-eye-open"></span></a>
+                    <a href="#" class="btn btn-primary btn-xs" alt="Acceder à son espace"><span class="glyphicon glyphicon-folder-open"></span></a>
+                </td>
+            </tr>
+        }
+        </tbody>
+    </table>
+    </div>
+
+
+
+
+</div>
+

@@ -1,0 +1,232 @@
+@(compte: Compte)(responsables: java.util.List[Membre] )(dpts: java.util.List[Localite] )
+
+@main2(compte) {
+
+    <div id="map-canvas"></div>
+    <div class="col-xs-8"><!--map-canvas will be postioned here-->
+
+    </div>
+    <div class="col-xs-4" id="left">
+
+        <h4>Localisation Géographique des militants</h4>
+
+
+        <div class="panel panel-default">
+            <div class="panel-heading"><a href="" data-toggle="modal" data-target="#CreateUser">Créer Un Nouveau Militant</a></div>
+        </div>
+
+        <div class="row">
+
+            <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8">
+
+                <form id="searchForm" class="form-horizontal" method="POST" action="@routes.Localisation.search()">
+                    <fieldset>
+
+                            <!-- Form Name -->
+                        <legend>Formulaire de recherche</legend>
+                            <!-- Select Basic -->
+                        <label for="typeCible">Type Localité :  </label>
+                                <select id="selectbasic" name="typeCible" class="form-control">
+                                    <option value="ALL:0"></option>
+                                    <option value="REGION:1">Region</option>
+                                    <option value="DEPARTEMENT:2">Département</option>
+                                    <option value="COMMUNE:3">Commune</option>
+                                    <option value="QUARTIER:4">Quartier</option>
+
+                                </select>
+                        <label for="nomLocaliteGoogle">Population Comprise entre :  </label>
+                        <input class="form-control" type="number" name="between"  required="required"  placeholder="Début de la fourchette" value="1" >
+
+                        <label for="nomLocaliteCorrige">Et : </label>
+                        <input class="form-control" type="number" id="and" required="required"  name="and" placeholder="" value="10" />
+
+                        <label for="nbHabitants">Et Nombre de Militants > : </label>
+                        <input class="form-control" type="number" name="nbMilitants" required="required" placeholder="Nombre d'habitants" value="0"/>
+                        <!-- Textarea -->
+
+                            <label class="col-md-4 control-label" for="textarea">Message</label>
+
+                            <textarea class="form-control" id="textarea" name="message" placeholder="Composer ici votre message"></textarea>
+
+                            <!-- Button (Double) -->
+
+                        <div class="row">
+                            <div class="col-md-10">
+                            </div>
+                            <div class="col-md-10">
+                                <button id="btnSearch" type="submit" name="rechercher" class="btn btn-success">Search</button>
+                                <button id="btnSendSms" type="button" name="envoyerSms" class="btn btn-default">SmsManager</button>
+                                <button id="btnSendSms" type="button" name="envoyerSms" class="btn btn-default">Email</button>
+                                @*<button id="button2id" name="button2id" class="btn btn-danger">Cancel</button>*@
+                            </div>
+                        </div>
+
+                    </fieldset>
+                </form>
+            </div>
+
+        </div>
+        <hr>
+        <p>
+            <a href="#" id="foyersActifs">Visualise les foyers les + actifs</a> | <a href="#">Visualiser les Responsables</a>
+        </p>
+        @*<hr>
+        <p>
+            <a href="http://bootply.com" target="_ext" class="center-block btn btn-primary">Acceder à la carte en plein ecran</a>
+        </p>*@
+        <hr>
+
+    </div>
+
+    <div class="modal fade" id="addLocalization" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <form id="addLocaliteForm" class="form-horizontal" method="POST" action="@routes.Localisation.addQuartier()">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
+                    <h4 class="modal-title" id="myModalLabel">Ajouter Une Localité</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+
+                        <div class="col-md-12" id="leftCol2">
+                            <div class="panel panel-info">
+                                <div class="panel-heading">
+                                    <h3 class="panel-title">Information Sur La Localité</h3>
+                                </div>
+                                <div class="panel-body" style="color: #000033">
+                                    <div class="alert alert-success" role="alert" id="localiteMessageSuccess" style="display: none">
+                                        <div class="alert alert-danger" role="alert" style="display: none" >
+                                        </div>
+                                    </div>
+                                    <label for="selectDType">Type Localité : </label>
+                                    <select id="selectDType" name="dtype" class="form-control">
+                                        <option value="QUARTIER">QUARTIER</option>
+                                        <option value="COMMUNE">COMMUNE</option>
+                                        <option value="DEPARTEMENT">DEPARTEMENT</option>
+                                        <option value="REGION">REGION</option>
+
+                                    </select>
+                                    <label for="nomLocaliteGoogle">Nom Localité (Google): </label>
+                                    <input class="form-control" name="nomLocaliteGoogle" id="nomLocaliteGoogle" readonly required="required"  placeholder="Nom Fourni par Google" />
+
+                                    <label for="nomLocaliteCorrige">Nom Localité (Correction): </label>
+                                    <input class="form-control" id="nomLocaliteCorrige" required="required"  name="nomLocaliteCorrige" placeholder="" />
+
+                                    <label for="nbHabitants">Nb Habitants: </label>
+                                    <input class="form-control" name="nbHabitants" required="required" placeholder="Nombre d'habitants" />
+
+
+                                    <label for="nbSections">Nb Sections : </label>
+                                    <input class="form-control" type="text" name="sections" required="required" placeholder="Nombre de Sections" />
+
+                                    <label for="gps">Coordonnées : </label>
+                                    <input class="form-control" id="gps" readonly name="gps" required="required" placeholder="Les Coordonnées Géographiques"
+                                    type="text" />
+                                    <label for="rattachement">Rattachement : </label>
+                                    <select id="selectRattachement" name="rattachement" class="form-control">
+                                        <option value="ADMIN:0"> </option>
+                                        @for(localiteMembre <- dpts){
+                                            <option value="@localiteMembre.getNom():@localiteMembre.getId()">@localiteMembre.getNom().toUpperCase()</option>
+                                        }
+                                    </select>
+                                    <label for="idResponsable">Responsable : </label>
+                                    <select id="selectResponsable" name="responsable" class="form-control">
+                                        <option value="ADMIN:1"></option>
+                                        @for(resp <- responsables){
+                                            <option value="@resp.getNomPrenom():@resp.getId()">@resp.getNomPrenom()</option>
+                                        }
+                                    </select>
+                                </div>
+
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Annuler</button>
+                    <button type="button" id="saveLocalite" class="btn btn-primary">Enregistrer</button>
+                </div>
+            </div>
+                </form>
+        </div>
+    </div>
+
+     <!-- -->
+
+    <div class="modal fade modal-admin" id="CreateUser" tabindex="-1" role="dialog" aria-labelledby="viewProfilModal" aria-hidden="true">
+        <div class="modal-dialog">
+
+            <div class="modal-content" style="width:900px; margin-left: -150px">
+                <form:form commandName="editUserForm" action="#" method="post" id="editProfilFormulaire">
+                    <div class="modal-header">
+
+                        <div style="margin-bottom: 5px; text-shadow: 0.1em 0.1em 0.1em  gray; font-weight: bold;">Ajouter
+                            Un Militant
+                        </div>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row">
+
+                            <div class="col-md-12" id="leftCol">
+                                <div class="panel panel-info">
+                                    <div class="panel-heading">
+                                        <h3 class="panel-title">Information Militant</h3>
+                                        <c:if test="${not empty message}">
+                                            <div class="message green"></div>
+                                        </c:if>
+                                    </div>
+                                    <div class="panel-body" style="color: #000033">
+                                        <div class="alert alert-success" role="alert" id="profilMessageSuccess" style="display: none">
+                                            <div class="alert alert-danger" role="alert" style="display: none" id="profilMessageFailed">
+                                            </div>
+                                        </div>
+
+                                        <label for="editProfilNomInput">Nom: </label>
+                                        <input class="form-control" required="required"  name="nom" placeholder="Votre Nom" id="editProfilNomInput"/>
+
+
+                                        <label for="editProfilPrenomInput">Prenom: </label>
+                                        <input class="form-control" name="prenom" required="required" placeholder="Votre Prénom" id="editProfilPrenomInput"/>
+
+
+                                        <label for="editProfilEmailInput">Email: </label>
+                                        <input class="form-control" type="email" name="email" required="required" placeholder="Votre Email" id="editProfilEmailInput"/>
+
+                                        <label for="editProfilTelInput">Telephone: </label>
+                                        <input class="form-control"  name="telephone" required="required" placeholder="Votre Numero telephone" id="editProfilTelInput"
+                                        type="tel" pattern="^((\+\d{1,3}(-| )?\(?\d\)?(-| )?\d{1,5})|(\(?\d{2,6}\)?))(-| )?(\d{3,4})(-| )?(\d{4})(( x| ext)\d{1,5}){0,1}$"/>
+
+                                        <label for="editProfilLoginInput">Login: </label>
+                                        <input class="form-control" name="login" required="required" placeholder="Votre login" id="editProfilLoginInput"/>
+
+                                        <label for="editProfilPasswordInput">Password: </label>
+                                        <input class="form-control" name="password" type="password"  required="required" placeholder="Votre mot de passe" id="editProfilPasswordInput"/>
+
+
+                                    </div>
+
+
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+
+
+                    <div class="modal-footer ">
+
+                        <button type="submit" id="formEditButton" onClick="" class="btn btn-info" value="submit">Enregisrer</button>
+                        <button type="reset"  class=" annulerModifProfil btn btn-warning">Annuler Modifications</button>
+                        <button type="button" id="fermerModal" data-dismiss="modal"  class="btn btn-warning">Fermer</button>
+
+                    </div>
+                </form:form>
+            </div>
+
+        </div>
+    </div>
+
+}

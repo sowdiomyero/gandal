@@ -1,0 +1,59 @@
+package models.utils;
+
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+
+/**
+ * Created with IntelliJ IDEA.
+ * User: DYSOW
+ * Date: 09/06/15
+ * Time: 19:16
+ * To change this template use File | Settings | File Templates.
+ */
+public class DateUtils {
+
+    private static final String CURRENT_DATE_FORMAT = "yyyy-MM-dd";
+
+    public static String getPreviousDateString(int nbDaypast) {
+
+        Calendar cal = Calendar.getInstance();
+        cal.add(Calendar.DATE, nbDaypast);
+        DateFormat dateFormat = new SimpleDateFormat(CURRENT_DATE_FORMAT);
+        return dateFormat.format(cal.getTime());
+    }
+    public static Date getPreviousDateString(String date) {
+        DateFormat dateFormat = new SimpleDateFormat(CURRENT_DATE_FORMAT);
+        Date dd = null;
+        try {
+            dd= dateFormat.parse(date);
+        } catch (ParseException e) {
+            e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
+        }
+        return dd;
+    }
+
+    public static String getFormatDateString(Date date, String format) {
+        if(format ==null)
+            format =CURRENT_DATE_FORMAT;
+        DateFormat dateFormat = new SimpleDateFormat(format);
+        String value ="";
+        try {
+            value= dateFormat.format(date);
+        } catch (Exception e) {
+            e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
+        }
+        return value;
+    }
+
+   /* public static Date getPreviousDate(int nbDaypast) {
+        Calendar cal = Calendar.getInstance();
+        cal.add(Calendar.DATE, nbDaypast);
+
+        DateFormat dateFormat = new SimpleDateFormat(CURRENT_DATE_FORMAT);
+        return dateFormat.format(cal.getTime());
+       // return cal.getTime();
+    }*/
+}

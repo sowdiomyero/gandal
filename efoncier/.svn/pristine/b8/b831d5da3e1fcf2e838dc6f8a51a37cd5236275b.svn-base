@@ -1,0 +1,21 @@
+/**
+ * Module dependencies.
+ */
+var express     = require('express');
+
+var db          = require('./app/config/sequelize');
+
+var app = express();
+
+//Initialize Express
+require('./app/config/express')(app);
+
+var user = require('./app/controllers/user');
+
+app.post('/creer', user.creation);
+
+
+app.listen(8080);
+console.log('Serveur ecoute sur le port 8080...');
+//expose app
+exports = module.exports = app;

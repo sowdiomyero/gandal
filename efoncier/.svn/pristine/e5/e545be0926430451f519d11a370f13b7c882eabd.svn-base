@@ -1,0 +1,95 @@
+.footer {
+    text-align: center;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+.general {
+    padding: 10px;
+    background-color: #555555;
+}
+.general a {
+
+    color: #DAB584;
+}
+.structure {
+    color: #fff;
+    font-family: tahoma;
+    font-size: 30px;
+    font-weight: bold;
+    text-shadow: 2px 0px #BBBBBB;
+}
+.exp {
+    color: white;
+    font-family: nyala;
+}
+.barre {
+    width: 100%;
+    height: 7px;
+    background-color: #DAB584;
+}
+//
+body{
+    margin:0px;
+    padding:0px;
+}
+.panel{
+     width:550px;
+     margin-left: 35%;
+     margin-top: 180px;
+    
+    
+}
+.panel-body{
+    height:300px;
+       border:1px solid #DAB584;
+       background-color: #EEE;
+       box-shadow:5px 3px 30px ;
+       
+}
+.panel-heading{
+    height:41px;
+    background-color: #DAB584;
+     box-shadow:5px 3px 30px ;
+}
+.div1{
+    height:70px;
+    margin-top: 60px;
+    margin-left: 5px;
+}
+.div2{
+    height:70px;
+    margin-left: 5px;
+    
+}
+.div1 .exigence{
+    color:red;
+}
+.div2 .exigence{
+    color:red;
+}
+.bouton{
+    margin-left: 250px;
+
+}
+ .champ1{
+    border-radius:8px;
+    width:170px;
+}
+ .champ2{
+    position:relative;
+    margin-left: 27px;
+    border-radius:8px;
+      width:170px;
+}
+.connexion{
+    position:absolute;
+    margin-left:220px;
+}
+
+.div1 .exigence{
+    color:red;
+}
+.div2 .exigence{
+    color:red;
+}

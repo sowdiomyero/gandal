@@ -1,0 +1,6 @@
+var UserEnvoyes = require('');
+
+Compte.create({
+	username : UserEnvoyes.username,
+	password : UserEnvoyes.password
+})

@@ -1,0 +1,29 @@
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/svn/poc/!svn/ver/72/branches/E-Politic/app/views/account/settings
+END
+email.scala.html
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/svn/poc/!svn/ver/72/branches/E-Politic/app/views/account/settings/email.scala.html
+END
+password.scala.html
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/svn/poc/!svn/ver/72/branches/E-Politic/app/views/account/settings/password.scala.html
+END
+emailValidate.scala.html
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/svn/poc/!svn/ver/72/branches/E-Politic/app/views/account/settings/emailValidate.scala.html
+END
+index.scala.html
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/svn/poc/!svn/ver/72/branches/E-Politic/app/views/account/settings/index.scala.html
+END

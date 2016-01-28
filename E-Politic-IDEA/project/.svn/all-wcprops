@@ -1,0 +1,41 @@
+K 25
+svn:wc:ra_dav:version-url
+V 48
+/svn/poc/!svn/ver/262/branches/E-Politic/project
+END
+play-fork-run.sbt
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/svn/poc/!svn/ver/82/branches/E-Politic/project/play-fork-run.sbt
+END
+build.properties
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/svn/poc/!svn/ver/70/branches/E-Politic/project/build.properties
+END
+sbt-ui.sbt
+K 25
+svn:wc:ra_dav:version-url
+V 58
+/svn/poc/!svn/ver/70/branches/E-Politic/project/sbt-ui.sbt
+END
+plugins.sbt
+K 25
+svn:wc:ra_dav:version-url
+V 59
+/svn/poc/!svn/ver/70/branches/E-Politic/project/plugins.sbt
+END
+.sbtserver
+K 25
+svn:wc:ra_dav:version-url
+V 59
+/svn/poc/!svn/ver/262/branches/E-Politic/project/.sbtserver
+END
+.sbtserver.lock
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/svn/poc/!svn/ver/70/branches/E-Politic/project/.sbtserver.lock
+END

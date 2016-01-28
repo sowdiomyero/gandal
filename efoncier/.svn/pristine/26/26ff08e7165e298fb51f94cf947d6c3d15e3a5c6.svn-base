@@ -1,0 +1,16 @@
+<div class="panel">
+    <div class="panel-heading">
+    <div class="connexion">Connexion</div>
+    </div>
+    <div class="panel-body">
+        <div class="div1">
+            <label>Votre email d'utilisateur:</label>
+            <input class="champ1" type="text"  ng-model="email" ng-change="clickChampEmail()" placeholder="Email d'utilisateur"/><span class="exigence" ng-show="mail">Votre email svp!</span>
+        </div>
+        <div class="div2">
+            <label>Votre mot de passe:</label>
+            <input class="champ2" type="password"  ng-model="password" ng-change="clickChampPass()" placeholder="Mot de passe"/><span class="exigence" ng-show="pass">Votre mot de passe svp!</span>
+        </div>
+        <button class="btn btn-warning bouton" ng-click="clickConnexion()"  ng-href="#/createUser">connecter</button>
+    </div>
+</div>

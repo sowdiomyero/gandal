@@ -1,0 +1,45 @@
+//Insertions des données dans les tables User,Role,Compte et UserRole
+exports.Insertions = function(user, User, Role, Compte,res){
+                            User.create({
+                                 prenomUser: user.prenom,
+                                 nomUser: user.nom,
+                                 fonction :user.fonction,
+                                 telephone :user.telephone,
+                                 email:user.email,
+                                 fax:user.fax,
+                                 adresse : user.adresse}).success(function(userCreated) {
+                                                               console.log("User created");
+                                                               Compte.create({
+                                                               username : user.username,
+                                                               password : user.password,
+                                                               userId : userCreated.id
+                                                              });
+                                                              Role.find({where : { libelleRole : user.role }}).then(function(result){
+                                                                 userCreated.setRoles([result]).success(function() {
+                                                                 console.log("CREATION SUCCESS");
+                                                               });
+                                                             });
+                                                              res.redirect("/");
+                                
+                                                       });
+
+
+                          }
+
+
+
+//Creation d'utilisateur
+module.exports.creationUser = function( user, User, Role, Compte,res){
+                   //Validation du username
+                      Compte.find({ where: { username: user.username } })
+                        .done(function(error, userFound) {
+                          if(userFound) {
+                            return res.json({ 
+                              error: { username:'Username deja utilisé' }
+                            });
+                          }
+                          else
+                                exports.Insertions(user, User, Role, Compte,res);   
+                        });
+                   
+} 

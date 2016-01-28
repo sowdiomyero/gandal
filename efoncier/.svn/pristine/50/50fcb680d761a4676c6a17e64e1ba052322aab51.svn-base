@@ -1,0 +1,47 @@
+'use strict';
+
+/**
+ * @ngdoc overview
+ * @name utilisateursApp
+ * @description
+ * # utilisateursApp
+ *
+ * Main module of the application.
+ */
+angular
+  .module('utilisateursApp', [
+    'ngAnimate',
+    'ngAria',
+    'ngCookies',
+    'ngMessages',
+    'ngResource',
+    'ngRoute',
+    'ngSanitize',
+    'ngTouch'
+  ])
+  .config(function ($routeProvider) {
+    $routeProvider
+      .when('/', {
+        templateUrl: 'views/main.html',
+        controller: 'MainCtrl',
+        controllerAs: 'main'
+      })
+      .when('/about', {
+        templateUrl: 'views/about.html',
+        controller: 'AboutCtrl',
+        controllerAs: 'about'
+      })
+      .when('/createUser', {
+        templateUrl: 'views/createuser.html',
+        controller: 'CreateuserCtrl',
+        controllerAs: 'createUser'
+      })
+      .when('/connexion', {
+        templateUrl: 'views/connexion.html',
+        controller: 'ConnexionCtrl',
+        controllerAs: 'connexion'
+      })
+      .otherwise({
+        redirectTo: '/'
+      });
+  });

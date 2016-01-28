@@ -1,0 +1,135 @@
+@(compte: Compte)
+<div class="col-sm-2">
+    <div class="panel panel-warning">
+        <div class="panel-heading">
+            <div class="row">
+                <div class="col-xs-3">
+                    <i class="fa fa-map-marker fa-2x"></i>
+                </div>
+                <div class="col-xs-9 text-right">
+                    <div class="huge">@compte.getNomLocalite()</div>
+                    <div></div>
+                </div>
+            </div>
+        </div>
+        <a href="#">
+            <div class="panel-footer">
+                <span class="pull-left">Localite</span>
+                
+                <div class="clearfix"></div>
+            </div>
+        </a>
+    </div>
+
+</div>
+<div class="col-sm-2">
+    <div class="panel panel-primary">
+        <div class="panel-heading">
+            <div class="row">
+                <div class="col-xs-3">
+                    <i class="fa fa-users fa-2x"></i>
+                </div>
+                <div class="col-xs-9 text-right">
+                    <div class="badge">@compte.getPopulationLocalite()</div>
+                    <div></div>
+                </div>
+            </div>
+        </div>
+        <a href="#">
+            <div class="panel-footer">
+                <span class="pull-left">Population</span>
+              
+                <div class="clearfix"></div>
+            </div>
+        </a>
+    </div>
+</div>
+<div class="col-sm-2">
+    <div class="panel panel-warning">
+        <div class="panel-heading">
+            <div class="row">
+                <div class="col-xs-3">
+                    <i class="fa fa-tasks fa-2x"></i>
+                </div>
+                <div class="col-xs-9 text-right">
+                    <div class="badge">@compte.getNbElecteursLocalite()</div>
+                    <div></div>
+                </div>
+            </div>
+        </div>
+        <a href="#">
+            <div class="panel-footer">
+                <span class="pull-left">Electeurs</span>
+              
+                <div class="clearfix"></div>
+            </div>
+        </a>
+    </div>
+</div>
+<div class="col-sm-2">
+    <div class="panel panel-yellow">
+        <div class="panel-heading">
+            <div class="row">
+                <div class="col-xs-3">
+                    <i class="fa fa-list-ol fa-2x"></i>
+                </div>
+                <div class="col-xs-9 text-right">
+                    <div class="badge">@compte.getNbTotalInscritsLocalite()</div>
+                    <div></div>
+                </div>
+            </div>
+        </div>
+        <a href="#">
+            <div class="panel-footer">
+                <span class="pull-left">Inscrits</span>
+               
+                <div class="clearfix"></div>
+            </div>
+        </a>
+    </div>
+</div>
+<div class="col-sm-2">
+    <div class="panel panel-warning">
+        <div class="panel-heading">
+            <div class="row">
+                <div class="col-xs-3">
+                    <i class="fa fa-signal fa-2x"></i>
+                </div>
+                <div class="col-xs-9 text-right">
+                    <div class="badge">@compte.getObjectifsLocalite()%</div>
+                    <div></div>
+                </div>
+            </div>
+        </div>
+        <a href="#">
+            <div class="panel-footer">
+                <span class="pull-left">Objectif</span>
+            
+                <div class="clearfix"></div>
+            </div>
+        </a>
+    </div>
+</div>
+<div class="col-sm-2">
+    <div class="panel panel-red">
+        <div class="panel-heading">
+            <div class="row">
+                <div class="col-xs-3">
+                    <i class="fa fa-level-up fa-2x"></i>
+                </div>
+                <div class="col-xs-9 text-right">
+                    <div class="badge">@compte.getPourcentageRealisationLocalite()%</div>
+                    <div></div>
+                </div>
+            </div>
+        </div>
+        <a href="#">
+            <div class="panel-footer">
+                <span class="pull-left">Realisation</span>
+                
+                <div class="clearfix"></div>
+            </div>
+        </a>
+    </div>
+</div>
+

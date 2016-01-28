@@ -1,0 +1,16 @@
+ @(compte: Compte ,localite: Localite )
+
+
+@mlayout(compte) {
+
+    <div class="col-sm-12">
+   
+    @if(localite!=null){
+        @ficheLocalite(compte, localite)
+        }
+        
+   
+ </div>
+   
+
+}

@@ -1,0 +1,9 @@
+angular.module('utilisateurs')
+
+.factory('authentification', function($http) {
+	return {
+		identifier : function(donnees) {
+			return $http.post('api/user', donnees);
+		}
+	}
+}) 

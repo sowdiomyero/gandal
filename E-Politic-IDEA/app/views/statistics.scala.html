@@ -1,0 +1,113 @@
+@(inscriptions : java.util.List[JourInscription])
+<div class="col-sm-1"></div>
+<div class="col-sm-2">
+    <div class="panel panel-primary">
+        <div class="panel-heading">
+            <div class="row">
+                <div class="col-xs-3">
+                    <i class="fa fa-bars fa-3x"></i>
+                </div>
+                <div class="col-xs-9 text-right">
+                    <div class="badge">@inscriptions.get(0).getValue()</div>
+                    <div style="font-size: 10px">Inscriptions</div>
+                </div>
+            </div>
+        </div>
+        <a href="#">
+            <div class="panel-footer">
+                <span class="pull-left"> @inscriptions.get(0).getDay()</span>
+                <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                <div class="clearfix"></div>
+            </div>
+        </a>
+    </div>
+</div>
+<div class="col-sm-2">
+    <div class="panel panel-green">
+        <div class="panel-heading">
+            <div class="row">
+                <div class="col-xs-3">
+                    <i class="fa fa-tasks fa-3x"></i>
+                </div>
+                <div class="col-xs-9 text-right">
+                    <div class="badge">@inscriptions.get(1).getValue()</div>
+                    <div style="font-size: 10px">Inscriptions</div>
+                </div>
+            </div>
+        </div>
+        <a href="#">
+            <div class="panel-footer">
+                <span class="pull-left"> @inscriptions.get(1).getDay()</span>
+                <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                <div class="clearfix"></div>
+            </div>
+        </a>
+    </div>
+</div>
+<div class="col-sm-2">
+    <div class="panel panel-yellow">
+        <div class="panel-heading">
+            <div class="row">
+                <div class="col-xs-3">
+                    <i class="fa fa-share fa-3x"></i>
+                </div>
+                <div class="col-xs-9 text-right">
+                    <div class="badge">@inscriptions.get(2).getValue()</div>
+                    <div style="font-size: 10px">Inscriptions</div>
+                </div>
+            </div>
+        </div>
+        <a href="#">
+            <div class="panel-footer">
+                <span class="pull-left"> @inscriptions.get(2).getDay()</span>
+                <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                <div class="clearfix"></div>
+            </div>
+        </a>
+    </div>
+</div>
+<div class="col-sm-2">
+    <div class="panel panel-red">
+        <div class="panel-heading">
+            <div class="row">
+                <div class="col-xs-3">
+                    <i class="fa fa-signal fa-3x"></i>
+                </div>
+                <div class="col-xs-9 text-right">
+                    <div class="badge">@inscriptions.get(3).getValue()</div>
+                    <div style="font-size: 10px">Inscriptions</div>
+                </div>
+            </div>
+        </div>
+        <a href="#">
+            <div class="panel-footer">
+                <span class="pull-left"> @inscriptions.get(3).getDay()</span>
+                <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                <div class="clearfix"></div>
+            </div>
+        </a>
+    </div>
+</div>
+<div class="col-sm-2">
+    <div class="panel panel-warning">
+        <div class="panel-heading">
+            <div class="row">
+                <div class="col-xs-3">
+                    <i class="fa fa-align-justify fa-3x"></i>
+                </div>
+                <div class="col-xs-9 text-right">
+                    <div class="badge">@inscriptions.get(4).getValue()</div>
+                    <div style="font-size: 10px">Inscriptions</div>
+                </div>
+            </div>
+        </div>
+        <a href="#">
+            <div class="panel-footer">
+                <span class="pull-left"> @inscriptions.get(4).getDay()</span>
+                <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                <div class="clearfix"></div>
+            </div>
+        </a>
+    </div>
+</div>
+<div class="col-sm-1"></div>

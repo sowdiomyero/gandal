@@ -1,0 +1,6 @@
+var app = angular.module("app", ["entete","piedpage"]);
+
+app.controller("controleur", function($scope) {
+    $scope.structure = "FONCIER";
+});
+

@@ -1,0 +1,60 @@
+@(messagesValides: java.util.List[Inscription], messagesNotValides:
+java.util.List[Inscription], messagesErrones:
+java.util.List[Inscription], messagesdupliques:
+java.util.List[Inscription], messagesSend:
+java.util.List[Inscription], compte: Compte)
+
+
+
+<div class="others" align="center">
+
+	<div class="panel panel-info" style="margin-top: 5px">
+		<div class="panel-heading">
+			<h4>Liste des messages</h4>
+		</div>
+	</div>
+
+	<!-- liste des onglets -->
+	<div id="content">
+		<ul id="tabs" class="nav nav-tabs" data-tabs="tabs">
+			<li class="active"><a href="#not_validated" data-toggle="tab"><strong>Messages
+						non validés</strong></a></li>
+			<li><a href="#validated" data-toggle="tab"><strong>Messages
+						validés</strong></a></li>
+			<li><a href="#duplicated" data-toggle="tab"><strong>Messages
+						dupliqués</strong></a></li>
+			<li><a href="#not_formated" data-toggle="tab"><strong>Messages
+						incorrects</strong></a></li>
+			
+		</ul>
+		<div id="my-tab-content" class="tab-content">
+		
+			<!-- tab not validated messages -->
+			<div class="tab-pane active" id="not_validated">
+			@fonctionTableauMessage(messagesNotValides, compte)
+
+			</div>
+
+			<!-- tab validated messages -->
+			<div class="tab-pane" id="validated">
+			@fonctionTableauMessage(messagesValides, compte)
+			</div>
+
+			<!-- tab duplicated messages -->
+			<div class="tab-pane" id="duplicated">
+			@fonctionTableauMessage(messagesdupliques, compte)
+			</div>
+
+			<!-- tab not well formated  messages -->
+			<div class="tab-pane" id="not_formated">
+			@fonctionTableauMessage(messagesErrones, compte)
+			</div>
+			
+			
+		</div>
+	</div>
+
+</div>
+
+</div>
+
