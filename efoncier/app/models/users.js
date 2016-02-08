@@ -1,40 +1,37 @@
 //les models 
 'use strict';
-var connexion = require("../config/sequelize");
 
-// recuperation des objets de la connexion
-var Sequelize = connexion.Sequelize;
-var sequelize = connexion.db;
+var db=require("../config/database");
 
 module.exports={
-	user:sequelize.define('user',
+	user:db.sequelize.define('user',
 {
           	id:{
-              type: Sequelize.INTEGER,
+              type: db.Sequelize.INTEGER,
               primaryKey: true,
               autoIncrement: true
             },
              nomUser: {
-              type: Sequelize.STRING
+              type: db.Sequelize.STRING
             },
             prenomUser:{
-            	type:Sequelize.STRING
+            	type:db.Sequelize.STRING
             },
              adresse:{
-              type:Sequelize.STRING
+              type:db.Sequelize.STRING
             },
              telephone:{
-              type:Sequelize.STRING
+              type:db.Sequelize.STRING
             },
             cni:{
-              type:Sequelize.STRING
+              type:db.Sequelize.STRING
             },
 
 },
 {
    freezeTableName: true
 }),
-compte:sequelize.define('compte',
+/*compte:sequelize.define('compte',
 {
             idCompte:{
               type: Sequelize.INTEGER,
@@ -54,9 +51,9 @@ compte:sequelize.define('compte',
 ,
 {
    freezeTableName: true
-}),
+}), */
 
-role:sequelize.define('role',
+/*role:sequelize.define('role',
 {
   idRole:{
     type: Sequelize.INTEGER,
@@ -69,8 +66,8 @@ role:sequelize.define('role',
 },
 {
    freezeTableName: true
-}),
-actions:sequelize.define('action',{
+}), */
+/*actions:sequelize.define('action',{
    idAction:{
     type: Sequelize.INTEGER,
     primaryKey: true,
@@ -83,8 +80,8 @@ actions:sequelize.define('action',{
 },
 {
   freezeTableName:true
-}),
-groupe:sequelize.define('groupe',{
+}), */
+/*groupe:sequelize.define('groupe',{
    idGroupe:{
     type: Sequelize.INTEGER,
     primaryKey: true,
@@ -109,5 +106,5 @@ parametre:sequelize.define('groupe',{
 },
 {
   freezeTableName:true
-})
+}) */
 }

@@ -1,0 +1,176 @@
+.footer {
+    text-align: center;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+.general {
+    padding: 10px;
+    background-color: #555555;
+}
+.general a {
+
+    color: #DAB584;
+}
+.structure {
+    color: #ffffff;
+    color: #fff;
+    font-family: tahoma;
+    font-size: 30px;
+    font-family: david;
+    font-size: 35px;
+    font-style: italic;
+    font-weight: bold;
+}
+.exp {
+    color: white;
+    font-family: nyala;
+}
+.barre {
+    width: 100%;
+    height: 7px;
+    background-color: #DAB584;
+}
+body{
+    margin:0px;
+    padding:0px;
+}
+.panel{
+     width:550px;
+     margin-left: 35%;
+     margin-top: 180px;
+    
+    
+}
+.panel-body{
+    height:300px;
+       border:1px solid #DAB584;
+       background-color: #EEE;
+       box-shadow:5px 3px 30px ;
+       
+}
+.panel-heading{
+    height:41px;
+    background-color: #DAB584;
+     box-shadow:5px 3px 30px ;
+}
+.div1{
+    height:70px;
+    margin-top: 60px;
+    margin-left: 30px;
+}
+.div2{
+    height:70px;
+    margin-left: 30px;
+    
+}
+.div1 .exigence{
+    color:red;
+}
+.div2 .exigence{
+    color:red;
+}
+.bouton{
+    margin-left: 250px;
+
+}
+ .champ1{
+    border-radius:8px;
+    width:170px;
+}
+ .champ2{
+    position:relative;
+    margin-left: 27px;
+    border-radius:8px;
+      width:170px;
+}
+.connexion{
+    position:absolute;
+    margin-left:220px;
+}
+
+.div1 .exigence{
+    color:red;
+}
+.div2 .exigence{
+    color:red;
+}
+//
+.menu{
+    width:250px;
+    height:900px;
+    background-color:red; 
+
+}
+.menu .bar-menu{
+    width:250px;
+    height:60px;
+    border-bottom: 1px solid white;
+    background-color:#555555; 
+}
+.menu .bar-menu a:hover{
+    color:white; 
+    cursor:pointer;
+    text-decoration: none;
+}
+
+
+.menu1{
+    width:250px;
+    height:900px;
+    background-color:#555555;
+    position:fixed;
+    display: inline-block;
+    
+
+    
+}
+.color-menu1{
+    color:#aaa;
+    font-size: 20px;
+    margin-left: 25px;
+}
+.color-menu2{
+    color:#aaa;
+    font-size: 20px;
+    margin-left: 35px;
+}
+.color-menu3{
+    color:#aaa;
+    font-size: 20px;
+    margin-left: 35px;
+}
+.color-menu4{
+    color:#aaa;
+    font-size: 20px;
+    margin-left: 35px;
+}
+.color-menu5{
+    color:#aaa;
+    font-size: 20px;
+    margin-left: 25px;
+}
+.color-menu6{
+    color:#aaa;
+    font-size: 20px;
+    margin-left: 7px;
+}
+.color-menu7{
+    color:#aaa;
+    font-size: 20px;
+    margin-left: 20px;
+}
+.color-menu8{
+    color:#aaa;
+    font-size: 20px;
+    margin-left: 25px;
+}
+#overIt {
+    position: relative;
+    left: -12px;
+    top: -3px;
+}
+.menu .img-menu1, .img-menu2, .img-menu3, .img-menu4, .img-menu5, .img-menu6, .img-menu7, .img-menu8{
+    margin-left: 10px;
+    margin-top: 10px;
+}

@@ -1,8 +1,30 @@
  {
-	"foncier":{
+	
+	"local":{
 	  "username":"root",
 	  "password": "",
-	  "database":"foncier",
+	  "database":"setsetal",
+	  "host":"localhost",
+	  "dialect":"mysql"
+	},
+	"dev":{
+	  "username":"root",
+	  "password": "",
+	  "database":"setsetal",
+	  "host":"localhost",
+	  "dialect":"mysql"
+	},
+	"rec":{
+	  "username":"root",
+	  "password": "",
+	  "database":"setsetal",
+	  "host":"localhost",
+	  "dialect":"mysql"
+	},
+	"prod":{
+	  "username":"root",
+	  "password": "",
+	  "database":"setsetal",
 	  "host":"localhost",
 	  "dialect":"mysql"
 	}

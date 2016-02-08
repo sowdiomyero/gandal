@@ -1,40 +1,24 @@
 'use strict';
 
-/**
-* Module dependencies.
-*/
- var passport = require('passport');
- 
-var reponse={
-		code:"",
-		objet:"",
-		message:{}
-}
-
 module.exports = function(app) {
-	
+ 
+
+	/*
 	var userCtrl = require('../controllers/userCtrl');
 	var userService = require('../services/userservice');
+	var passport = require('passport');
+	var reponse={code:"",objet:"",message:{}};
 
 	// User Routes
-	app.get('/',function(req,res){
-		res.end("Profile");
-	});
-	app.get('/auth',function(req,res){
-		res.json("ok");
+	app.get('/home',function(req,res){
+		console.log('Appel au index.html catché, je vais rendre le fichier se trouvant sous public/index.html');
+		res.render("index.html");
 	});
 
-        app.get('/success',function(req,res){
-                
-		res.json("{code : 'SUCCESS'}");
-	});
+	
 	app.post('/api/user', userCtrl.creation);
-	/*app.post('/api/auth', passport.authenticate('local', { successRedirect: '/auth',
-                                   failureRedirect: '/auth',
-                                   failureFlash: true })
-            );*/
-
-app.post('/api/auth', function(req, res, next) {
+	
+	app.post('/api/auth', function(req, res, next) {
 		  passport.authenticate('local', function(err, user, info) {
 		    if (err) { return next(err); }
 
@@ -50,4 +34,6 @@ app.post('/api/auth', function(req, res, next) {
 		    });
 		  })(req, res, next);
 		});
+
+*/
 };

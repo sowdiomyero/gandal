@@ -1,0 +1,297 @@
+<html>
+      <head>
+	  <meta charset="utf-8/">
+	  <link rel="stylesheet" href="/bower_components/bootstrap/dist/css/bootstrap.min.css" />
+	   <title>Site Home</title>	
+
+	   <style type="text/css">
+
+	   html, body {
+		    height: 100%;
+		}
+			body {
+			    margin:0;
+			    padding: 0;
+			    background-color: rgb(249,247,246);
+			    overflow-x:hidden;
+			}
+			.inline {
+				display: inline;
+				margin-left: 10px;
+				margin-right: 10px;
+				font-size: 18px; font-style: normal;
+			}
+
+			header {
+				background-color: white;
+				padding: 5px;
+			}
+
+			select{
+				border-radius: 8px 8px;
+				min-width: 125px;
+				width:210px;
+				height : 35px;
+				background-color: rgb(255,255,255);
+			}
+			.banniere {
+				display: inline-table;
+				vertical-align: middle;
+			}
+
+			ul{
+				list-style-type: none;
+				display: inline-table;
+				vertical-align: middle;
+				float: right;
+				margin-top: 3%;
+			}
+
+			li{
+				margin-right: 50px;
+				display: inline-table;
+				vertical-align: middle;
+			}
+
+			li a{				
+				display: block;
+				text-decoration: none;
+			}
+			li a:hover{				
+				display: block;
+				text-decoration: none;
+			}
+			.white{
+				color:white;
+			}
+			.navbar-default .navbar-nav>li>a {color:white}
+			.navbar-default .navbar-nav>li:hover {
+				background-color:rgb(41,130,198);
+
+			}
+			.navbar-default .navbar-nav>li {
+				padding: 0;
+				margin: 0;
+				
+			}
+
+			.nombre-annonce {			    
+			    font-size: 1.5em;
+			    font-weight: bold;
+			    color: #28c4e0;			    
+			    text-align: right;
+			}
+			.footer li{
+				padding: 0;
+				margin: 0;
+			}
+
+			.footer {
+				/*border:1px solid red; ;*/
+				color:rgb(255,155,55);
+			}
+			/*#footer {
+			   position:fixed;
+			   left:0px;
+			   bottom:0px;
+			   height:130px;
+			   width:100%;
+			} 
+			*/
+			.annonce{
+				/*background-image: url('/images/rib-exclusif.png');
+				background-position: top left;
+				background-repeat: no-repeat;
+				*/
+				z-index: 2;
+			}
+			.wrapper {
+			    min-height: 100%;
+			    height: auto !important;
+			    height: 100%;
+			    margin-top: -142px;
+			    margin: 0 auto -142px; /* the bottom margin is the negative value of the footer's height */
+			}
+	   </style>   	
+      </head>
+	  <body ng-app>
+		
+	  	<header>
+	  		<div >
+	  			<div class="row">
+	  			<div class="col-md-2"></div>
+	  			<div class="col-md-5">
+	  			<div class="banniere"> 
+	  				<img src="/images/keur-logo.png" alt="Logo KeurGui" style="max-height:90px; max-width:90px" >
+	  			</div>
+	  			<div class="banniere" style="margin:15px 15px; color:blue;"> 
+	  				<h3 style="padding:0; margin:0; font-weight:bold">Cabinet Immobilier du Monde</h3>
+	  				<span style="color:#707070; ">La Vente à temps réel</span>
+	  			</div>
+	  			</div>
+	  			<div class="col-md-5">
+	  			<ul>
+											<!-- Utilisateur non connecté -->
+						<li style="-webkit-user-select: none;  white-space: nowrap; opacity: 1;">
+							<a href="#" class="user-space">
+								<div>
+									<i class="glyphicon glyphicon-user"></i>
+									<strong>Espace Proprio</strong>
+								</div>
+								
+								<small>Connectez-vous</small>
+							</a>
+							
+						</li>
+						<strong style="color:#707070; margin-right:20px;">|</strong>
+					
+					<li class="contact-crc" style="white-space: nowrap;">
+						<a href="tel:+33140563333" class="tel-crc">
+							<div>
+								<i class="glyphicon glyphicon-phone"></i>
+								<strong>33 830 35 35</strong><br/>
+								<strong>77 704 90 88</strong>
+							</div>
+							
+							<small>du lundi au samedi de 9h à 18h</small>
+						</a>
+					</li>
+
+					
+
+				</ul>
+				</div>
+	  			</div>
+	  		</div>
+	  			
+	  	</header>
+<div class="wrapper" >
+	  <div class="row" style="background-color:rgb(0,94,168); height:8%;">	  	
+
+	  	<nav class="navbar navbar-default" style="background-color:rgb(0,94,168);">
+        <div class="container" style="background-color:rgb(0,94,168);">
+         <div class="navbar-header">
+            <button type="button" data-target="#navbarCollapse" data-toggle="collapse" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a href="#" class="navbar-brand" style="color:white">Home</a>
+        </div> 
+         <div id="navbar" class="navbar-collapse collapse" style="background-color:rgb(0,94,168);"> 
+            <ul class="nav navbar-nav" >
+              <li class="active"><a href="#">Annonces</a></li>
+              <li><a style="color:white" href="#">Ventes</a></li> 
+              <li><a style="color:white" href="#">Locations</a></li> 
+              <li><a style="color:white" href="#">Terrains</a></li>              
+              <li><a style="color:white" href="#">Conseils</a></li>              
+              <li><a style="color:white" href="#">Contact</a></li>
+              
+            </ul>
+            
+      </div><!--/.nav-collapse -->
+        </div><!--/.container-fluid -->
+      </nav>
+
+	</div>
+	 <div class="row" style="background-color:rgb(255,255,255); height:8%; padding-top:10px;">
+	  	
+	    <div class="col-md-2">
+
+	    </div>
+	  	<div class="col-md-8" style="">Annonces > Location Immobilière</div>
+	  	<div class="col-md-2">
+	  		<div class="nombre-annonce pull-right">
+				<span>+ 200</span> annonces
+			</div>
+	  	</div>
+	</div>
+	<div class="container-fluid" style="height:auto;background-color:white ">
+
+	  	<div class="row" style="">
+	  		<div class="col-md-2">
+	  			
+	  		</div>
+		    <div class="col-md-8" style="margin:0; padding:0">
+	  		<div  style="background-color:white;border:3px solid #f2f2f2;overflow:hidden; display:inline-table; width:32%;margin:1px " 
+	  		ng-repeat="t in [1,2,3,4,5,6,7,8,9,10,11,12]">
+	  			
+	  			<img src="/images/appartement.jpg" style="width:100%; margin-top:0px;">
+	  			<img src="/images/bien-exclusif.png" class="annonce" style="position:relative;top:-183; left:-0;"/>
+	  			
+	  			<div style="color:blue; margin-top:-70px">Etat : <strong style="color:green; font-size:16px;" >DISPONIBLE</strong > </div>
+	  			<div style="color:blue; border:1px solid red; margin-bottom:-25px"> 
+	  				<em>Appartemment, 53m² Dakar</em><br/>
+	  				<em>2 Chambres, Salon Salle d'eau</em>
+	  			</div>
+	  			<div style="background-color:white; color:rgb(127,199,224); position:relative; top:-200px;right:-210px; z-index:3; font-weight:bold; padding:3px " >125 000 XOF</div>
+	  			<!--<strong style="color:blue; float:right">125 000 XOF</strong> -->
+	  		</div>
+	  		</div>
+	  		<div class="col-md-2">
+	  			<img src="/images/pub-01.png" style="width:100%; margin-top:0px;">
+	    		<img src="/images/pub-02.png" style="width:100%; margin-top:20px;">
+	    		<img src="/images/pub-03.png" style="width:100%; margin-top:20px;">
+	    		<img src="/images/pub-04.png" style="width:100%; margin-top:20px;">
+	  			<img src="/images/pub-05.png" style="width:100%; margin-top:20px;">
+	    		<img src="/images/pub-07.png" style="width:100%; margin-top:20px;">
+	  		</div>	
+	  	</div>
+	  	<div class="row" style="height:100px; border:1px solid green"></div>
+	</div>
+<hr/>
+</div>
+
+	<div id="footer" class="row" style="background-color:rgb(65,97,119);">
+			<div class="row" >
+				<div class="col-md-1"></div>
+				<div class="col-md-9" style="">
+					<ul class="footer" style=" float:left; margin-left:30%">
+						<li><a style="color:white" href="/plan-du-site">Plan du site</a></li> |
+						<li><a style="color:white" href="/groupe/presentation-groupe">Qui sommes-nous ?</a></li> |
+						<li><a style="color:white" href="/groupe/equipes-recrutement">Nos équipes </a></li> |
+						<li><a style="color:white" href="/groupe/temoignages">Témoignages clients</a></li> |
+						<li><a style="color:white" href="/groupe/nous-contacter">Nous contacter</a></li>
+				</ul>
+				</div>				
+				<div class="col-md-2"></div>
+			</div>
+			<div class="row" style="margin-left:10%; vertical-align:middle; margin-top:20px;">
+				<p style="text-align:center;color:white">
+					<a style="color:white" href="/groupe/mentions-legales">Mentions légales</a> - <a style="color:white" href="/groupe/donnees-personnelles">Protection des données personnelles</a> -
+					Tous droits réservés © Cabinet Immobilier du Monde - Agence immobiliere - 2000-2016<br>
+					L'extraction et l'utilisation à des fins professionnelles ou commerciales de 
+					tout ou partie de la présente base de données sont interdites.
+				</p>
+			</div>
+
+		
+	</div>	
+	  </body>
+	  
+	  <!-- bower:js -->
+    <script src="/bower_components/jquery/dist/jquery.js"></script>
+    <script src="/bower_components/angular/angular.js"></script>
+    <script src="/bower_components/bootstrap/dist/js/bootstrap.js"></script>
+    <script src="/bower_components/angular-animate/angular-animate.js"></script>
+    <script src="/bower_components/angular-aria/angular-aria.js"></script>
+    <script src="/bower_components/angular-cookies/angular-cookies.js"></script>
+    <script src="/bower_components/angular-messages/angular-messages.js"></script>
+    <script src="/bower_components/angular-resource/angular-resource.js"></script>
+    <script src="/bower_components/angular-route/angular-route.js"></script>
+    <script src="/bower_components/angular-sanitize/angular-sanitize.js"></script>
+    <script src="/bower_components/angular-touch/angular-touch.js"></script>
+
+    <script src="/bower_components/bootstrap/dist/css/bootstrap.min.css"></script>
+    <!-- endbower -->
+	<!-- my scripts -->
+	<script type="text/javascript" src="./js/directives/entete.js"></script>
+	<script type="text/javascript" src="./js/directives/piedpage.js"></script>
+	<script type="text/javascript" src="./js/directives/menu.js"></script>
+	<script type="text/javascript" src="./js/app.js"></script>
+	<script type="text/javascript" src="./js/services/authentification.js"></script>
+	<script type="text/javascript" src="./js/controllers/connexion.js"></script>
+	<script type="text/javascript" src="./js/controllers/createUser.js"></script>
+	<!-- end my scripts -->
+</html>

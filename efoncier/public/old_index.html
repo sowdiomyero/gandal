@@ -1,0 +1,130 @@
+<html>
+      <head>
+	  <meta charset="utf-8/">
+	  <link rel="stylesheet" href="/public/libraries/bootstrap/bootstrap.min.css" />
+	  <link rel="stylesheet" href="/css/index.css" />
+	  <link rel="stylesheet" href="/css/createUser.css" />
+	  <link rel="stylesheet" href="/css/setsetal.css" />
+	   <title>foncier</title>	
+
+	   <style type="text/css">
+			body {
+			    margin-left:-10px;
+			    margin-right:-10px;
+			    background-color: rgb(249,247,246);
+			}
+			.inline {
+				display: inline;
+				margin-left: 10px;
+				margin-right: 10px;
+				font-size: 18px; font-style: normal;
+			}
+
+			select{
+				border-radius: 8px 8px;
+				min-width: 125px;
+				width:210px;
+				height : 35px;
+				background-color: rgb(255,255,255);
+			}
+	   </style>   	
+      </head>
+	  <body ng-app="utilisateurs">
+		
+	  	<header style ="color : #5e676c; height : 65px; background-color:rgb(255,255,255);  margin-bottom:-5px">
+	  		<h1 style ="display:inline; margin-left:55px; margin-right : 25px;">SET SETAL </h1>
+
+	  		<div style ="display:inline;margin-left:325px; margin-right : 25px;margin-bottom : 15px;"> 
+	  			
+              <a href="#" > <span style="margin-bottom : 15px;">Nouveau signalement</span></a>
+	  		</div>	  			
+	  	</header>
+	  	<hr/>
+	  <div class="row" style="padding-left:100px">
+	  	<article class="issues-list-a" style="font-size :18px">
+	  	<header>
+	  		<div style="font-size: 14px;" class="filter-nav inline">
+	  		<div class="filter-control inline">
+	  			<select style="margin-top: 5px;font-size:18px;" class="filter pull-left">
+	  				<option value=";" selected="selected">Toutes les catégories</option>
+	  				<option value="">Arbre - Espace vert</option>
+	  				<option value="">Avaloir - Egout</option>
+	  			</select>
+	  		</div>
+	  		<div class="filter-control inline">
+	  				<select id="timeFilter" style="margin-top: 5px;font-size:18px;width:auto;height : 35px" class="filter pull-left">
+	  					<option value="&nbsp;" selected="selected">Date indifférente</option>
+	  					<option value="1-hours">Moins d'une heure</option>
+	  					<option value="1-days">Moins de 24h</option>
+	  					<option value="7-days">Moins d'une semaine</option>
+	  					<option value="1-months">Moins d'un mois</option>
+	  				</select>
+	  			</div>
+	  			<div class="fitler-control inline" style="display:inline; width:75px; font-size:18px">
+	  				<select id="stateFilter" style="margin-top: 5px; font-size:18px;" class="filter pull-left">
+	  					<option value="">Tous les statuts</option>
+	  					<option value="open">Ouvert  </option>
+	  					<option value="in_progress">En traitement  </option>
+	  					<option value="planned">Planifié  </option>
+	  					<option value="resolved">Résolu  </option>
+	  					<option value="transferred">Transféré  </option>
+	  					<option value="rejected">Rejeté  </option>
+	  				</select>
+	  			</div>
+	  			<div style="float:left; margin-top: 6px; margin-left: 8px;" class="filter-control inline">        
+	  				<div style="display:inline; width:75px;" class="only-me">
+	  					<input id="onlyMe" type="checkbox" data-username="undefined" class="checkbox">
+	  					<label style="display:inline; font-size:18px;">Mes signalements </label>
+	  				</div>
+	  			</div>
+	  		</div>
+	  	</header>
+	  </article>
+	</div>
+	<hr/>
+	<div class="container" style="background-color:rgb(255,255,255); height:100%;margin-top:-5px; ">
+
+	  	<div class="" style="margin-left:20px with:200px; display:inline; " ng-repeat="t in [1,2,3,4]">
+	  		<div style="font-size: 12px; background-color:green; height:100px" class="">
+	  			
+	  			<figure style="padding: 0; background-color: transparent; margin: 0;" >
+	  				<img src="https://res.cloudinary.com/hhi5fudbp/image/upload/e_pixelate_faces:5,w_222,c_fit/w_140,l_bsw,o_20/no_photo_little_all_tags.jpg" width="222" class="issue_picture_index">
+	  				
+	  			</figure> 
+	  		
+	  		</div>	
+	  		
+	  		<div style="background-color:yellow; height:50px">
+	  					<div style="display:inline;">
+	  						<img src="https://betterstreet.org/images/tags/icons/road.png">
+	  						<strong>Route - Trottoir </strong>
+	  						<small><span style="margin-top: 2px;" class="pull-right">il y a 19 minutes  </span></small>
+	  					</div>
+	  				</div>
+	  		</div>
+		
+	  </body>
+	  
+	  <!-- bower:js -->
+    <script src="bower_components/jquery/dist/jquery.js"></script>
+    <script src="bower_components/angular/angular.js"></script>
+    <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
+    <script src="bower_components/angular-animate/angular-animate.js"></script>
+    <script src="bower_components/angular-aria/angular-aria.js"></script>
+    <script src="bower_components/angular-cookies/angular-cookies.js"></script>
+    <script src="bower_components/angular-messages/angular-messages.js"></script>
+    <script src="bower_components/angular-resource/angular-resource.js"></script>
+    <script src="bower_components/angular-route/angular-route.js"></script>
+    <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
+    <script src="bower_components/angular-touch/angular-touch.js"></script>
+    <!-- endbower -->
+	<!-- my scripts -->
+	<script type="text/javascript" src="./js/directives/entete.js"></script>
+	<script type="text/javascript" src="./js/directives/piedpage.js"></script>
+	<script type="text/javascript" src="./js/directives/menu.js"></script>
+	<script type="text/javascript" src="./js/app.js"></script>
+	<script type="text/javascript" src="./js/services/authentification.js"></script>
+	<script type="text/javascript" src="./js/controllers/connexion.js"></script>
+	<script type="text/javascript" src="./js/controllers/createUser.js"></script>
+	<!-- end my scripts -->
+</html>

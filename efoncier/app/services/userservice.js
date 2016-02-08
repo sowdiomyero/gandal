@@ -4,8 +4,10 @@ var isPhone = require('is-phone');
 var validator=require("validator");
 
 var nodemailer = require("nodemailer");
+
 var indicatifOpSen=["33","30","36","77","70","78","76"]
-var roles=["admin","notaire","cadastre"];exports.generateHash = function(){
+var roles=["admin","notaire","cadastre"];
+exports.generateHash = function(){
                         var pass = generator.generate({
                             length: 10,
                             numbers: true
@@ -158,7 +160,7 @@ exports.EnvoiMail = function(user){
           var smtpTransport = nodemailer.createTransport();
               smtpTransport.sendMail({
                                        from: "Fred Foo <acolyid@gmail.com>",
-                                       to: "beuguedabakh@hotmail.fr",
+                                       to: "sowdiomyero@hotmail.fr",
                                        subject: "Vos identifiants sur efoncier",
                                        text: "Bienvenue",
                                        html: "<b>Hello world</b>"
