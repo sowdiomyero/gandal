@@ -1,4 +1,4 @@
-<html>
+<html data-ng-app="siteApp">
       <head>
 	  <meta charset="utf-8/">
 	  <link rel="stylesheet" href="/bower_components/bootstrap/dist/css/bootstrap.min.css" />
@@ -112,9 +112,28 @@
 			    margin-top: -142px;
 			    margin: 0 auto -142px; /* the bottom margin is the negative value of the footer's height */
 			}
-	   </style>   	
+	   </style>  
+
+	   		  <!-- bower:js -->
+    <script src="/bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="/bower_components/angular/angular.min.js"></script>
+    <script src="/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+    <!--
+    <script src="/bower_components/angular-animate/angular-animate.js"></script>
+    <script src="/bower_components/angular-aria/angular-aria.js"></script>
+    <script src="/bower_components/angular-cookies/angular-cookies.js"></script>
+    <script src="/bower_components/angular-messages/angular-messages.js"></script>
+    <script src="/bower_components/angular-resource/angular-resource.js"></script>
+    <script src="/bower_components/angular-route/angular-route.js"></script>
+    <script src="/bower_components/angular-sanitize/angular-sanitize.js"></script>
+    <script src="/bower_components/angular-touch/angular-touch.js"></script>
+	-->
+    <!-- endbower -->
+	<!-- my scripts -->	
+	<script src="/js/app.js"></script>
+	<!-- end my scripts --> 	
       </head>
-	  <body ng-app>
+	  <body  data-ng-controller="annoncesCtrl">
 		
 	  	<header>
 	  		<div >
@@ -165,82 +184,81 @@
 	  		</div>
 	  			
 	  	</header>
-<div class="wrapper" >
+	<div class="wrapper" >
 	  <div class="row" style="background-color:rgb(0,94,168); height:8%;">	  	
 
 	  	<nav class="navbar navbar-default" style="background-color:rgb(0,94,168);">
-        <div class="container" style="background-color:rgb(0,94,168);">
-         <div class="navbar-header">
-            <button type="button" data-target="#navbarCollapse" data-toggle="collapse" class="navbar-toggle">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <a href="#" class="navbar-brand" style="color:white">Home</a>
-        </div> 
-         <div id="navbar" class="navbar-collapse collapse" style="background-color:rgb(0,94,168);"> 
-            <ul class="nav navbar-nav" >
-              <li class="active"><a href="#">Annonces</a></li>
-              <li><a style="color:white" href="#">Ventes</a></li> 
-              <li><a style="color:white" href="#">Locations</a></li> 
-              <li><a style="color:white" href="#">Terrains</a></li>              
-              <li><a style="color:white" href="#">Conseils</a></li>              
-              <li><a style="color:white" href="#">Contact</a></li>
-              
-            </ul>
-            
-      </div><!--/.nav-collapse -->
-        </div><!--/.container-fluid -->
+	        <div class="container" style="background-color:rgb(0,94,168);">
+		         <div class="navbar-header">
+		            <button type="button" data-target="#navbarCollapse" data-toggle="collapse" class="navbar-toggle">
+		                <span class="sr-only">Toggle navigation</span>
+		                <span class="icon-bar"></span>
+		                <span class="icon-bar"></span>
+		                <span class="icon-bar"></span>
+		            </button>
+		            <a href="#" class="navbar-brand" style="color:white">Home</a>
+		         </div> 
+		         <div id="navbar" class="navbar-collapse collapse" style="background-color:rgb(0,94,168);"> 
+		            <ul class="nav navbar-nav" >
+		              <li class="active"><a href="#">Annonces</a></li>
+		              <li><a style="color:white" href="#">Ventes</a></li> 
+		              <li><a style="color:white" href="#">Locations</a></li> 
+		              <li><a style="color:white" href="#">Terrains</a></li>              
+		              <li><a style="color:white" href="#">Conseils</a></li>              
+		              <li><a style="color:white" href="#">Contact</a></li>
+		              
+		            </ul>
+		            
+		         </div><!--/.nav-collapse -->
+	        </div><!--/.container-fluid -->
       </nav>
 
-	</div>
-	 <div class="row" style="background-color:rgb(255,255,255); height:8%; padding-top:10px;">
-	  	
-	    <div class="col-md-2">
+		</div>
+		 <div class="row" style="background-color:rgb(255,255,255); height:8%; padding-top:10px;">
+		  	
+		    <div class="col-md-2">
 
-	    </div>
-	  	<div class="col-md-8" style="">Annonces > Location Immobilière</div>
-	  	<div class="col-md-2">
-	  		<div class="nombre-annonce pull-right">
-				<span>+ 200</span> annonces
-			</div>
-	  	</div>
-	</div>
-	<div class="container-fluid" style="height:auto;background-color:white ">
+		    </div>
+		  	<div class="col-md-8" style="">Annonces > Location Immobilière</div>
+		  	<div class="col-md-2">
+		  		<div class="nombre-annonce pull-right">
+					<span ng-bind="nbAnnonces">{{ nbAnnonces }}</span> annonces
+				</div>
+		  	</div>
+		</div>
+		<div class="container-fluid" style="height:auto;background-color:white ">
 
-	  	<div class="row" style="">
-	  		<div class="col-md-2">
-	  			
-	  		</div>
-		    <div class="col-md-8" style="margin:0; padding:0">
-	  		<div  style="background-color:white;border:3px solid #f2f2f2;overflow:hidden; display:inline-table; width:32%;margin:1px " 
-	  		ng-repeat="t in [1,2,3,4,5,6,7,8,9,10,11,12]">
-	  			
-	  			<img src="/images/appartement.jpg" style="width:100%; margin-top:0px;">
-	  			<img src="/images/bien-exclusif.png" class="annonce" style="position:relative;top:-183; left:-0;"/>
-	  			
-	  			<div style="color:blue; margin-top:-70px">Etat : <strong style="color:green; font-size:16px;" >DISPONIBLE</strong > </div>
-	  			<div style="color:blue; border:1px solid red; margin-bottom:-25px"> 
-	  				<em>Appartemment, 53m² Dakar</em><br/>
-	  				<em>2 Chambres, Salon Salle d'eau</em>
-	  			</div>
-	  			<div style="background-color:white; color:rgb(127,199,224); position:relative; top:-200px;right:-210px; z-index:3; font-weight:bold; padding:3px " >125 000 XOF</div>
-	  			<!--<strong style="color:blue; float:right">125 000 XOF</strong> -->
-	  		</div>
-	  		</div>
-	  		<div class="col-md-2">
-	  			<img src="/images/pub-01.png" style="width:100%; margin-top:0px;">
-	    		<img src="/images/pub-02.png" style="width:100%; margin-top:20px;">
-	    		<img src="/images/pub-03.png" style="width:100%; margin-top:20px;">
-	    		<img src="/images/pub-04.png" style="width:100%; margin-top:20px;">
-	  			<img src="/images/pub-05.png" style="width:100%; margin-top:20px;">
-	    		<img src="/images/pub-07.png" style="width:100%; margin-top:20px;">
-	  		</div>	
-	  	</div>
-	  	<div class="row" style="height:100px; border:1px solid green"></div>
-	</div>
-<hr/>
+		  	<div class="row" style="">
+		  		<div class="col-md-2">
+		  			
+		  		</div>
+			    <div class="col-md-8" style="margin:0; padding:0">
+		  		<div  style="background-color:white;border:3px solid #f2f2f2;overflow:hidden; display:inline-table; width:32%;margin:1px " ng-repeat="annonce in annonces">
+		  			
+		  			<img src="/images/appartement.jpg" style="width:100%; margin-top:0px;">
+		  			<img src="/images/bien-exclusif.png" class="annonce" style="position:relative;top:-170; left:-0;"/>
+		  			
+		  			<div style="color:blue; margin-top:-70px">Etat : <strong style="color:green; font-size:16px;" >{{annonce.etat }}</strong > </div>
+		  			<div style="color:blue; border:1px solid red; margin-bottom:-25px"> 
+		  				<em>{{annonce.description }}, {{ annonce.superficie }}</em><br/>
+		  				<em>{{ annonce.locaux }}</em>
+		  			</div>
+		  			<div style="background-color:white; color:rgb(127,199,224); position:relative; top:-200px;right:-195px; z-index:3; font-weight:bold; padding:3px " >{{ annonce.prix }}</div>
+		  			<!--<strong style="color:blue; float:right">125 000 XOF</strong> -->
+		  		</div>
+		  		</div>
+		  		<div class="col-md-2">
+		  			<img src="/images/pub-01.png" style="width:100%; margin-top:0px;">
+		    		<img src="/images/pub-02.png" style="width:100%; margin-top:20px;">
+		    		<img src="/images/pub-03.png" style="width:100%; margin-top:20px;">
+		    		<img src="/images/pub-04.png" style="width:100%; margin-top:20px;">
+		  			<img src="/images/pub-05.png" style="width:100%; margin-top:20px;">
+		    		<img src="/images/pub-07.png" style="width:100%; margin-top:20px;">
+		  		</div>	
+		  	</div>
+		  	<div class="row" style="height:100px; border:1px solid green"></div>
+		</div>
+	<hr/>
 </div>
 
 	<div id="footer" class="row" style="background-color:rgb(65,97,119);">
@@ -268,30 +286,8 @@
 
 		
 	</div>	
+
 	  </body>
 	  
-	  <!-- bower:js -->
-    <script src="/bower_components/jquery/dist/jquery.js"></script>
-    <script src="/bower_components/angular/angular.js"></script>
-    <script src="/bower_components/bootstrap/dist/js/bootstrap.js"></script>
-    <script src="/bower_components/angular-animate/angular-animate.js"></script>
-    <script src="/bower_components/angular-aria/angular-aria.js"></script>
-    <script src="/bower_components/angular-cookies/angular-cookies.js"></script>
-    <script src="/bower_components/angular-messages/angular-messages.js"></script>
-    <script src="/bower_components/angular-resource/angular-resource.js"></script>
-    <script src="/bower_components/angular-route/angular-route.js"></script>
-    <script src="/bower_components/angular-sanitize/angular-sanitize.js"></script>
-    <script src="/bower_components/angular-touch/angular-touch.js"></script>
 
-    <script src="/bower_components/bootstrap/dist/css/bootstrap.min.css"></script>
-    <!-- endbower -->
-	<!-- my scripts -->
-	<script type="text/javascript" src="./js/directives/entete.js"></script>
-	<script type="text/javascript" src="./js/directives/piedpage.js"></script>
-	<script type="text/javascript" src="./js/directives/menu.js"></script>
-	<script type="text/javascript" src="./js/app.js"></script>
-	<script type="text/javascript" src="./js/services/authentification.js"></script>
-	<script type="text/javascript" src="./js/controllers/connexion.js"></script>
-	<script type="text/javascript" src="./js/controllers/createUser.js"></script>
-	<!-- end my scripts -->
 </html>

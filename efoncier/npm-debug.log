@@ -1,38 +1,203 @@
 0 info it worked if it ends with ok
 1 verbose cli [ 'node',
 1 verbose cli   'C:\\Users\\dysow\\AppData\\Roaming\\npm\\node_modules\\npm\\bin\\npm-cli.js',
-1 verbose cli   'start',
-1 verbose cli   'monitor-dashboard' ]
+1 verbose cli   'cache',
+1 verbose cli   'clear' ]
 2 info using npm@2.11.3
 3 info using node@v0.12.2
-4 verbose run-script [ 'prestart', 'start', 'poststart' ]
-5 info prestart foncier@0.1.0
-6 info start foncier@0.1.0
-7 verbose unsafe-perm in lifecycle true
-8 info foncier@0.1.0 Failed to exec start script
-9 verbose stack Error: foncier@0.1.0 start: `node node_modules/grunt-cli/bin/grunt "monitor-dashboard"`
-9 verbose stack Exit status 1
-9 verbose stack     at EventEmitter.<anonymous> (C:\Users\dysow\AppData\Roaming\npm\node_modules\npm\lib\utils\lifecycle.js:213:16)
-9 verbose stack     at EventEmitter.emit (events.js:110:17)
-9 verbose stack     at ChildProcess.<anonymous> (C:\Users\dysow\AppData\Roaming\npm\node_modules\npm\lib\utils\spawn.js:24:14)
-9 verbose stack     at ChildProcess.emit (events.js:110:17)
-9 verbose stack     at maybeClose (child_process.js:1015:16)
-9 verbose stack     at Process.ChildProcess._handle.onexit (child_process.js:1087:5)
-10 verbose pkgid foncier@0.1.0
-11 verbose cwd C:\dev\gandal\git repo\gandal\efoncier
-12 error Windows_NT 6.2.9200
-13 error argv "node" "C:\\Users\\dysow\\AppData\\Roaming\\npm\\node_modules\\npm\\bin\\npm-cli.js" "start" "monitor-dashboard"
-14 error node v0.12.2
-15 error npm  v2.11.3
-16 error code ELIFECYCLE
-17 error foncier@0.1.0 start: `node node_modules/grunt-cli/bin/grunt "monitor-dashboard"`
-17 error Exit status 1
-18 error Failed at the foncier@0.1.0 start script 'node node_modules/grunt-cli/bin/grunt "monitor-dashboard"'.
-18 error This is most likely a problem with the foncier package,
-18 error not with npm itself.
-18 error Tell the author that this fails on your system:
-18 error     node node_modules/grunt-cli/bin/grunt "monitor-dashboard"
-18 error You can get their info via:
-18 error     npm owner ls foncier
-18 error There is likely additional logging output above.
-19 verbose exit [ 1, true ]
+4 silly ls normalized .
+5 silly gentlyRm C:\Users\dysow\AppData\Roaming\npm-cache\_locks is being purged
+6 verbose gentlyRm don't care about contents; nuking C:\Users\dysow\AppData\Roaming\npm-cache\_locks
+7 silly gentlyRm C:\Users\dysow\AppData\Roaming\npm-cache\active-x-obfuscator is being purged
+8 verbose gentlyRm don't care about contents; nuking C:\Users\dysow\AppData\Roaming\npm-cache\active-x-obfuscator
+9 silly gentlyRm C:\Users\dysow\AppData\Roaming\npm-cache\backbone is being purged
+10 verbose gentlyRm don't care about contents; nuking C:\Users\dysow\AppData\Roaming\npm-cache\backbone
+11 silly gentlyRm C:\Users\dysow\AppData\Roaming\npm-cache\backbone-callbacks is being purged
+12 verbose gentlyRm don't care about contents; nuking C:\Users\dysow\AppData\Roaming\npm-cache\backbone-callbacks
+13 silly gentlyRm C:\Users\dysow\AppData\Roaming\npm-cache\base64id is being purged
+14 verbose gentlyRm don't care about contents; nuking C:\Users\dysow\AppData\Roaming\npm-cache\base64id
+15 silly gentlyRm C:\Users\dysow\AppData\Roaming\npm-cache\commander is being purged
+16 verbose gentlyRm don't care about contents; nuking C:\Users\dysow\AppData\Roaming\npm-cache\commander
+17 silly gentlyRm C:\Users\dysow\AppData\Roaming\npm-cache\config is being purged
+18 verbose gentlyRm don't care about contents; nuking C:\Users\dysow\AppData\Roaming\npm-cache\config
+19 silly gentlyRm C:\Users\dysow\AppData\Roaming\npm-cache\connect is being purged
+20 verbose gentlyRm don't care about contents; nuking C:\Users\dysow\AppData\Roaming\npm-cache\connect
+21 silly gentlyRm C:\Users\dysow\AppData\Roaming\npm-cache\core-monitor is being purged
+22 verbose gentlyRm don't care about contents; nuking C:\Users\dysow\AppData\Roaming\npm-cache\core-monitor
+23 silly gentlyRm C:\Users\dysow\AppData\Roaming\npm-cache\core-util-is is being purged
+24 verbose gentlyRm don't care about contents; nuking C:\Users\dysow\AppData\Roaming\npm-cache\core-util-is
+25 silly gentlyRm C:\Users\dysow\AppData\Roaming\npm-cache\cron is being purged
+26 verbose gentlyRm don't care about contents; nuking C:\Users\dysow\AppData\Roaming\npm-cache\cron
+27 silly gentlyRm C:\Users\dysow\AppData\Roaming\npm-cache\inherits is being purged
+28 verbose gentlyRm don't care about contents; nuking C:\Users\dysow\AppData\Roaming\npm-cache\inherits
+29 silly gentlyRm C:\Users\dysow\AppData\Roaming\npm-cache\isarray is being purged
+30 verbose gentlyRm don't care about contents; nuking C:\Users\dysow\AppData\Roaming\npm-cache\isarray
+31 silly gentlyRm C:\Users\dysow\AppData\Roaming\npm-cache\log4js is being purged
+32 verbose gentlyRm don't care about contents; nuking C:\Users\dysow\AppData\Roaming\npm-cache\log4js
+33 silly gentlyRm C:\Users\dysow\AppData\Roaming\npm-cache\mime is being purged
+34 verbose gentlyRm don't care about contents; nuking C:\Users\dysow\AppData\Roaming\npm-cache\mime
+35 silly gentlyRm C:\Users\dysow\AppData\Roaming\npm-cache\monitor is being purged
+36 verbose gentlyRm don't care about contents; nuking C:\Users\dysow\AppData\Roaming\npm-cache\monitor
+37 silly gentlyRm C:\Users\dysow\AppData\Roaming\npm-cache\monitor-dashboard is being purged
+38 verbose gentlyRm don't care about contents; nuking C:\Users\dysow\AppData\Roaming\npm-cache\monitor-dashboard
+39 silly gentlyRm C:\Users\dysow\AppData\Roaming\npm-cache\nan is being purged
+40 verbose gentlyRm don't care about contents; nuking C:\Users\dysow\AppData\Roaming\npm-cache\nan
+41 silly gentlyRm C:\Users\dysow\AppData\Roaming\npm-cache\node-monitor is being purged
+42 verbose gentlyRm don't care about contents; nuking C:\Users\dysow\AppData\Roaming\npm-cache\node-monitor
+43 silly gentlyRm C:\Users\dysow\AppData\Roaming\npm-cache\node_hash is being purged
+44 verbose gentlyRm don't care about contents; nuking C:\Users\dysow\AppData\Roaming\npm-cache\node_hash
+45 silly gentlyRm C:\Users\dysow\AppData\Roaming\npm-cache\nodeunit is being purged
+46 verbose gentlyRm don't care about contents; nuking C:\Users\dysow\AppData\Roaming\npm-cache\nodeunit
+47 silly gentlyRm C:\Users\dysow\AppData\Roaming\npm-cache\options is being purged
+48 verbose gentlyRm don't care about contents; nuking C:\Users\dysow\AppData\Roaming\npm-cache\options
+49 silly gentlyRm C:\Users\dysow\AppData\Roaming\npm-cache\policyfile is being purged
+50 verbose gentlyRm don't care about contents; nuking C:\Users\dysow\AppData\Roaming\npm-cache\policyfile
+51 silly gentlyRm C:\Users\dysow\AppData\Roaming\npm-cache\qs is being purged
+52 verbose gentlyRm don't care about contents; nuking C:\Users\dysow\AppData\Roaming\npm-cache\qs
+53 silly gentlyRm C:\Users\dysow\AppData\Roaming\npm-cache\readable-stream is being purged
+54 verbose gentlyRm don't care about contents; nuking C:\Users\dysow\AppData\Roaming\npm-cache\readable-stream
+55 silly gentlyRm C:\Users\dysow\AppData\Roaming\npm-cache\redis is being purged
+56 verbose gentlyRm don't care about contents; nuking C:\Users\dysow\AppData\Roaming\npm-cache\redis
+57 silly gentlyRm C:\Users\dysow\AppData\Roaming\npm-cache\registry.npmjs.org is being purged
+58 verbose gentlyRm don't care about contents; nuking C:\Users\dysow\AppData\Roaming\npm-cache\registry.npmjs.org
+59 silly gentlyRm C:\Users\dysow\AppData\Roaming\npm-cache\semver is being purged
+60 verbose gentlyRm don't care about contents; nuking C:\Users\dysow\AppData\Roaming\npm-cache\semver
+61 silly gentlyRm C:\Users\dysow\AppData\Roaming\npm-cache\socket.io is being purged
+62 verbose gentlyRm don't care about contents; nuking C:\Users\dysow\AppData\Roaming\npm-cache\socket.io
+63 silly gentlyRm C:\Users\dysow\AppData\Roaming\npm-cache\socket.io-client is being purged
+64 verbose gentlyRm don't care about contents; nuking C:\Users\dysow\AppData\Roaming\npm-cache\socket.io-client
+65 silly gentlyRm C:\Users\dysow\AppData\Roaming\npm-cache\string_decoder is being purged
+66 verbose gentlyRm don't care about contents; nuking C:\Users\dysow\AppData\Roaming\npm-cache\string_decoder
+67 silly gentlyRm C:\Users\dysow\AppData\Roaming\npm-cache\tinycolor is being purged
+68 verbose gentlyRm don't care about contents; nuking C:\Users\dysow\AppData\Roaming\npm-cache\tinycolor
+69 silly gentlyRm C:\Users\dysow\AppData\Roaming\npm-cache\uglify-js is being purged
+70 verbose gentlyRm don't care about contents; nuking C:\Users\dysow\AppData\Roaming\npm-cache\uglify-js
+71 silly gentlyRm C:\Users\dysow\AppData\Roaming\npm-cache\underscore is being purged
+72 verbose gentlyRm don't care about contents; nuking C:\Users\dysow\AppData\Roaming\npm-cache\underscore
+73 silly gentlyRm C:\Users\dysow\AppData\Roaming\npm-cache\ws is being purged
+74 verbose gentlyRm don't care about contents; nuking C:\Users\dysow\AppData\Roaming\npm-cache\ws
+75 silly gentlyRm C:\Users\dysow\AppData\Roaming\npm-cache\xmlhttprequest is being purged
+76 verbose gentlyRm don't care about contents; nuking C:\Users\dysow\AppData\Roaming\npm-cache\xmlhttprequest
+77 silly gentlyRm C:\Users\dysow\AppData\Roaming\npm-cache\zeparser is being purged
+78 verbose gentlyRm don't care about contents; nuking C:\Users\dysow\AppData\Roaming\npm-cache\zeparser
+79 silly vacuum-fs purging C:\Users\dysow\AppData\Roaming\npm-cache\active-x-obfuscator
+80 silly vacuum-fs purging C:\Users\dysow\AppData\Roaming\npm-cache\_locks
+81 silly vacuum-fs purging C:\Users\dysow\AppData\Roaming\npm-cache\backbone
+82 silly vacuum-fs purging C:\Users\dysow\AppData\Roaming\npm-cache\backbone-callbacks
+83 silly vacuum-fs purging C:\Users\dysow\AppData\Roaming\npm-cache\base64id
+84 silly vacuum-fs purging C:\Users\dysow\AppData\Roaming\npm-cache\config
+85 silly vacuum-fs purging C:\Users\dysow\AppData\Roaming\npm-cache\commander
+86 silly vacuum-fs purging C:\Users\dysow\AppData\Roaming\npm-cache\connect
+87 silly vacuum-fs purging C:\Users\dysow\AppData\Roaming\npm-cache\core-monitor
+88 silly vacuum-fs purging C:\Users\dysow\AppData\Roaming\npm-cache\cron
+89 silly vacuum-fs purging C:\Users\dysow\AppData\Roaming\npm-cache\inherits
+90 silly vacuum-fs purging C:\Users\dysow\AppData\Roaming\npm-cache\core-util-is
+91 silly vacuum-fs purging C:\Users\dysow\AppData\Roaming\npm-cache\isarray
+92 silly vacuum-fs purging C:\Users\dysow\AppData\Roaming\npm-cache\mime
+93 silly vacuum-fs purging C:\Users\dysow\AppData\Roaming\npm-cache\log4js
+94 silly vacuum-fs purging C:\Users\dysow\AppData\Roaming\npm-cache\monitor
+95 silly vacuum-fs purging C:\Users\dysow\AppData\Roaming\npm-cache\nan
+96 silly vacuum-fs purging C:\Users\dysow\AppData\Roaming\npm-cache\monitor-dashboard
+97 silly vacuum-fs purging C:\Users\dysow\AppData\Roaming\npm-cache\node-monitor
+98 silly vacuum-fs purging C:\Users\dysow\AppData\Roaming\npm-cache\node_hash
+99 silly vacuum-fs purging C:\Users\dysow\AppData\Roaming\npm-cache\nodeunit
+100 silly vacuum-fs purging C:\Users\dysow\AppData\Roaming\npm-cache\options
+101 silly vacuum-fs purging C:\Users\dysow\AppData\Roaming\npm-cache\qs
+102 silly vacuum-fs purging C:\Users\dysow\AppData\Roaming\npm-cache\policyfile
+103 silly vacuum-fs purging C:\Users\dysow\AppData\Roaming\npm-cache\registry.npmjs.org
+104 silly vacuum-fs purging C:\Users\dysow\AppData\Roaming\npm-cache\redis
+105 silly vacuum-fs purging C:\Users\dysow\AppData\Roaming\npm-cache\readable-stream
+106 silly vacuum-fs purging C:\Users\dysow\AppData\Roaming\npm-cache\semver
+107 silly vacuum-fs purging C:\Users\dysow\AppData\Roaming\npm-cache\socket.io
+108 silly vacuum-fs purging C:\Users\dysow\AppData\Roaming\npm-cache\socket.io-client
+109 silly vacuum-fs purging C:\Users\dysow\AppData\Roaming\npm-cache\string_decoder
+110 silly vacuum-fs purging C:\Users\dysow\AppData\Roaming\npm-cache\tinycolor
+111 silly vacuum-fs purging C:\Users\dysow\AppData\Roaming\npm-cache\uglify-js
+112 silly vacuum-fs purging C:\Users\dysow\AppData\Roaming\npm-cache\ws
+113 silly vacuum-fs purging C:\Users\dysow\AppData\Roaming\npm-cache\underscore
+114 silly vacuum-fs purging C:\Users\dysow\AppData\Roaming\npm-cache\xmlhttprequest
+115 silly vacuum-fs purging C:\Users\dysow\AppData\Roaming\npm-cache\zeparser
+116 silly vacuum-fs quitting because other entries in C:\Users\dysow\AppData\Roaming\npm-cache
+117 silly vacuum-fs quitting because other entries in C:\Users\dysow\AppData\Roaming\npm-cache
+118 silly vacuum-fs quitting because other entries in C:\Users\dysow\AppData\Roaming\npm-cache
+119 silly vacuum-fs quitting because other entries in C:\Users\dysow\AppData\Roaming\npm-cache
+120 silly vacuum-fs quitting because other entries in C:\Users\dysow\AppData\Roaming\npm-cache
+121 silly vacuum-fs quitting because other entries in C:\Users\dysow\AppData\Roaming\npm-cache
+122 silly vacuum-fs quitting because other entries in C:\Users\dysow\AppData\Roaming\npm-cache
+123 silly vacuum-fs removing C:\Users\dysow\AppData\Roaming\npm-cache
+124 silly vacuum-fs removing C:\Users\dysow\AppData\Roaming\npm-cache
+125 silly vacuum-fs removing C:\Users\dysow\AppData\Roaming\npm-cache
+126 silly vacuum-fs removing C:\Users\dysow\AppData\Roaming\npm-cache
+127 silly vacuum-fs removing C:\Users\dysow\AppData\Roaming\npm-cache
+128 silly vacuum-fs removing C:\Users\dysow\AppData\Roaming\npm-cache
+129 silly vacuum-fs removing C:\Users\dysow\AppData\Roaming\npm-cache
+130 silly vacuum-fs removing C:\Users\dysow\AppData\Roaming\npm-cache
+131 silly vacuum-fs removing C:\Users\dysow\AppData\Roaming\npm-cache
+132 silly vacuum-fs removing C:\Users\dysow\AppData\Roaming\npm-cache
+133 silly vacuum-fs removing C:\Users\dysow\AppData\Roaming\npm-cache
+134 silly vacuum-fs removing C:\Users\dysow\AppData\Roaming\npm-cache
+135 silly vacuum-fs removing C:\Users\dysow\AppData\Roaming\npm-cache
+136 silly vacuum-fs removing C:\Users\dysow\AppData\Roaming\npm-cache
+137 silly vacuum-fs removing C:\Users\dysow\AppData\Roaming\npm-cache
+138 silly vacuum-fs removing C:\Users\dysow\AppData\Roaming\npm-cache
+139 silly vacuum-fs removing C:\Users\dysow\AppData\Roaming\npm-cache
+140 silly vacuum-fs removing C:\Users\dysow\AppData\Roaming\npm-cache
+141 silly vacuum-fs removing C:\Users\dysow\AppData\Roaming\npm-cache
+142 silly vacuum-fs removing C:\Users\dysow\AppData\Roaming\npm-cache
+143 silly vacuum-fs removing C:\Users\dysow\AppData\Roaming\npm-cache
+144 silly vacuum-fs removing C:\Users\dysow\AppData\Roaming\npm-cache
+145 silly vacuum-fs removing C:\Users\dysow\AppData\Roaming\npm-cache
+146 silly vacuum-fs removing C:\Users\dysow\AppData\Roaming\npm-cache
+147 silly vacuum-fs removing C:\Users\dysow\AppData\Roaming\npm-cache
+148 silly vacuum-fs removing C:\Users\dysow\AppData\Roaming\npm-cache
+149 silly vacuum-fs removing C:\Users\dysow\AppData\Roaming\npm-cache
+150 silly vacuum-fs removing C:\Users\dysow\AppData\Roaming\npm-cache
+151 silly vacuum-fs removing C:\Users\dysow\AppData\Roaming\npm-cache
+152 silly vacuum-fs removing C:\Users\dysow\AppData\Roaming\npm-cache
+153 silly vacuum-fs unable to remove C:\Users\dysow\AppData\Roaming\npm-cache due to EPERM, rmdir 'C:\Users\dysow\AppData\Roaming\npm-cache'
+154 silly vacuum-fs unable to remove C:\Users\dysow\AppData\Roaming\npm-cache due to EPERM, rmdir 'C:\Users\dysow\AppData\Roaming\npm-cache'
+155 silly vacuum-fs quitting because lost the race to remove C:\Users\dysow\AppData\Roaming\npm-cache
+156 silly vacuum-fs quitting because lost the race to remove C:\Users\dysow\AppData\Roaming\npm-cache
+157 silly vacuum-fs quitting because lost the race to remove C:\Users\dysow\AppData\Roaming\npm-cache
+158 silly vacuum-fs quitting because lost the race to remove C:\Users\dysow\AppData\Roaming\npm-cache
+159 silly vacuum-fs quitting because lost the race to remove C:\Users\dysow\AppData\Roaming\npm-cache
+160 silly vacuum-fs quitting because lost the race to remove C:\Users\dysow\AppData\Roaming\npm-cache
+161 silly vacuum-fs quitting because lost the race to remove C:\Users\dysow\AppData\Roaming\npm-cache
+162 silly vacuum-fs quitting because lost the race to remove C:\Users\dysow\AppData\Roaming\npm-cache
+163 silly vacuum-fs quitting because lost the race to remove C:\Users\dysow\AppData\Roaming\npm-cache
+164 silly vacuum-fs quitting because lost the race to remove C:\Users\dysow\AppData\Roaming\npm-cache
+165 silly vacuum-fs quitting because lost the race to remove C:\Users\dysow\AppData\Roaming\npm-cache
+166 silly vacuum-fs quitting because lost the race to remove C:\Users\dysow\AppData\Roaming\npm-cache
+167 silly vacuum-fs quitting because lost the race to remove C:\Users\dysow\AppData\Roaming\npm-cache
+168 silly vacuum-fs quitting because lost the race to remove C:\Users\dysow\AppData\Roaming\npm-cache
+169 silly vacuum-fs quitting because lost the race to remove C:\Users\dysow\AppData\Roaming\npm-cache
+170 silly vacuum-fs quitting because lost the race to remove C:\Users\dysow\AppData\Roaming\npm-cache
+171 silly vacuum-fs quitting because lost the race to remove C:\Users\dysow\AppData\Roaming\npm-cache
+172 silly vacuum-fs quitting because lost the race to remove C:\Users\dysow\AppData\Roaming\npm-cache
+173 silly vacuum-fs quitting because lost the race to remove C:\Users\dysow\AppData\Roaming\npm-cache
+174 silly vacuum-fs quitting because lost the race to remove C:\Users\dysow\AppData\Roaming\npm-cache
+175 silly vacuum-fs quitting because lost the race to remove C:\Users\dysow\AppData\Roaming\npm-cache
+176 silly vacuum-fs quitting because lost the race to remove C:\Users\dysow\AppData\Roaming\npm-cache
+177 silly vacuum-fs quitting because lost the race to remove C:\Users\dysow\AppData\Roaming\npm-cache
+178 silly vacuum-fs quitting because lost the race to remove C:\Users\dysow\AppData\Roaming\npm-cache
+179 silly vacuum-fs quitting because lost the race to remove C:\Users\dysow\AppData\Roaming\npm-cache
+180 silly vacuum-fs quitting because other entries in C:\Users\dysow\AppData\Roaming
+181 silly vacuum-fs quitting because other entries in C:\Users\dysow\AppData\Roaming
+182 verbose stack Error: EPERM, rmdir 'C:\Users\dysow\AppData\Roaming\npm-cache'
+182 verbose stack     at Error (native)
+183 verbose cwd C:\dev\gandal\git repo\gandal\efoncier
+184 error Windows_NT 6.2.9200
+185 error argv "node" "C:\\Users\\dysow\\AppData\\Roaming\\npm\\node_modules\\npm\\bin\\npm-cli.js" "cache" "clear"
+186 error node v0.12.2
+187 error npm  v2.11.3
+188 error path C:\Users\dysow\AppData\Roaming\npm-cache
+189 error code EPERM
+190 error errno -4048
+191 error Error: EPERM, rmdir 'C:\Users\dysow\AppData\Roaming\npm-cache'
+191 error     at Error (native)
+191 error  { [Error: EPERM, rmdir 'C:\Users\dysow\AppData\Roaming\npm-cache']
+191 error   errno: -4048,
+191 error   code: 'EPERM',
+191 error   path: 'C:\\Users\\dysow\\AppData\\Roaming\\npm-cache' }
+192 error Please try running this command again as root/Administrator.
+193 verbose exit [ -4048, true ]

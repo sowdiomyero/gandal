@@ -1,0 +1,40 @@
+<html lang="en" ng-app>
+    <head>
+	     <meta charset="utf-8/">
+	     <title>foncier</title>	
+	     <script src= "https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.0/angular.min.js"></script>
+			
+    </head>
+	  <body ng-init="">
+		
+
+	  	<div >
+  		     <div class="contenu" >
+	             <input type="text" name="txtName" ng-model="" />
+	              <br />
+	               Typed Name is: <span ng-bind="typedName"></span> 
+	              <br />
+	              <p>Annonces : {{ 5+2 }} <span ng-bind="typedName"></span></p>
+            </div>
+  
+	        <div ng-repeat="annonce in annonces" >	  			
+	  	  			
+	  	  			<div >Etat : <strong ng-bind="annonce.etat"></strong > </div>
+		  			<div> 
+		  				<em ng-bind="annonce.description"></em>
+
+		  				<em ng-bind="annonce.superficie"></em>
+		  				<br/>
+		  				<em>Locaux : {{annonce.locaux}}</em>
+		  			</div>
+		  			<div > Prix : {{annonce.prix}}</div>
+	  	  			
+	        </div>
+	        
+        </div>
+      
+       <script  src="/js/angularApp.js"></script>   
+        
+	  </body>
+	
+</html>
